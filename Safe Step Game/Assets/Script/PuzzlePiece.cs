@@ -54,6 +54,11 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             transform.SetParent(originalParent);
             rectTransform.position = startPosition;
         }
+
+    }
+    public bool IsPlaced()
+    {
+        return placed;
     }
 }
 
