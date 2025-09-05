@@ -2852,7 +2852,7 @@ MonoBehaviour:
   OpeningScreen: {fileID: 1718661112}
   PuzzlePriaSelesai: {fileID: 319313605}
   Puzzlewanita: {fileID: 2023209269}
-  PuzzleWanitaSelesai: {fileID: 319313605}
+  PuzzleWanitaSelesai: {fileID: 1949000111}
   Reward: {fileID: 1233447885}
 --- !u!4 &1723821180
 Transform:
