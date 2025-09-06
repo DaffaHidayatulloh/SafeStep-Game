@@ -10,23 +10,27 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
     private CanvasGroup canvasGroup;
 
     [Header("Swipe settings")]
-    [Tooltip("Minimal horizontal movement (pixels) dianggap swipe")]
     public float swipeThreshold = 100f;
-
-    [Tooltip("Seberapa jauh image bergerak keluar layar ketika di-swipe")]
     public float offscreenDistance = 800f;
+    public float maxDragDistance = 200f;
 
     [Header("Animation")]
-    [Tooltip("Kecepatan gerakan (semakin besar = semakin cepat)")]
     public float moveSpeed = 8f;
-
-    [Tooltip("Durasi fade ketika muncul kembali (detik)")]
     public float fadeDuration = 0.3f;
-
-    [Tooltip("Delay ketika image hilang sebelum muncul lagi (detik)")]
     public float hiddenDelay = 0.5f;
 
-    bool hasSwiped = false;
+    [Header("Objective Settings")]
+    [Tooltip("Urutan arah swipe yang benar (contoh: Right, Left, Right, Left)")]
+    public string[] correctDirections;
+
+    [Tooltip("Instruksi teks yang muncul sesuai urutan swipe")]
+    public string[] instructionTexts;
+
+    [Tooltip("Referensi ke UI Text legacy (drag dari Inspector)")]
+    public Text instructionTextUI;
+
+    private int currentIndex = 0;
+    private bool hasSwiped = false;
 
     void Awake()
     {
@@ -38,16 +42,34 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
     void Start()
     {
         startAnchoredPos = rect.anchoredPosition;
+        ResetState();
+
+        // Set instruksi awal kalau ada
+        if (instructionTextUI != null && instructionTexts.Length > 0)
+        {
+            instructionTextUI.text = instructionTexts[0];
+        }
+    }
+
+    void ResetState()
+    {
+        rect.anchoredPosition = startAnchoredPos;
         canvasGroup.alpha = 1f;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+        hasSwiped = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (hasSwiped) return;
-        // geser hanya pada sumbu X
+
         rect.anchoredPosition += new Vector2(eventData.delta.x, 0f);
+
+        // batasi area drag
+        float offsetX = rect.anchoredPosition.x - startAnchoredPos.x;
+        offsetX = Mathf.Clamp(offsetX, -maxDragDistance, maxDragDistance);
+        rect.anchoredPosition = startAnchoredPos + new Vector2(offsetX, 0f);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -59,17 +81,25 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         if (Mathf.Abs(dragDistance) >= swipeThreshold)
         {
             float dir = Mathf.Sign(dragDistance); // +1 kanan, -1 kiri
-            hasSwiped = true;
+            string swipeDir = dir > 0 ? "Right" : "Left";
 
-            // matikan interaksi sementara
-            canvasGroup.interactable = false;
-            canvasGroup.blocksRaycasts = false;
+            string expectedDir = correctDirections.Length > 0 ? correctDirections[currentIndex] : "Right";
 
-            StartCoroutine(SmoothHideAndReturn(dir));
+            if (swipeDir == expectedDir)
+            {
+                hasSwiped = true;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+                StartCoroutine(SmoothHideAndReturn(dir));
+            }
+            else
+            {
+                //kasih animasi disini
+                StartCoroutine(ShakeAndReset());
+            }
         }
         else
         {
-            // balik ke tengah dengan smooth
             StartCoroutine(SmoothMoveTo(startAnchoredPos));
         }
     }
@@ -89,7 +119,7 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         Vector2 startPos = rect.anchoredPosition;
         Vector2 targetPos = startAnchoredPos + new Vector2(direction * offscreenDistance, 0f);
 
-        // slide out + fade out
+        // keluar + fade
         float t = 0f;
         while (t < 1f)
         {
@@ -98,13 +128,13 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
             canvasGroup.alpha = Mathf.Lerp(1f, 0f, t);
             yield return null;
         }
+
         rect.anchoredPosition = targetPos;
         canvasGroup.alpha = 0f;
 
-        // tunggu sebentar ketika hidden
         yield return new WaitForSeconds(hiddenDelay);
 
-        // pindahkan langsung kembali ke posisi awal (tetap alpha = 0) lalu fade in
+        // reset ke posisi awal + fade in
         rect.anchoredPosition = startAnchoredPos;
         float elapsed = 0f;
         while (elapsed < fadeDuration)
@@ -114,10 +144,41 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
             yield return null;
         }
 
-        // restore interaksi
-        canvasGroup.alpha = 1f;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
-        hasSwiped = false;
+        // pindah ke objective berikutnya
+        currentIndex++;
+        if (currentIndex >= correctDirections.Length)
+        {
+            currentIndex = 0; // loop ulang, bisa diubah kalau mau stop di akhir
+        }
+
+        // update instruksi text
+        if (instructionTextUI != null && instructionTexts.Length > 0)
+        {
+            int textIndex = Mathf.Min(currentIndex, instructionTexts.Length - 1);
+            instructionTextUI.text = instructionTexts[textIndex];
+        }
+
+        ResetState();
+    }
+
+    IEnumerator ShakeAndReset()
+    {
+        Vector2 originalPos = rect.anchoredPosition;
+
+        float elapsed = 0f;
+        float duration = 0.3f;
+        float magnitude = 20f;
+
+        while (elapsed < duration)
+        {
+            float x = Mathf.Sin(elapsed * 50f) * magnitude;
+            rect.anchoredPosition = originalPos + new Vector2(x, 0f);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return StartCoroutine(SmoothMoveTo(startAnchoredPos));
     }
 }
+
