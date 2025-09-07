@@ -11,6 +11,8 @@ public class Level1Manager : MonoBehaviour
     public GameObject PuzzleWanitaSelesai;
     public GameObject Reward;
 
+    public GameObject OpeningMinigame2;
+    public GameObject MiniGame2;
     public void OnSelectButtonOpening()
     {
         OpeningScreen.SetActive(false);
@@ -29,4 +31,14 @@ public class Level1Manager : MonoBehaviour
         Reward.SetActive(true);
     }
 
+    public void OnSelectButtonLanjutOpeningMinigame2()
+    {
+        Reward.SetActive(false);
+        OpeningMinigame2.SetActive(true);
+    }
+    public void OnSelectButtonLanjutMinigame2()
+    {
+        OpeningMinigame2.SetActive(false);
+        MiniGame2.SetActive(true);
+    }
 }
