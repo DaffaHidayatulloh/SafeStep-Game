@@ -3,50 +3,67 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CheckBoxController : MonoBehaviour
-
 {
-    [Header("Buttons")]
-    public Button[] optionButtons; // drag 4 button ke sini lewat inspector
-    public int correctIndex = 0;   // tentukan index jawaban benar (0 = button pertama)
+    [Header("Jawaban")]
+    public Button[] optionButtons;
+    public int correctIndex = 0;
 
-    [Header("Feedback Objects")]
-    public GameObject wrongFeedback;   // drag GameObject untuk feedback salah
-    public GameObject correctFeedback; // drag GameObject untuk feedback benar
+    [Header("Feedback")]
+    public GameObject wrongFeedback;
+    public GameObject correctFeedback;
+
+    private QuizManager quizManager;
 
     private void Start()
     {
-        // pastikan feedback tidak aktif di awal
         wrongFeedback.SetActive(false);
         correctFeedback.SetActive(false);
 
-        // assign listener ke semua button
         for (int i = 0; i < optionButtons.Length; i++)
         {
-            int index = i; // penting untuk closure
+            int index = i;
             optionButtons[i].onClick.AddListener(() => CheckAnswer(index));
         }
     }
 
+    public void SetQuizManager(QuizManager manager)
+    {
+        quizManager = manager;
+    }
+
     void CheckAnswer(int index)
     {
+        foreach (var btn in optionButtons)
+            btn.interactable = false;
+
         if (index == correctIndex)
         {
-            Debug.Log("Jawaban benar!");
-            StartCoroutine(ShowFeedback(correctFeedback, 3f));
-            // bisa tambahkan reward/pindah scene di sini
+            StartCoroutine(ShowFeedback(correctFeedback, true));
         }
         else
         {
-            Debug.Log("Jawaban salah!");
-            StartCoroutine(ShowFeedback(wrongFeedback, 3f));
+            StartCoroutine(ShowFeedback(wrongFeedback, false));
         }
     }
 
-    IEnumerator ShowFeedback(GameObject feedbackObj, float duration)
+    IEnumerator ShowFeedback(GameObject feedbackObj, bool isCorrect)
     {
         feedbackObj.SetActive(true);
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(3f); // feedback tampil 3 detik
         feedbackObj.SetActive(false);
+
+        // setelah feedback selesai, soal dimatikan
+        gameObject.SetActive(false);
+
+        quizManager.Answered(isCorrect, this);
+    }
+
+    public void ResetButtons()
+    {
+        foreach (var btn in optionButtons)
+            btn.interactable = true;
     }
 }
+
+
 

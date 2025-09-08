@@ -13,6 +13,10 @@ public class Level1Manager : MonoBehaviour
 
     public GameObject OpeningMinigame2;
     public GameObject MiniGame2;
+    public GameObject RewardMinigame2;
+
+    public GameObject OpeningMinigame3;
+    public GameObject MiniGame3;
     public void OnSelectButtonOpening()
     {
         OpeningScreen.SetActive(false);
@@ -41,4 +45,17 @@ public class Level1Manager : MonoBehaviour
         OpeningMinigame2.SetActive(false);
         MiniGame2.SetActive(true);
     }
+    public void OnSelectButtonOpening3()
+    {
+        RewardMinigame2.SetActive(false);
+        OpeningMinigame3.SetActive(true);
+
+    }
+    public void OnSelectButtonLanjutMinigame3()
+    {
+        OpeningMinigame3.SetActive(false);
+        MiniGame3.SetActive(true);
+
+    }
+    
 }

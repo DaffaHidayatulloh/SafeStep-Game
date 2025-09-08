@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HomeScreenManager : MonoBehaviour
 {
@@ -24,5 +27,9 @@ public class HomeScreenManager : MonoBehaviour
         profile.SetActive(true);
         Home.SetActive(false);
         Progres.SetActive(false);
+    }
+    public void GoToLevel1()
+    {
+        SceneManager.LoadScene("Level 1 Reproduksi");
     }
 }
