@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 2 Anti Kekerasan.unity
     guid: b2d4c079368b84044ba2dfa2b55d0329
+  - enabled: 1
+    path: Assets/Scenes/Level 3 Mental Health.unity
+    guid: 57964e6156b53a944ac9b9b7fe814a50
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

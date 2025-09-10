@@ -32,4 +32,8 @@ public class HomeScreenManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level 1 Reproduksi");
     }
+    public void GoToLevel2()
+    {
+        SceneManager.LoadScene("Level 2 Anti Kekerasan");
+    }
 }
