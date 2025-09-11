@@ -4,13 +4,12 @@ using System.Collections;
 using UnityEngine.EventSystems;
 
 public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
-
 {
     [Header("UI Elements")]
-    public RectTransform circle;   // UI Lingkaran
-    public Image circleImage;      // Komponen Image lingkaran
-    public Text instructionText;   // Teks instruksi
-    public Slider progressBar;     // Progress total 3 siklus
+    public RectTransform circle;
+    public Image circleImage;
+    public Text instructionText;
+    public Slider progressBar;
 
     [Header("Durasi (detik)")]
     public float inhaleDuration = 4f;
@@ -22,20 +21,26 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
     public Vector3 maxScale = new Vector3(1.5f, 1.5f, 1.5f);
 
     [Header("Jumlah Siklus")]
-    public int totalCycles = 3; // total 3 siklus
+    public int totalCycles = 3;
     private int currentCycle = 0;
+
+    [Header("Game Flow")]
+    public GameObject miniGameObject;  // assign panel minigame 2
+    public GameObject rewardObject;    // assign panel reward minigame 2
 
     private bool isHoldingTap = false;
 
     private void Start()
     {
-        // lingkaran mulai dari kecil
         circle.localScale = minScale;
         circleImage.color = Color.white;
 
         progressBar.minValue = 0f;
-        progressBar.maxValue = totalCycles; // total 3
+        progressBar.maxValue = totalCycles;
         progressBar.value = 0f;
+
+        if (rewardObject != null)
+            rewardObject.SetActive(false);
 
         StartCoroutine(BreathingCycle());
     }
@@ -66,11 +71,8 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
             {
                 circle.localScale = minScale;
                 yield return new WaitForSeconds(1f);
-                if (currentCycle == 0)
-                {
-                    progressBar.value = 0; // gagal di siklus 1  reset
-                }
-                continue; // ulangi siklus yang sama
+                if (currentCycle == 0) progressBar.value = 0;
+                continue;
             }
 
             // HOLD
@@ -83,10 +85,7 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
             {
                 circle.localScale = minScale;
                 yield return new WaitForSeconds(1f);
-                if (currentCycle == 0)
-                {
-                    progressBar.value = 0; // gagal di siklus 1  reset
-                }
+                if (currentCycle == 0) progressBar.value = 0;
                 continue;
             }
 
@@ -95,12 +94,18 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
             yield return StartCoroutine(WaitForReleaseAndScale(circle, maxScale, minScale, exhaleDuration));
             circleImage.color = Color.white;
 
-            // siklus selesai dengan sukses  naikkan progress
+            // Sukses siklus
             currentCycle++;
             progressBar.value = currentCycle;
         }
 
         instructionText.text = "Selesai!";
+
+        // Tunggu 1 detik lalu matikan & aktifkan reward
+        yield return new WaitForSeconds(1f);
+
+        if (miniGameObject != null) miniGameObject.SetActive(false);
+        if (rewardObject != null) rewardObject.SetActive(true);
     }
 
     IEnumerator ControlledInhale(System.Action<bool> callback)
@@ -163,6 +168,7 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
         target.localScale = to;
     }
 }
+
 
 
 

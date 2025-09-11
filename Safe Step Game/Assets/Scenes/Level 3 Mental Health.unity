@@ -823,6 +823,8 @@ MonoBehaviour:
   minScale: {x: 0.5, y: 0.5, z: 0.5}
   maxScale: {x: 1.5, y: 1.5, z: 1.5}
   totalCycles: 3
+  miniGameObject: {fileID: 1239464288}
+  rewardObject: {fileID: 233106577}
 --- !u!1 &759236922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,7 +1482,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239464288}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1492,7 +1494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -245, y: 530}
+  m_AnchoredPosition: {x: -245, y: 529.9998}
   m_SizeDelta: {x: -490, y: -1060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1269099645
@@ -1864,7 +1866,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2137535334}
         m_TargetAssemblyTypeName: Level3Manager, Assembly-CSharp
-        m_MethodName: OnSelectOpening
+        m_MethodName: OnSelectOpening2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2537,7 +2539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137535332}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2558,6 +2560,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpeningMinigame1: {fileID: 159088382686674998}
   Minigame1: {fileID: 1354295022}
+  RewardMinigame1: {fileID: 1062931273886340553}
+  OpeningMinigame2: {fileID: 682890843}
+  Minigame2: {fileID: 1239464288}
+  RewardMinigame2: {fileID: 233106577}
 --- !u!114 &7067491092470148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3982,9 +3988,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
-        m_MethodName: OnSelectButtonLanjutOpeningMinigame2
+      - m_Target: {fileID: 2137535334}
+        m_TargetAssemblyTypeName: Level3Manager, Assembly-CSharp
+        m_MethodName: OnSelectReward
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4902,5 +4908,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 1395761243}
   - {fileID: 405178318}
-  - {fileID: 2137535333}
   - {fileID: 1084420154}
+  - {fileID: 2137535333}
