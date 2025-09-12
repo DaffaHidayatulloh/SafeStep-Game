@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level2Manager : MonoBehaviour
 {
@@ -41,5 +42,9 @@ public class Level2Manager : MonoBehaviour
     {
         OpeningMinigame3.SetActive(false);
         Minigame3.SetActive(true);
+    }
+    public void OnSelectReward3()
+    {
+        SceneManager.LoadScene("Level 3 Mental Health");
     }
 }

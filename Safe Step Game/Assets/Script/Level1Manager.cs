@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level1Manager : MonoBehaviour
 {
@@ -56,6 +57,10 @@ public class Level1Manager : MonoBehaviour
         OpeningMinigame3.SetActive(false);
         MiniGame3.SetActive(true);
 
+    }
+    public void OnSelectReward3() 
+    {
+        SceneManager.LoadScene("Level 2 Anti Kekerasan");
     }
     
 }

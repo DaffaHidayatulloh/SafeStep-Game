@@ -36,4 +36,8 @@ public class HomeScreenManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level 2 Anti Kekerasan");
     }
+    public void GoToLevel3() 
+    {
+      SceneManager.LoadScene("Level 3 Mental Health");
+    }
 }
