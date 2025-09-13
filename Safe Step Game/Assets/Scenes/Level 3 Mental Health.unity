@@ -457,7 +457,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 68602333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44801e9f0024a314e87d0238a2583c87, type: 3}
+  m_Script: {fileID: 11500000, guid: e8dcd99b3d69c7147825898266c4d0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   optionButtons:
@@ -465,9 +465,12 @@ MonoBehaviour:
   - {fileID: 1348522996}
   - {fileID: 1020464049}
   - {fileID: 282003889}
-  correctIndex: 2
-  wrongFeedback: {fileID: 281923173}
-  correctFeedback: {fileID: 99272925}
+  correctIndexes: 02000000
+  feedbackObjects:
+  - {fileID: 281923173}
+  - {fileID: 281923173}
+  - {fileID: 99272925}
+  - {fileID: 281923173}
 --- !u!1 &73245091
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,11 +3512,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1166766757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f055c4a86b8f1954595056ec52187c87, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d1189d4a3c84fc41b9c40208cb6ed8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   questions:
-  - {fileID: 565828730650693764}
+  - {fileID: 7720499080306468049}
   - {fileID: 68602335}
   - {fileID: 1640964076}
   miniGame3: {fileID: 1166766757}
@@ -5135,7 +5138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640964074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44801e9f0024a314e87d0238a2583c87, type: 3}
+  m_Script: {fileID: 11500000, guid: e8dcd99b3d69c7147825898266c4d0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   optionButtons:
@@ -5143,9 +5146,12 @@ MonoBehaviour:
   - {fileID: 34473269}
   - {fileID: 83823284}
   - {fileID: 443389201}
-  correctIndex: 1
-  wrongFeedback: {fileID: 1056316485}
-  correctFeedback: {fileID: 1669892911}
+  correctIndexes: 01000000
+  feedbackObjects:
+  - {fileID: 1669892911}
+  - {fileID: 1056316485}
+  - {fileID: 1669892911}
+  - {fileID: 1669892911}
 --- !u!1 &1669892911
 GameObject:
   m_ObjectHideFlags: 0
@@ -6839,26 +6845,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897556488878401005}
   m_CullTransparentMesh: 1
---- !u!114 &565828730650693764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7720499080306468048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44801e9f0024a314e87d0238a2583c87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  optionButtons:
-  - {fileID: 1381500723397597809}
-  - {fileID: 1295023940914164255}
-  - {fileID: 6130256664383857549}
-  - {fileID: 7052463111791993055}
-  correctIndex: 0
-  wrongFeedback: {fileID: 5799951213693140544}
-  correctFeedback: {fileID: 1359704795}
 --- !u!114 &578646683072754261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9804,7 +9790,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5948775007809312109}
-  - component: {fileID: 565828730650693764}
+  - component: {fileID: 7720499080306468049}
   m_Layer: 5
   m_Name: Quiz
   m_TagString: Untagged
@@ -9812,6 +9798,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &7720499080306468049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7720499080306468048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dcd99b3d69c7147825898266c4d0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionButtons:
+  - {fileID: 1381500723397597809}
+  - {fileID: 1295023940914164255}
+  - {fileID: 6130256664383857549}
+  - {fileID: 7052463111791993055}
+  correctIndexes: 00000000
+  feedbackObjects:
+  - {fileID: 1359704795}
+  - {fileID: 5799951213693140544}
+  - {fileID: 5799951213693140544}
+  - {fileID: 5799951213693140544}
 --- !u!222 &7750736511954974278
 CanvasRenderer:
   m_ObjectHideFlags: 0

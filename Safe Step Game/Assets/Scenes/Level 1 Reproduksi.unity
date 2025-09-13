@@ -1821,6 +1821,9 @@ MonoBehaviour:
   - {fileID: 1640352853}
   completeUI: {fileID: 1949000111}
   FullPuzzle: {fileID: 2023209269}
+  levelIndex: 1
+  miniGameIndex: 2
+  rewardScore: 50
 --- !u!114 &463542598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1842,6 +1845,9 @@ MonoBehaviour:
   - {fileID: 1878937636}
   completeUI: {fileID: 319313605}
   FullPuzzle: {fileID: 653069570}
+  levelIndex: 1
+  miniGameIndex: 1
+  rewardScore: 50
 --- !u!1 &493939102
 GameObject:
   m_ObjectHideFlags: 0
@@ -8350,7 +8356,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 208.50002, y: -128.99997}
-  m_SizeDelta: {x: 500, y: 500}
+  m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1816392069
 MonoBehaviour:
