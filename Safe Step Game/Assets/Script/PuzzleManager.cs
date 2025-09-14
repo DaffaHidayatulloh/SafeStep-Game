@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -7,9 +8,12 @@ public class PuzzleManager : MonoBehaviour
     public GameObject FullPuzzle;
 
     [Header("Setup")]
-    public int levelIndex = 1;  // Level ke berapa
-    public int miniGameIndex = 1; // Mini game ke berapa (1-3)
-    public int rewardScore = 50; // Score reward jika berhasil
+    public int levelIndex = 1;      // Level ke berapa
+    public int miniGameIndex = 1;   // Mini game ke berapa (1-3)
+    public int rewardScore = 100;   // Score reward jika berhasil
+
+    [Header("UI Display")]
+    public Text scoreDisplayText;   // 1 Legacy Text saja
 
     private bool puzzleCompleted = false;
 
@@ -40,6 +44,9 @@ public class PuzzleManager : MonoBehaviour
         string completionKey = $"Puzzle_Level{levelIndex}_Mini{miniGameIndex}_Completed";
         string scoreKey = $"Score_Level{levelIndex}";
 
+        int earnedScore = 0;
+        bool firstTimeComplete = false;
+
         // --- Cek apakah mini game ini sudah pernah diselesaikan ---
         if (PlayerPrefs.GetInt(completionKey, 0) == 0)
         {
@@ -52,11 +59,24 @@ public class PuzzleManager : MonoBehaviour
             PlayerPrefs.SetInt(completionKey, 1);
             PlayerPrefs.Save();
 
+            earnedScore = rewardScore;
+            firstTimeComplete = true;
+
             Debug.Log($"Score {scoreKey} Sekarang: " + currentScore);
         }
         else
         {
+            earnedScore = 0;
             Debug.Log("Mini game ini sudah pernah diselesaikan, tidak menambah score lagi.");
+        }
+
+        // Update UI Display (hanya 1 text)
+        if (scoreDisplayText != null)
+        {
+            if (firstTimeComplete)
+                scoreDisplayText.text = "+100";
+            else
+                scoreDisplayText.text = "+" + earnedScore;
         }
 
         // UI handling
@@ -67,4 +87,7 @@ public class PuzzleManager : MonoBehaviour
             FullPuzzle.SetActive(false);
     }
 }
+
+
+
 

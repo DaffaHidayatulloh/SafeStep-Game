@@ -28,10 +28,16 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
     public Text instructionTextUI;
     public Text feedbackTextUI;
     public Text progressTextUI;
+    public Text scoreDisplayText;   // tampilkan score (+100 atau +0) hanya di akhir
 
     [Header("Reward Settings")]
-    public GameObject rewardObject;   // drag prefab reward di Inspector
-    public GameObject cardObject;     // drag object kartu (yang ada script ini)
+    public GameObject rewardObject;
+    public GameObject cardObject;
+
+    [Header("Score Settings")]
+    public int levelIndex = 1;       // Level ke berapa
+    public int miniGameIndex = 1;    // Mini game ke berapa (1-3)
+    public int rewardScore = 100;    // Score reward
 
     private int currentIndex = 0;
     private int totalQuestions;
@@ -61,6 +67,9 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
 
         if (rewardObject != null)
             rewardObject.SetActive(false);
+
+        if (scoreDisplayText != null)
+            scoreDisplayText.text = ""; // kosong awal
     }
 
     void ResetState()
@@ -101,9 +110,9 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
                 canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
 
-                // Cek kalau ini soal terakhir
                 if (currentIndex == totalQuestions - 1)
                 {
+                    // hanya di soal terakhir  kasih reward
                     StartCoroutine(FinalQuestionRoutine(dir));
                 }
                 else
@@ -134,6 +143,7 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     IEnumerator SmoothHideAndReturn(float direction)
     {
+        // animasi swipe biasa
         Vector2 startPos = rect.anchoredPosition;
         Vector2 targetPos = startAnchoredPos + new Vector2(direction * offscreenDistance, 0f);
 
@@ -186,7 +196,7 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     IEnumerator FinalQuestionRoutine(float direction)
     {
-        // swipe keluar + fade (kayak biasa)
+        // animasi keluar terakhir
         Vector2 startPos = rect.anchoredPosition;
         Vector2 targetPos = startAnchoredPos + new Vector2(direction * offscreenDistance, 0f);
 
@@ -209,14 +219,38 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
             feedbackTextUI.text = feedbackTexts[feedbackIndex];
         }
 
-        // tunggu 3 detik tanpa bisa drag
+        // baru cek & tambahkan score kalau soal terakhir selesai
+        string miniGameKey = $"MiniGameCompleted_Level{levelIndex}_{miniGameIndex}";
+        string levelScoreKey = $"Score_Level{levelIndex}";
+
+        int lastEarned = 0;
+        if (PlayerPrefs.GetInt(miniGameKey, 0) == 0)
+        {
+            // Belum pernah dikerjakan  tambah score
+            lastEarned = rewardScore;
+            PlayerPrefs.SetInt(miniGameKey, 1);
+
+            int currentScore = PlayerPrefs.GetInt(levelScoreKey, 0);
+            currentScore += rewardScore;
+            PlayerPrefs.SetInt(levelScoreKey, currentScore);
+
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            // Sudah pernah  score 0
+            lastEarned = 0;
+        }
+
+        if (scoreDisplayText != null)
+            scoreDisplayText.text = "+" + lastEarned;
+
+        // tunggu 3 detik
         yield return new WaitForSeconds(3f);
 
-        // tampilkan reward
         if (rewardObject != null)
             rewardObject.SetActive(true);
 
-        // sembunyikan kartu
         if (cardObject != null)
             cardObject.SetActive(false);
     }
@@ -240,3 +274,4 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         yield return StartCoroutine(SmoothMoveTo(startAnchoredPos));
     }
 }
+

@@ -1824,6 +1824,7 @@ MonoBehaviour:
   levelIndex: 1
   miniGameIndex: 2
   rewardScore: 50
+  scoreDisplayText: {fileID: 7788740555389801140}
 --- !u!114 &463542598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1848,6 +1849,7 @@ MonoBehaviour:
   levelIndex: 1
   miniGameIndex: 1
   rewardScore: 50
+  scoreDisplayText: {fileID: 7788740555389801140}
 --- !u!1 &493939102
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,8 +2096,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 479.50003, y: 79.96399}
-  m_SizeDelta: {x: 610.15, y: 273.57}
+  m_AnchoredPosition: {x: 442.43393, y: 33.69361}
+  m_SizeDelta: {x: 536.0178, y: 366.1108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498812254
 MonoBehaviour:
@@ -5179,6 +5181,10 @@ MonoBehaviour:
   correctIndex: 0
   wrongFeedback: {fileID: 1061564215}
   correctFeedback: {fileID: 262607028}
+  levelIndex: 1
+  miniGameIndex: 6
+  rewardScore: 50
+  scoreDisplayText: {fileID: 86492067}
 --- !u!1 &1261129412
 GameObject:
   m_ObjectHideFlags: 0
@@ -5734,8 +5740,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 245, y: -111.900085}
-  m_SizeDelta: {x: 1199.1, y: 121.08594}
+  m_AnchoredPosition: {x: 245.60065, y: -138.16386}
+  m_SizeDelta: {x: 935.2813, y: 173.6135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1344988669
 MonoBehaviour:
@@ -7572,6 +7578,10 @@ MonoBehaviour:
   correctIndex: 0
   wrongFeedback: {fileID: 6297796}
   correctFeedback: {fileID: 522917247}
+  levelIndex: 1
+  miniGameIndex: 5
+  rewardScore: 50
+  scoreDisplayText: {fileID: 86492067}
 --- !u!1 &1697261712
 GameObject:
   m_ObjectHideFlags: 0
@@ -7956,8 +7966,12 @@ MonoBehaviour:
   instructionTextUI: {fileID: 1468838861}
   feedbackTextUI: {fileID: 498812254}
   progressTextUI: {fileID: 241995819}
+  scoreDisplayText: {fileID: 1540307600}
   rewardObject: {fileID: 40065815}
   cardObject: {fileID: 614749744}
+  levelIndex: 1
+  miniGameIndex: 3
+  rewardScore: 100
 --- !u!225 &1733359730
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -8122,8 +8136,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 245, y: -111.900085}
-  m_SizeDelta: {x: 1199.1, y: 121.08594}
+  m_AnchoredPosition: {x: 243.12, y: -133.27834}
+  m_SizeDelta: {x: 930.29, y: 163.8424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757945259
 MonoBehaviour:
@@ -8356,7 +8370,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 208.50002, y: -128.99997}
-  m_SizeDelta: {x: 500, y: 600}
+  m_SizeDelta: {x: 500, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1816392069
 MonoBehaviour:
@@ -10785,6 +10799,10 @@ MonoBehaviour:
   correctIndex: 1
   wrongFeedback: {fileID: 663804115267376581}
   correctFeedback: {fileID: 1330666601269303007}
+  levelIndex: 1
+  miniGameIndex: 4
+  rewardScore: 50
+  scoreDisplayText: {fileID: 86492067}
 --- !u!222 &3821958811860396244
 CanvasRenderer:
   m_ObjectHideFlags: 0

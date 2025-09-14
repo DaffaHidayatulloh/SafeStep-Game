@@ -12,13 +12,25 @@ public class CheckBoxController : MonoBehaviour
     public GameObject wrongFeedback;
     public GameObject correctFeedback;
 
+    [Header("Score System")]
+    public int levelIndex = 1;          // Level ke berapa
+    public int miniGameIndex = 1;       // Mini game ke berapa (1-3)
+    public int rewardScore = 50;       // Score reward untuk mini game ini
+    public Text scoreDisplayText;       // Tampilkan score hasil
+
     private QuizManager quizManager;
+    private bool alreadyCompleted = false; // Cek apakah sudah pernah dikerjakan
 
     private void Start()
     {
         wrongFeedback.SetActive(false);
         correctFeedback.SetActive(false);
 
+        // Cek apakah mini game ini sudah pernah diselesaikan
+        string key = $"Level{levelIndex}_MiniGame{miniGameIndex}_Done";
+        alreadyCompleted = PlayerPrefs.GetInt(key, 0) == 1;
+
+        // Pasang listener ke semua tombol
         for (int i = 0; i < optionButtons.Length; i++)
         {
             int index = i;
@@ -52,10 +64,38 @@ public class CheckBoxController : MonoBehaviour
         yield return new WaitForSeconds(3f); // feedback tampil 3 detik
         feedbackObj.SetActive(false);
 
-        // setelah feedback selesai, soal dimatikan
+        // setelah feedback selesai, matikan soal
         gameObject.SetActive(false);
 
+        // kalau jawab benar, kasih reward
+        if (isCorrect)
+            HandleScoring();
+        else
+            scoreDisplayText.text = "+0"; // salah tidak dapat score
+
         quizManager.Answered(isCorrect, this);
+    }
+
+    void HandleScoring()
+    {
+        string doneKey = $"Level{levelIndex}_MiniGame{miniGameIndex}_Done";
+
+        if (!alreadyCompleted) // baru pertama kali benar
+        {
+            int currentScore = PlayerPrefs.GetInt($"Score_Level{levelIndex}", 0);
+            currentScore += rewardScore;
+
+            PlayerPrefs.SetInt($"Score_Level{levelIndex}", currentScore);
+            PlayerPrefs.SetInt(doneKey, 1); // tandai mini game ini sudah selesai
+            PlayerPrefs.Save();
+
+            scoreDisplayText.text = "+150"; // tampilkan reward
+            alreadyCompleted = true;
+        }
+        else
+        {
+            scoreDisplayText.text = "+0"; // sudah pernah diselesaikan, tidak tambah score
+        }
     }
 
     public void ResetButtons()
@@ -64,6 +104,7 @@ public class CheckBoxController : MonoBehaviour
             btn.interactable = true;
     }
 }
+
 
 
 

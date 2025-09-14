@@ -75,6 +75,16 @@ public class ScoreManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt("Score_Level" + level, 0);
     }
+    public void ResetAllScores()
+    {
+        PlayerPrefs.DeleteAll();   // hapus semua data PlayerPrefs
+
+        UpdateUI();
+        PlayerPrefs.Save();
+
+        LoadScores();
+        UpdateUI();
+    }
 }
 
 
