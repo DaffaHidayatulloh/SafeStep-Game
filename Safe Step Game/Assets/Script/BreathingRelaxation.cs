@@ -25,8 +25,14 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
     private int currentCycle = 0;
 
     [Header("Game Flow")]
-    public GameObject miniGameObject;  // assign panel minigame 2
-    public GameObject rewardObject;    // assign panel reward minigame 2
+    public GameObject miniGameObject;  // panel minigame
+    public GameObject rewardObject;    // panel reward
+
+    [Header("Score System")]
+    public int levelIndex = 1;        // Level ke berapa
+    public int miniGameIndex = 1;     // Mini game ke berapa (1-3)
+    public int rewardScore = 100;     // Score reward
+    public Text scoreDisplayText;     // UI untuk menampilkan score (+100 / +0)
 
     private bool isHoldingTap = false;
 
@@ -41,6 +47,9 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
 
         if (rewardObject != null)
             rewardObject.SetActive(false);
+
+        if (scoreDisplayText != null)
+            scoreDisplayText.text = ""; // kosongkan di awal
 
         StartCoroutine(BreathingCycle());
     }
@@ -106,6 +115,39 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
 
         if (miniGameObject != null) miniGameObject.SetActive(false);
         if (rewardObject != null) rewardObject.SetActive(true);
+
+        // Tambahkan fungsi score
+        HandleScore();
+    }
+
+    private void HandleScore()
+    {
+        string miniGameKey = $"Level{levelIndex}_MiniGame{miniGameIndex}_Completed";
+        string scoreKey = $"Score_Level{levelIndex}";
+
+        int earnedScore = 0;
+
+        // Cek apakah minigame ini sudah pernah selesai
+        if (PlayerPrefs.GetInt(miniGameKey, 0) == 0)
+        {
+            // Belum pernah  kasih score
+            int currentScore = PlayerPrefs.GetInt(scoreKey, 0);
+            currentScore += rewardScore;
+
+            PlayerPrefs.SetInt(scoreKey, currentScore);
+            PlayerPrefs.SetInt(miniGameKey, 1); // tandai sudah selesai
+            PlayerPrefs.Save();
+
+            earnedScore = rewardScore;
+        }
+        else
+        {
+            // Sudah pernah  score 0
+            earnedScore = 0;
+        }
+
+        if (scoreDisplayText != null)
+            scoreDisplayText.text = "+" + earnedScore.ToString();
     }
 
     IEnumerator ControlledInhale(System.Action<bool> callback)
@@ -168,6 +210,7 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
         target.localScale = to;
     }
 }
+
 
 
 

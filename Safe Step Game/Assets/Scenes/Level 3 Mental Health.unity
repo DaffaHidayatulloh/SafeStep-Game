@@ -1437,7 +1437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &502938196
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1490,7 +1490,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +100 Poin
+  m_Text: +150 Poin
 --- !u!222 &502938198
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1927,6 +1927,10 @@ MonoBehaviour:
   totalCycles: 3
   miniGameObject: {fileID: 1239464288}
   rewardObject: {fileID: 233106577}
+  levelIndex: 3
+  miniGameIndex: 2
+  rewardScore: 150
+  scoreDisplayText: {fileID: 0}
 --- !u!1 &759236922
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,7 +3229,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +200 poin
+  m_Text: +150 poin
 --- !u!222 &1090635831
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3521,6 +3525,10 @@ MonoBehaviour:
   - {fileID: 1640964076}
   miniGame3: {fileID: 1166766757}
   reward: {fileID: 137272316}
+  levelIndex: 3
+  miniGameIndex: 3
+  rewardPerCorrect: 50
+  scoreDisplayText: {fileID: 1090635830}
 --- !u!1 &1239464288
 GameObject:
   m_ObjectHideFlags: 0
@@ -4098,6 +4106,10 @@ MonoBehaviour:
   - {fileID: 5374316700852990422}
   miniGame3: {fileID: 1354295022}
   reward: {fileID: 1062931273886340553}
+  levelIndex: 3
+  miniGameIndex: 1
+  rewardPerCorrect: 0
+  scoreDisplayText: {fileID: 6626485960438085371}
 --- !u!1 &1359704795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5148,10 +5160,10 @@ MonoBehaviour:
   - {fileID: 443389201}
   correctIndexes: 01000000
   feedbackObjects:
-  - {fileID: 1669892911}
   - {fileID: 1056316485}
   - {fileID: 1669892911}
-  - {fileID: 1669892911}
+  - {fileID: 1056316485}
+  - {fileID: 1056316485}
 --- !u!1 &1669892911
 GameObject:
   m_ObjectHideFlags: 0
