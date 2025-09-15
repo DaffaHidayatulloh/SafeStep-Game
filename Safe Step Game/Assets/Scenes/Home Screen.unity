@@ -2488,8 +2488,8 @@ MonoBehaviour:
   textLevel2: {fileID: 362296779}
   textLevel3: {fileID: 1654388815}
   maxScoreLevel1: 350
-  maxScoreLevel2: 100
-  maxScoreLevel3: 100
+  maxScoreLevel2: 450
+  maxScoreLevel3: 450
 --- !u!4 &835287462
 Transform:
   m_ObjectHideFlags: 0

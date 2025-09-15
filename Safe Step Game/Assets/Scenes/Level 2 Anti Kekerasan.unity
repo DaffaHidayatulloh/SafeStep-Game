@@ -2480,6 +2480,10 @@ MonoBehaviour:
   - {fileID: 203973125}
   miniGame3: {fileID: 329462268}
   reward: {fileID: 6988100619402639180}
+  levelIndex: 2
+  miniGameIndex: 1
+  rewardPerCorrect: 50
+  scoreDisplayText: {fileID: 3876741655257027710}
 --- !u!1 &344530654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4864,6 +4868,10 @@ MonoBehaviour:
   - {fileID: 1950267873}
   miniGame3: {fileID: 782304379}
   reward: {fileID: 442501834}
+  levelIndex: 2
+  miniGameIndex: 2
+  rewardPerCorrect: 50
+  scoreDisplayText: {fileID: 997399158}
 --- !u!1 &804852302
 GameObject:
   m_ObjectHideFlags: 0
@@ -5003,6 +5011,10 @@ MonoBehaviour:
   correctIndex: 2
   wrongFeedback: {fileID: 228252633}
   correctFeedback: {fileID: 1112790912}
+  levelIndex: 2
+  miniGameIndex: 6
+  rewardScore: 50
+  scoreDisplayText: {fileID: 1087218340}
 --- !u!1 &854571059
 GameObject:
   m_ObjectHideFlags: 0
@@ -7514,6 +7526,10 @@ MonoBehaviour:
   correctIndex: 2
   wrongFeedback: {fileID: 2062112749}
   correctFeedback: {fileID: 90268887}
+  levelIndex: 2
+  miniGameIndex: 5
+  rewardScore: 50
+  scoreDisplayText: {fileID: 1087218340}
 --- !u!1 &1447682989
 GameObject:
   m_ObjectHideFlags: 0
@@ -11307,6 +11323,10 @@ MonoBehaviour:
   correctIndex: 1
   wrongFeedback: {fileID: 313125015}
   correctFeedback: {fileID: 912991630}
+  levelIndex: 2
+  miniGameIndex: 4
+  rewardScore: 50
+  scoreDisplayText: {fileID: 435374498}
 --- !u!114 &827294237259584205
 MonoBehaviour:
   m_ObjectHideFlags: 0
