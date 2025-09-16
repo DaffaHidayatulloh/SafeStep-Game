@@ -13,6 +13,10 @@ public class ScoreManager : MonoBehaviour
     public Text textLevel2;
     public Text textLevel3;
 
+    // Button sertif (Home & Profil)
+    public Button sertifButton;
+    public Button sertifButton2;
+
     // Maksimal score tiap level (atur sesuai game-mu)
     public int maxScoreLevel1 = 100;
     public int maxScoreLevel2 = 100;
@@ -26,6 +30,7 @@ public class ScoreManager : MonoBehaviour
     {
         LoadScores();
         UpdateUI();
+        CheckCertificateAccess();
     }
 
     // Fungsi untuk menyimpan score
@@ -36,6 +41,7 @@ public class ScoreManager : MonoBehaviour
 
         LoadScores();
         UpdateUI();
+        CheckCertificateAccess();
     }
 
     // Ambil ulang semua score dari PlayerPrefs
@@ -49,7 +55,6 @@ public class ScoreManager : MonoBehaviour
     // Update UI (Slider + Text)
     private void UpdateUI()
     {
-        // Slider progress (0–1 dari maxScore)
         if (sliderLevel1 != null)
             sliderLevel1.value = (float)scoreLevel1 / maxScoreLevel1;
 
@@ -59,7 +64,6 @@ public class ScoreManager : MonoBehaviour
         if (sliderLevel3 != null)
             sliderLevel3.value = (float)scoreLevel3 / maxScoreLevel3;
 
-        // Display angka score yang tersimpan
         if (textLevel1 != null)
             textLevel1.text = scoreLevel1.ToString();
 
@@ -75,17 +79,37 @@ public class ScoreManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt("Score_Level" + level, 0);
     }
+
+    // Fungsi reset semua data PlayerPrefs
     public void ResetAllScores()
     {
-        PlayerPrefs.DeleteAll();   // hapus semua data PlayerPrefs
-
-        UpdateUI();
+        PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
 
-        LoadScores();
+        scoreLevel1 = 0;
+        scoreLevel2 = 0;
+        scoreLevel3 = 0;
+
         UpdateUI();
+        CheckCertificateAccess();
+    }
+
+    //Fungsi cek apakah semua skor sudah memenuhi syarat sertif
+    private void CheckCertificateAccess()
+    {
+        bool canAccess = (scoreLevel1 >= maxScoreLevel1 &&
+                          scoreLevel2 >= maxScoreLevel2 &&
+                          scoreLevel3 >= maxScoreLevel3);
+
+        if (sertifButton != null)
+            sertifButton.interactable = canAccess;
+
+        if (sertifButton2 != null)
+            sertifButton2.interactable = canAccess;
     }
 }
+
+
 
 
 
