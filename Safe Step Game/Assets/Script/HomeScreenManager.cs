@@ -16,6 +16,9 @@ public class HomeScreenManager : MonoBehaviour
     public Text welcomeText;      // teks sambutan
     public Text profileNameText;  // teks nama di profil
 
+    public GameObject panelEditnama;
+    public GameObject panelEditavatar;
+
     private string fileName = "playerData.json";
 
     [System.Serializable]
@@ -24,8 +27,23 @@ public class HomeScreenManager : MonoBehaviour
         public string playerName;
     }
 
+    [System.Serializable]
+    public class CharacterData
+    {
+        public string characterName;
+    }
+
+    public Image characterImageMainMenu;   // untuk main menu
+    public Image characterImageProfile;    // untuk profil
+    public Sprite maleSprite;
+    public Sprite femaleSprite;
+
+    private string savePath;
+
     void Start()
     {
+        savePath = Application.persistentDataPath + "/character.json";
+        LoadCharacter();
         LoadPlayerName();
     }
 
@@ -92,6 +110,53 @@ public class HomeScreenManager : MonoBehaviour
     public void GoToSertif()
     {
         SceneManager.LoadScene("Badge & Sertifikat");
+    }
+
+    private void LoadCharacter()
+    {
+        if (File.Exists(savePath))
+        {
+            string json = File.ReadAllText(savePath);
+            CharacterData data = JsonUtility.FromJson<CharacterData>(json);
+
+            Sprite selectedSprite = null;
+
+            if (data.characterName == "Male")
+            {
+                selectedSprite = maleSprite;
+            }
+            else if (data.characterName == "Female")
+            {
+                selectedSprite = femaleSprite;
+            }
+
+            // Set ke dua tempat (main menu dan profil)
+            if (characterImageMainMenu != null)
+                characterImageMainMenu.sprite = selectedSprite;
+
+            if (characterImageProfile != null)
+                characterImageProfile.sprite = selectedSprite;
+        }
+        else
+        {
+            Debug.Log("No character selected yet.");
+        }
+    }
+    public void OnSeleceditnama()
+    {
+       panelEditnama.SetActive(true);
+    }
+    public void OnCloseEditnama()
+    {
+        panelEditnama.SetActive(false);
+    }
+    public void OnSeleceditavatar()
+    {
+        panelEditavatar.SetActive(true);
+    }
+    public void OnCloseEditavatar()
+    {
+        panelEditavatar.SetActive(false);
     }
 
 }

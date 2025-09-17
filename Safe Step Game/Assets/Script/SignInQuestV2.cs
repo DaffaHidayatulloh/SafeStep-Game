@@ -1,15 +1,17 @@
+using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
-using System.IO;
 
-public class SignInQuest : MonoBehaviour
+public class SignInQuestV2 : MonoBehaviour
 {
     [Header("UI Elements")]
     public InputField nameInputField;
     public Button saveButton;
     public Text warningText;
+
+    [Header("Panel SignIn (akan ditutup setelah save)")]
+    public GameObject signInPanel;
 
     private string fileName = "playerData.json";
 
@@ -47,8 +49,11 @@ public class SignInQuest : MonoBehaviour
             string json = JsonUtility.ToJson(data);
             File.WriteAllText(GetFilePath(), json);
 
-            // Pindah ke scene HomeScreen
-            SceneManager.LoadScene("EditAvatar");
+            // Tutup panel SignIn
+            if (signInPanel != null)
+            {
+                signInPanel.SetActive(false);
+            }
         }
         else
         {
@@ -99,22 +104,5 @@ public class SignInQuest : MonoBehaviour
 
         warningText.gameObject.SetActive(false);
     }
-    public void DeleteSavedName()
-    {
-        string path = GetFilePath();
-        if (File.Exists(path))
-        {
-            File.Delete(path);
-            Debug.Log("Nama berhasil dihapus dari file.");
-        }
-        else
-        {
-            Debug.Log("Tidak ada file nama yang tersimpan.");
-        }
-    }
-
 }
-
-
-
 
