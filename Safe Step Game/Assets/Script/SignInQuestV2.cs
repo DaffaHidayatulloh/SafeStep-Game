@@ -13,6 +13,10 @@ public class SignInQuestV2 : MonoBehaviour
     [Header("Panel SignIn (akan ditutup setelah save)")]
     public GameObject signInPanel;
 
+    [Header("Teks Display Nama")]
+    public Text profileNameText;   // Teks nama di Profile
+    public Text homeNameText;      // Teks nama di Home Screen
+
     private string fileName = "playerData.json";
 
     [System.Serializable]
@@ -33,6 +37,9 @@ public class SignInQuestV2 : MonoBehaviour
             string json = File.ReadAllText(GetFilePath());
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
             nameInputField.text = data.playerName;
+
+            // Update kedua teks
+            UpdateDisplayTexts(data.playerName);
         }
     }
 
@@ -49,16 +56,26 @@ public class SignInQuestV2 : MonoBehaviour
             string json = JsonUtility.ToJson(data);
             File.WriteAllText(GetFilePath(), json);
 
+            // Update teks di profile dan home
+            UpdateDisplayTexts(enteredName);
+
             // Tutup panel SignIn
             if (signInPanel != null)
-            {
                 signInPanel.SetActive(false);
-            }
         }
         else
         {
             StartCoroutine(ShowWarning("Name cannot be empty!"));
         }
+    }
+
+    void UpdateDisplayTexts(string newName)
+    {
+        if (profileNameText != null)
+            profileNameText.text = newName;
+
+        if (homeNameText != null)
+            homeNameText.text = newName;
     }
 
     string GetFilePath()
@@ -105,4 +122,5 @@ public class SignInQuestV2 : MonoBehaviour
         warningText.gameObject.SetActive(false);
     }
 }
+
 

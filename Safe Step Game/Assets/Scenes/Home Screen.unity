@@ -234,8 +234,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 232, y: 709}
-  m_SizeDelta: {x: 763.425, y: 101.196}
+  m_AnchoredPosition: {x: 166.25957, y: 714.1227}
+  m_SizeDelta: {x: 604.6234, y: 159.2525}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &24745993
 MonoBehaviour:
@@ -259,7 +259,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
@@ -612,6 +612,8 @@ MonoBehaviour:
   saveButton: {fileID: 5494022648124310397}
   warningText: {fileID: 5761385327595809669}
   signInPanel: {fileID: 198662463}
+  profileNameText: {fileID: 1063339135}
+  homeNameText: {fileID: 24745993}
 --- !u!1 &214881181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,9 +2466,13 @@ MonoBehaviour:
   maleImage: {fileID: 2421645575065581381}
   femaleImage: {fileID: 4832312315001553453}
   saveButton: {fileID: 3894300626167887476}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 0, g: 1, b: 0, a: 1}
+  normalColor: {r: 0.7132075, g: 0.7132075, b: 0.7132075, a: 1}
+  selectedColor: {r: 1, g: 1, b: 1, a: 1}
   selectionPanel: {fileID: 749404080}
+  avatarImageHome: {fileID: 1987239325}
+  avatarImageProfile: {fileID: 1098657947}
+  maleSprite: {fileID: 8629862345584080513, guid: 99ddf93910c25d44e89f6cebf7d60536, type: 3}
+  femaleSprite: {fileID: 4537138688281468601, guid: 3934d9293cda28c4b9cee9198d7150c4, type: 3}
 --- !u!1 &760463627
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,8 +3154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 215.2, y: 703.7}
-  m_SizeDelta: {x: 677.57, y: 145.558}
+  m_AnchoredPosition: {x: 183.15231, y: 716.96106}
+  m_SizeDelta: {x: 547.1689, y: 185.3414}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063339135
 MonoBehaviour:
@@ -3173,7 +3179,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -3205,7 +3211,7 @@ GameObject:
   - component: {fileID: 1098657948}
   - component: {fileID: 1098657947}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image avatra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5029,8 +5035,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -318.1, y: 766.2}
-  m_SizeDelta: {x: 250, y: 350}
+  m_AnchoredPosition: {x: -303.9, y: 766.2}
+  m_SizeDelta: {x: 300, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987239325
 MonoBehaviour:

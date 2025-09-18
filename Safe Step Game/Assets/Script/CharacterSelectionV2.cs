@@ -22,6 +22,12 @@ public class CharacterSelectionV2 : MonoBehaviour
     [Header("Panel")]
     public GameObject selectionPanel; // panel/objek character selection
 
+    [Header("Avatar Display")]
+    public Image avatarImageHome;     // avatar di Home Screen
+    public Image avatarImageProfile;  // avatar di Profile
+    public Sprite maleSprite;
+    public Sprite femaleSprite;
+
     private string selectedCharacter = "";
     private string savePath;
 
@@ -68,6 +74,7 @@ public class CharacterSelectionV2 : MonoBehaviour
             return;
         }
 
+        // Simpan ke JSON
         CharacterData data = new CharacterData();
         data.characterName = selectedCharacter;
 
@@ -76,11 +83,37 @@ public class CharacterSelectionV2 : MonoBehaviour
 
         Debug.Log("Character saved: " + selectedCharacter);
 
+        // Update avatar langsung
+        UpdateAvatar(selectedCharacter);
+
         // Tutup panel setelah save
         if (selectionPanel != null)
         {
             selectionPanel.SetActive(false);
         }
     }
+
+    private void UpdateAvatar(string characterName)
+    {
+        Sprite selectedSprite = null;
+
+        if (characterName == "Male")
+        {
+            selectedSprite = maleSprite;
+        }
+        else if (characterName == "Female")
+        {
+            selectedSprite = femaleSprite;
+        }
+
+        // Set ke dua avatar (Home & Profile)
+        if (avatarImageHome != null)
+            avatarImageHome.sprite = selectedSprite;
+
+        if (avatarImageProfile != null)
+            avatarImageProfile.sprite = selectedSprite;
+    }
 }
+
+
 

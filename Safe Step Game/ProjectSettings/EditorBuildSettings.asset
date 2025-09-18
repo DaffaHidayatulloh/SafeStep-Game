@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 3 Mental Health.unity
     guid: 57964e6156b53a944ac9b9b7fe814a50
   - enabled: 1
+    path: Assets/Scenes/GrandClosing.unity
+    guid: 453812f568a3fed4593912e5c8589bb6
+  - enabled: 1
     path: Assets/Scenes/Badge & Sertifikat.unity
     guid: 6ef4377e319ca2445978a15efdb381d3
   m_configObjects:
