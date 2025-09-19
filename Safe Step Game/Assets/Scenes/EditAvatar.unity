@@ -345,8 +345,8 @@ MonoBehaviour:
   maleImage: {fileID: 8494346677245629340}
   femaleImage: {fileID: 1690328630841386740}
   saveButton: {fileID: 7093670055547867821}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 0, g: 1, b: 0, a: 1}
+  normalColor: {r: 0.7137255, g: 0.7137255, b: 0.7137255, a: 1}
+  selectedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1411548687
 Transform:
   m_ObjectHideFlags: 0
