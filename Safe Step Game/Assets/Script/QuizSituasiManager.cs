@@ -19,6 +19,8 @@ public class QuizSituasiManager : MonoBehaviour
 
     private int earnedThisQuiz = 0;  // total yang didapat di sesi quiz sekarang
 
+    public event System.Action OnAllCorrectCompleted;
+
     private void Start()
     {
         if (reward != null) reward.SetActive(false);
@@ -67,15 +69,35 @@ public class QuizSituasiManager : MonoBehaviour
             LoadQuestion(currentQuestion);
         }
     }
-
     private void EndQuiz()
     {
         if (miniGame3 != null) miniGame3.SetActive(false);
         if (reward != null) reward.SetActive(true);
 
-        // Tampilkan total earned dari quiz ini
         if (scoreDisplayText != null)
             scoreDisplayText.text = "+" + earnedThisQuiz;
+
+        // cek apakah semua soal benar
+        bool allCorrect = true;
+        for (int i = 0; i < questions.Length; i++)
+        {
+            string questionKey = $"Level{levelIndex}_MiniGame{miniGameIndex}_Q{i}_Completed";
+            if (PlayerPrefs.GetInt(questionKey, 0) == 0)
+            {
+                allCorrect = false;
+                break;
+            }
+        }
+
+        if (allCorrect)
+        {
+            Debug.Log("Semua soal benar! Quiz completed");
+            OnAllCorrectCompleted?.Invoke();
+        }
+        else
+        {
+            Debug.Log("Masih ada soal yang salah");
+        }
     }
 
     private int HandleScoreForQuestion(int questionIndex)

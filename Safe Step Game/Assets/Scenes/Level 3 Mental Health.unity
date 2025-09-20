@@ -445,8 +445,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -245, y: 455}
-  m_SizeDelta: {x: -490, y: -910}
+  m_AnchoredPosition: {x: -195, y: 455}
+  m_SizeDelta: {x: -590, y: -910}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &68602335
 MonoBehaviour:
@@ -5019,6 +5019,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577223061}
   m_CullTransparentMesh: 1
+--- !u!1 &1577452455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1577452457}
+  - component: {fileID: 1577452456}
+  - component: {fileID: 1577452459}
+  - component: {fileID: 1577452458}
+  m_Layer: 0
+  m_Name: MiniGame Checker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1577452456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577452455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f5161fcc3a57047b783caa2dc95eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 3872027277818570344}
+  defaultSprite: {fileID: 1998022599028709442, guid: 1245bc5ae3ceb8143805a0052222dec0, type: 3}
+  completedSprite: {fileID: -9160379986361766290, guid: de9eb08b43188a64e91d00793c690da7, type: 3}
+  quizManager: {fileID: 1354295024}
+  saveKey: QuizLevel3Minigame1Completed
+--- !u!4 &1577452457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577452455}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1577452458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577452455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f5161fcc3a57047b783caa2dc95eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 2322798093968316715}
+  defaultSprite: {fileID: 1998022599028709442, guid: 1245bc5ae3ceb8143805a0052222dec0, type: 3}
+  completedSprite: {fileID: -9160379986361766290, guid: de9eb08b43188a64e91d00793c690da7, type: 3}
+  quizManager: {fileID: 1166766759}
+  saveKey: QuizLevel3Minigame3Completed
+--- !u!114 &1577452459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577452455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db6ac974deda17418ca7b8e7ff077df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 5101582125355066703}
+  defaultSprite: {fileID: 1998022599028709442, guid: 1245bc5ae3ceb8143805a0052222dec0, type: 3}
+  completedSprite: {fileID: -9160379986361766290, guid: de9eb08b43188a64e91d00793c690da7, type: 3}
+  breathingManager: {fileID: 744807638}
+  saveKey: BreathingCompleted
 --- !u!1 &1636024246
 GameObject:
   m_ObjectHideFlags: 0
@@ -5139,8 +5224,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -245, y: 455}
-  m_SizeDelta: {x: -490, y: -910}
+  m_AnchoredPosition: {x: -195, y: 455}
+  m_SizeDelta: {x: -590, y: -910}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1640964076
 MonoBehaviour:
@@ -9586,8 +9671,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -245, y: 455}
-  m_SizeDelta: {x: -490, y: -910}
+  m_AnchoredPosition: {x: -194.99988, y: 455}
+  m_SizeDelta: {x: -589.99976, y: -910}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5958714922380611077
 RectTransform:
@@ -11193,3 +11278,4 @@ SceneRoots:
   - {fileID: 405178318}
   - {fileID: 1084420154}
   - {fileID: 2137535333}
+  - {fileID: 1577452457}

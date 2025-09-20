@@ -36,6 +36,8 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
 
     private bool isHoldingTap = false;
 
+    public event System.Action OnBreathingCompleted;
+
     private void Start()
     {
         circle.localScale = minScale;
@@ -118,6 +120,7 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
 
         // Tambahkan fungsi score
         HandleScore();
+        OnBreathingCompleted?.Invoke();
     }
 
     private void HandleScore()
