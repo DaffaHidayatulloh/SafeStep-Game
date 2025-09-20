@@ -33,10 +33,11 @@ public class Level3Manager : MonoBehaviour
 
     private void Start()
     {
-        // Default: hanya MiniGame1 yang aktif
-        btnMinigame1.interactable = true;
-        btnMinigame2.interactable = false;
-        btnMinigame3.interactable = false;
+        // Load progress dari PlayerPrefs
+        minigame1Unlocked = PlayerPrefs.GetInt("L3_MiniGame1Unlocked", 0) == 1;
+        minigame2Unlocked = PlayerPrefs.GetInt("L3_MiniGame2Unlocked", 0) == 1;
+
+        UpdateButtonStates();
     }
 
     // ------------------ Flow MiniGame 1 ------------------
@@ -45,8 +46,12 @@ public class Level3Manager : MonoBehaviour
         OpeningMinigame1.SetActive(false);
         Minigame1.SetActive(true);
 
+        // Unlocked MiniGame1
         minigame1Unlocked = true;
-        btnMinigame2.interactable = true; // aktifkan tombol MiniGame2
+        PlayerPrefs.SetInt("L3_MiniGame1Unlocked", 1);
+        PlayerPrefs.Save();
+
+        UpdateButtonStates();
     }
 
     public void OnSelectReward()
@@ -61,8 +66,12 @@ public class Level3Manager : MonoBehaviour
         OpeningMinigame2.SetActive(false);
         Minigame2.SetActive(true);
 
+        // Unlocked MiniGame2
         minigame2Unlocked = true;
-        btnMinigame3.interactable = true; // aktifkan tombol MiniGame3
+        PlayerPrefs.SetInt("L3_MiniGame2Unlocked", 1);
+        PlayerPrefs.Save();
+
+        UpdateButtonStates();
     }
 
     public void OnSelectReward2()
@@ -106,5 +115,51 @@ public class Level3Manager : MonoBehaviour
             OpeningMinigame3.SetActive(true);
             PetaLevel.SetActive(false);
         }
+    }
+
+    // ------------------ Reset Progress ------------------
+    public void ResetProgress()
+    {
+        PlayerPrefs.DeleteKey("L3_MiniGame1Unlocked");
+        PlayerPrefs.DeleteKey("L3_MiniGame2Unlocked");
+        PlayerPrefs.Save();
+
+        minigame1Unlocked = false;
+        minigame2Unlocked = false;
+
+        UpdateButtonStates();
+
+        Debug.Log("Progress Level 3 sudah di-reset.");
+    }
+
+    // ------------------ Update Button States ------------------
+    private void UpdateButtonStates()
+    {
+        // MiniGame1 selalu aktif
+        SetButtonState(btnMinigame1, true);
+
+        // MiniGame2 aktif kalau MiniGame1 unlocked
+        SetButtonState(btnMinigame2, minigame1Unlocked);
+
+        // MiniGame3 aktif kalau MiniGame2 unlocked
+        SetButtonState(btnMinigame3, minigame2Unlocked);
+    }
+
+    private void SetButtonState(Button btn, bool isUnlocked)
+    {
+        btn.interactable = isUnlocked;
+
+        ColorBlock cb = btn.colors;
+        if (isUnlocked)
+        {
+            cb.normalColor = Color.white;   // warna normal kalau kebuka
+            cb.disabledColor = Color.white;
+        }
+        else
+        {
+            cb.normalColor = Color.gray;    // abu-abu kalau terkunci
+            cb.disabledColor = Color.gray;
+        }
+        btn.colors = cb;
     }
 }

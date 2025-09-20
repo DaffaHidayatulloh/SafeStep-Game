@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Level2Manager : MonoBehaviour
-
 {
     [Header("GameObjects")]
     public GameObject OpeningMinigame1;
@@ -31,10 +30,11 @@ public class Level2Manager : MonoBehaviour
 
     private void Start()
     {
-        // Default: hanya MiniGame1 yang aktif
-        btnMinigame1.interactable = true;
-        btnMinigame2.interactable = false;
-        btnMinigame3.interactable = false;
+        // Load progress dari PlayerPrefs
+        minigame1Unlocked = PlayerPrefs.GetInt("Level2_MiniGame1Unlocked", 0) == 1;
+        minigame2Unlocked = PlayerPrefs.GetInt("Level2_MiniGame2Unlocked", 0) == 1;
+
+        UpdateButtonStates();
     }
 
     // ------------------ Flow MiniGame 1 ------------------
@@ -45,7 +45,10 @@ public class Level2Manager : MonoBehaviour
 
         // Setelah Minigame1 dimulai unlock Minigame2
         minigame1Unlocked = true;
-        btnMinigame2.interactable = true;
+        PlayerPrefs.SetInt("Level2_MiniGame1Unlocked", 1);
+        PlayerPrefs.Save();
+
+        UpdateButtonStates();
     }
 
     public void OnSelectRewardGame()
@@ -60,9 +63,12 @@ public class Level2Manager : MonoBehaviour
         OpeningMinigame2.SetActive(false);
         Minigame2.SetActive(true);
 
-        // Setelah Minigame2 dimulai  unlock Minigame3
+        // Setelah Minigame2 dimulai unlock Minigame3
         minigame2Unlocked = true;
-        btnMinigame3.interactable = true;
+        PlayerPrefs.SetInt("Level2_MiniGame2Unlocked", 1);
+        PlayerPrefs.Save();
+
+        UpdateButtonStates();
     }
 
     public void OnSelectRewardGame2()
@@ -92,7 +98,7 @@ public class Level2Manager : MonoBehaviour
 
     public void GoToMinigame2()
     {
-        if (minigame1Unlocked) // hanya bisa kalau minigame1 sudah pernah dibuka
+        if (minigame1Unlocked)
         {
             OpeningMinigame2.SetActive(true);
             PetaLevel.SetActive(false);
@@ -101,11 +107,56 @@ public class Level2Manager : MonoBehaviour
 
     public void GoToMinigame3()
     {
-        if (minigame2Unlocked) // hanya bisa kalau minigame2 sudah pernah dibuka
+        if (minigame2Unlocked)
         {
             OpeningMinigame3.SetActive(true);
             PetaLevel.SetActive(false);
         }
     }
-}
 
+    // ------------------ Reset Progress ------------------
+    public void ResetProgress()
+    {
+        PlayerPrefs.DeleteKey("Level2_MiniGame1Unlocked");
+        PlayerPrefs.DeleteKey("Level2_MiniGame2Unlocked");
+        PlayerPrefs.Save();
+
+        minigame1Unlocked = false;
+        minigame2Unlocked = false;
+
+        UpdateButtonStates();
+
+        Debug.Log("Progress Level 2 sudah di-reset. Semua minigame terkunci kembali.");
+    }
+
+    // ------------------ Update Button States ------------------
+    private void UpdateButtonStates()
+    {
+        // Minigame 1 selalu terbuka
+        SetButtonState(btnMinigame1, true);
+
+        // Minigame 2 hanya aktif jika Minigame 1 terbuka
+        SetButtonState(btnMinigame2, minigame1Unlocked);
+
+        // Minigame 3 hanya aktif jika Minigame 2 terbuka
+        SetButtonState(btnMinigame3, minigame2Unlocked);
+    }
+
+    private void SetButtonState(Button btn, bool isUnlocked)
+    {
+        btn.interactable = isUnlocked;
+
+        ColorBlock cb = btn.colors;
+        if (isUnlocked)
+        {
+            cb.normalColor = Color.white;
+            cb.disabledColor = Color.white;
+        }
+        else
+        {
+            cb.normalColor = Color.gray;
+            cb.disabledColor = Color.gray;
+        }
+        btn.colors = cb;
+    }
+}

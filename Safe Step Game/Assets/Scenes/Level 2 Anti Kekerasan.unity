@@ -198,6 +198,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680359}
   m_CullTransparentMesh: 1
+--- !u!1 &34186432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 34186433}
+  - component: {fileID: 34186434}
+  m_Layer: 0
+  m_Name: MiniGameCheker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &34186433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34186432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &34186434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34186432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcea7b83eb3b2bd4c91c4f9c00f94dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quizManager: {fileID: 1041823419}
+  quizButton: {fileID: 8083431078147070096}
+  defaultSprite: {fileID: 1998022599028709442, guid: 1245bc5ae3ceb8143805a0052222dec0, type: 3}
+  completedSprite: {fileID: -9160379986361766290, guid: de9eb08b43188a64e91d00793c690da7, type: 3}
 --- !u!1 &35050458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,7 +3099,7 @@ GameObject:
   - component: {fileID: 435374499}
   - component: {fileID: 435374498}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Deskripsi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3109,8 +3157,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uF0A7\t\u201CKeren! Kamu sudah lebih paham cara mencegah kekerasan seksual.
-    Ingat, siapa pun bisa jadi korban, dan semua orang berhak dilindungi.\u201D"
+  m_Text: "\u201CKeren! Kamu sudah lebih paham cara mencegah kekerasan seksual. Ingat,
+    siapa pun bisa jadi korban, dan semua orang berhak dilindungi.\u201D"
 --- !u!222 &435374499
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5863,7 +5911,7 @@ GameObject:
   - component: {fileID: 1087218341}
   - component: {fileID: 1087218340}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: Text Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11366,7 +11414,7 @@ MonoBehaviour:
   levelIndex: 2
   miniGameIndex: 4
   rewardScore: 50
-  scoreDisplayText: {fileID: 435374498}
+  scoreDisplayText: {fileID: 1087218340}
 --- !u!114 &827294237259584205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16392,3 +16440,4 @@ SceneRoots:
   - {fileID: 1736481794}
   - {fileID: 1349956182}
   - {fileID: 1610929065}
+  - {fileID: 34186433}

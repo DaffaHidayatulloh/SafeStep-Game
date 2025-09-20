@@ -7162,6 +7162,7 @@ GameObject:
   - component: {fileID: 1540006443}
   - component: {fileID: 1540006442}
   - component: {fileID: 1540006441}
+  - component: {fileID: 1540006444}
   m_Layer: 0
   m_Name: MiniGame Cheker
   m_TagString: Untagged
@@ -7218,6 +7219,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1540006444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540006440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcea7b83eb3b2bd4c91c4f9c00f94dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quizManager: {fileID: 1076365627}
+  quizButton: {fileID: 1270289948}
+  defaultSprite: {fileID: 1998022599028709442, guid: 1245bc5ae3ceb8143805a0052222dec0, type: 3}
+  completedSprite: {fileID: -9160379986361766290, guid: de9eb08b43188a64e91d00793c690da7, type: 3}
 --- !u!1 &1540307598
 GameObject:
   m_ObjectHideFlags: 0
