@@ -1,8 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class QuizManager : MonoBehaviour
 {
+    // Event yang bisa didengar oleh script lain (mis. QuizButtonManager)
+    public event Action OnQuizCompleted;
+
     [Header("Soal")]
     public CheckBoxController[] questions;
     private int currentQuestion = 0;
@@ -19,20 +23,27 @@ public class QuizManager : MonoBehaviour
         // pastikan reward belum muncul
         if (reward != null) reward.SetActive(false);
 
-        foreach (var q in questions)
+        // nonaktifkan semua soal dulu dan set quiz manager pada tiap soal
+        for (int i = 0; i < questions.Length; i++)
         {
-            q.gameObject.SetActive(false);
-            q.SetQuizManager(this);
+            if (questions[i] != null)
+            {
+                questions[i].gameObject.SetActive(false);
+                questions[i].SetQuizManager(this);
+            }
         }
 
         LoadQuestion(currentQuestion);
     }
 
+    // Dipanggil oleh CheckBoxController ketika user menjawab
     public void Answered(bool isCorrect, CheckBoxController question)
     {
-        if (!isCorrect)
+        if (!isCorrect && question != null)
         {
-            wrongQuestions.Add(question);
+            // jangan tambahkan duplicate
+            if (!wrongQuestions.Contains(question))
+                wrongQuestions.Add(question);
         }
 
         NextQuestion();
@@ -40,7 +51,14 @@ public class QuizManager : MonoBehaviour
 
     private void LoadQuestion(int index)
     {
-        if (index < questions.Length)
+        // pastikan semua soal dinonaktifkan sebelum menampilkan yang index
+        for (int i = 0; i < questions.Length; i++)
+        {
+            if (questions[i] != null)
+                questions[i].gameObject.SetActive(false);
+        }
+
+        if (index < questions.Length && questions[index] != null)
         {
             questions[index].gameObject.SetActive(true);
             questions[index].ResetButtons();
@@ -49,6 +67,12 @@ public class QuizManager : MonoBehaviour
 
     private void NextQuestion()
     {
+        // pastikan current question yang tampil dimatikan (jika ada)
+        if (currentQuestion < questions.Length && currentQuestion >= 0 && questions[currentQuestion] != null)
+        {
+            questions[currentQuestion].gameObject.SetActive(false);
+        }
+
         currentQuestion++;
 
         if (currentQuestion >= questions.Length)
@@ -84,6 +108,9 @@ public class QuizManager : MonoBehaviour
     {
         if (miniGame3 != null) miniGame3.SetActive(false);
         if (reward != null) reward.SetActive(true);
+
+        // panggil event agar listener (mis. QuizButtonManager) tahu quiz selesai
+        OnQuizCompleted?.Invoke();
     }
 }
 
