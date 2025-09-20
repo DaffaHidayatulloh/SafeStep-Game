@@ -7151,6 +7151,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527669173}
   m_CullTransparentMesh: 1
+--- !u!1 &1540006440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1540006443}
+  - component: {fileID: 1540006442}
+  - component: {fileID: 1540006441}
+  m_Layer: 0
+  m_Name: MiniGame Cheker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1540006441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540006440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e409153dfb9024893014bd88f0a04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelIndex: 1
+  totalMiniGames: 2
+  miniGameButton: {fileID: 2093519111}
+  lockedSprite: {fileID: 1998022599028709442, guid: 1245bc5ae3ceb8143805a0052222dec0, type: 3}
+  unlockedSprite: {fileID: -9160379986361766290, guid: de9eb08b43188a64e91d00793c690da7, type: 3}
+--- !u!114 &1540006442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540006440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479442bc70efd864eae3a6aa323336af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelIndex: 1
+  miniGameIndex: 3
+  targetButton: {fileID: 1792934163}
+  lockedSprite: {fileID: 1998022599028709442, guid: 1245bc5ae3ceb8143805a0052222dec0, type: 3}
+  unlockedSprite: {fileID: -9160379986361766290, guid: de9eb08b43188a64e91d00793c690da7, type: 3}
+--- !u!4 &1540006443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540006440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1540307598
 GameObject:
   m_ObjectHideFlags: 0
@@ -8226,9 +8293,9 @@ MonoBehaviour:
   OpeningMinigame3: {fileID: 1992206793}
   MiniGame3: {fileID: 1076365625}
   PetaLevel: {fileID: 1076843780}
-  btnMinigame1: {fileID: 2093519111}
-  btnMinigame2: {fileID: 1792934163}
-  btnMinigame3: {fileID: 1270289948}
+  buttonMinigame1: {fileID: 2093519111}
+  buttonMinigame2: {fileID: 1792934163}
+  buttonMinigame3: {fileID: 1270289948}
 --- !u!4 &1723821180
 Transform:
   m_ObjectHideFlags: 0
@@ -13230,3 +13297,4 @@ SceneRoots:
   - {fileID: 1884475064}
   - {fileID: 564482467}
   - {fileID: 1723821180}
+  - {fileID: 1540006443}

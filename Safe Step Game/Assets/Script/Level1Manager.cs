@@ -23,10 +23,10 @@ public class Level1Manager : MonoBehaviour
 
     public GameObject PetaLevel;
 
-    [Header("Buttons di Peta Level")]
-    public Button btnMinigame1;
-    public Button btnMinigame2;
-    public Button btnMinigame3;
+    [Header("UI Buttons")]
+    public Button buttonMinigame1;
+    public Button buttonMinigame2;
+    public Button buttonMinigame3;
 
     [Header("Progress Flags")]
     private bool minigame1Unlocked = false;
@@ -34,10 +34,11 @@ public class Level1Manager : MonoBehaviour
 
     private void Start()
     {
-        // Default: hanya Minigame1 yang bisa diakses
-        btnMinigame1.interactable = true;
-        btnMinigame2.interactable = false;
-        btnMinigame3.interactable = false;
+        // Load progress dari PlayerPrefs
+        minigame1Unlocked = PlayerPrefs.GetInt("MiniGame1Unlocked", 0) == 1;
+        minigame2Unlocked = PlayerPrefs.GetInt("MiniGame2Unlocked", 0) == 1;
+
+        UpdateButtonStates();
     }
 
     // ------------------ Flow MiniGame 1 ------------------
@@ -46,9 +47,12 @@ public class Level1Manager : MonoBehaviour
         OpeningScreen.SetActive(false);
         Puzzlepria.SetActive(true);
 
-        // Minigame 1 terbuka
+        // Menandai bahwa minigame 1 sudah dibuka
         minigame1Unlocked = true;
-        btnMinigame2.interactable = true; // aktifkan tombol Minigame2 di peta
+        PlayerPrefs.SetInt("MiniGame1Unlocked", 1);
+        PlayerPrefs.Save();
+
+        UpdateButtonStates();
     }
 
     public void OnSelectButtonPriaLanjut()
@@ -68,9 +72,12 @@ public class Level1Manager : MonoBehaviour
         Reward.SetActive(false);
         OpeningMinigame2.SetActive(true);
 
-        // Minigame 2 terbuka
+        // Menandai bahwa minigame 2 sudah bisa dibuka
         minigame2Unlocked = true;
-        btnMinigame3.interactable = true; // aktifkan tombol Minigame3 di peta
+        PlayerPrefs.SetInt("MiniGame2Unlocked", 1);
+        PlayerPrefs.Save();
+
+        UpdateButtonStates();
     }
 
     // ------------------ Flow MiniGame 2 ------------------
@@ -122,6 +129,50 @@ public class Level1Manager : MonoBehaviour
             PetaLevel.SetActive(false);
         }
     }
+
+    // ------------------ Reset Progress ------------------
+    public void ResetProgress()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        // Reset flag ke false
+        minigame1Unlocked = false;
+        minigame2Unlocked = false;
+
+        UpdateButtonStates();
+
+        Debug.Log("Progress sudah di-reset. Semua minigame terkunci kembali.");
+    }
+
+    // ------------------ Update Button States ------------------
+    private void UpdateButtonStates()
+    {
+        // Minigame 1 selalu terbuka
+        SetButtonState(buttonMinigame1, true);
+
+        // Minigame 2 hanya aktif jika Minigame 1 terbuka
+        SetButtonState(buttonMinigame2, minigame1Unlocked);
+
+        // Minigame 3 hanya aktif jika Minigame 2 terbuka
+        SetButtonState(buttonMinigame3, minigame2Unlocked);
+    }
+
+    private void SetButtonState(Button btn, bool isUnlocked)
+    {
+        btn.interactable = isUnlocked;
+
+        ColorBlock cb = btn.colors;
+        if (isUnlocked)
+        {
+            cb.normalColor = Color.white;   // warna normal
+            cb.disabledColor = Color.white; // biar tidak gelap kalau sudah terbuka
+        }
+        else
+        {
+            cb.normalColor = Color.gray;    // terkunci = abu-abu
+            cb.disabledColor = Color.gray;  // saat disabled tetap abu-abu
+        }
+        btn.colors = cb;
+    }
 }
-
-
