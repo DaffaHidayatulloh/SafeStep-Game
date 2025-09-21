@@ -1,6 +1,8 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
+using System.Collections;
 
 public class CertificateDownloader : MonoBehaviour
 {
@@ -11,14 +13,24 @@ public class CertificateDownloader : MonoBehaviour
     [Header("Button")]
     public Button downloadButton;         // Tombol download
 
+    [Header("Notification")]
+    public Text notificationText;         // Popup notifikasi (Legacy Text)
+
     [Header("Save Settings")]
     public string fileName = "Certificate.png";  // Nama file hasil download
     private string playerDataFile = "playerData.json"; // File tempat nama disimpan
 
+#if UNITY_WEBGL && !UNITY_EDITOR
+    [DllImport("__Internal")]
+    private static extern void DownloadFile(byte[] array, int byteLength, string fileName);
+#endif
+
     void Start()
     {
-        // Ambil nama dari JSON dan tampilkan di teks
         LoadPlayerName();
+
+        if (notificationText != null)
+            notificationText.gameObject.SetActive(false);
 
         if (downloadButton != null)
         {
@@ -38,7 +50,7 @@ public class CertificateDownloader : MonoBehaviour
         }
         else
         {
-            playerNameText.text = "No Name"; // fallback
+            playerNameText.text = "No Name"; // fallback kalau belum ada nama
         }
     }
 
@@ -47,7 +59,7 @@ public class CertificateDownloader : MonoBehaviour
         StartCoroutine(CaptureCertificate());
     }
 
-    private System.Collections.IEnumerator CaptureCertificate()
+    private IEnumerator CaptureCertificate()
     {
         yield return new WaitForEndOfFrame();
 
@@ -64,11 +76,11 @@ public class CertificateDownloader : MonoBehaviour
         tex.Apply();
 
         byte[] bytes = tex.EncodeToPNG();
+        string savedPath = "";
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-        // Simpan ke folder Download agar mudah diakses
-        string path = Path.Combine("/storage/emulated/0/Download", fileName);
-        File.WriteAllBytes(path, bytes);
+        savedPath = Path.Combine("/storage/emulated/0/Download", fileName);
+        File.WriteAllBytes(savedPath, bytes);
 
         // Supaya muncul di Gallery kita pakai MediaScanner
         using (AndroidJavaClass player = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
@@ -77,16 +89,35 @@ public class CertificateDownloader : MonoBehaviour
             AndroidJavaObject context = activity.Call<AndroidJavaObject>("getApplicationContext");
 
             AndroidJavaClass mediaScanner = new AndroidJavaClass("android.media.MediaScannerConnection");
-            mediaScanner.CallStatic("scanFile", context, new string[] { path }, null, null);
+            mediaScanner.CallStatic("scanFile", context, new string[] { savedPath }, null, null);
         }
 
-        Debug.Log("Certificate saved to: " + path);
+#elif UNITY_WEBGL && !UNITY_EDITOR
+        DownloadFile(bytes, bytes.Length, fileName);
+        savedPath = "Browser Download";
+
 #else
-        // Versi Editor / PC fallback
-        string path = Path.Combine(Application.persistentDataPath, fileName);
-        File.WriteAllBytes(path, bytes);
-        Debug.Log("Certificate saved to (Editor): " + path);
+        savedPath = Path.Combine(Application.persistentDataPath, fileName);
+        File.WriteAllBytes(savedPath, bytes);
 #endif
+
+        Debug.Log("Certificate saved to: " + savedPath);
+        ShowNotification("Certificate Saved!");
+    }
+
+    private void ShowNotification(string message)
+    {
+        if (notificationText == null) return;
+
+        notificationText.text = message;
+        notificationText.gameObject.SetActive(true);
+        StartCoroutine(HideNotificationAfterDelay(2f));
+    }
+
+    private IEnumerator HideNotificationAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        notificationText.gameObject.SetActive(false);
     }
 }
 
