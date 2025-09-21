@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 151884611}
   - component: {fileID: 151884612}
+  - component: {fileID: 151884613}
   m_Layer: 0
   m_Name: SiginManager
   m_TagString: Untagged
@@ -166,6 +167,18 @@ MonoBehaviour:
   nameInputField: {fileID: 6955514933827973667}
   saveButton: {fileID: 5127593810274722417}
   warningText: {fileID: 4963778729272855177}
+--- !u!114 &151884613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151884609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632403310f7192942805faa816d07d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &651013361
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1805789587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,7 +898,7 @@ GameObject:
   - component: {fileID: 7755860551298041048}
   - component: {fileID: 5111664013339865791}
   m_Layer: 5
-  m_Name: Dev Only///Delete Data Nama
+  m_Name: Dev Only///Delete Data Json
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1025,6 +1038,18 @@ MonoBehaviour:
       - m_Target: {fileID: 151884612}
         m_TargetAssemblyTypeName: SignInQuest, Assembly-CSharp
         m_MethodName: DeleteSavedName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 151884613}
+        m_TargetAssemblyTypeName: DataImageDelet, Assembly-CSharp
+        m_MethodName: DeleteData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
