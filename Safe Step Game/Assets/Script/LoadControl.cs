@@ -20,8 +20,7 @@ public class LoadControl : MonoBehaviour
         }
         else
         {
-            // Kalau salah satu belum ada, ke SignIn Screen
-            SceneManager.LoadScene("LoginRegister");
+            Debug.Log("Data belum lengkap. Tetap di scene ini.");
         }
     }
 }
