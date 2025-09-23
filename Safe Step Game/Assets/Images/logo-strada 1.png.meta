@@ -1,0 +1,949 @@
+fileFormatVersion: 2
+guid: 8c2415650db844c45ab95195c0d77579
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7509812977051091366
+    second: logo-strada 1_0
+  - first:
+      213: -8559412454260507720
+    second: logo-strada 1_1
+  - first:
+      213: 961062401074693852
+    second: logo-strada 1_2
+  - first:
+      213: -5088598489133639062
+    second: logo-strada 1_3
+  - first:
+      213: 9056346840862295363
+    second: logo-strada 1_4
+  - first:
+      213: 8239813218605624330
+    second: logo-strada 1_5
+  - first:
+      213: -5254387872578101277
+    second: logo-strada 1_6
+  - first:
+      213: 3737613664927715742
+    second: logo-strada 1_7
+  - first:
+      213: 9209291410197624082
+    second: logo-strada 1_8
+  - first:
+      213: 7711846470665614422
+    second: logo-strada 1_9
+  - first:
+      213: 4981838261260200917
+    second: logo-strada 1_10
+  - first:
+      213: 8144608279282950712
+    second: logo-strada 1_11
+  - first:
+      213: 2048487739686848190
+    second: logo-strada 1_12
+  - first:
+      213: -4283481469381684227
+    second: logo-strada 1_13
+  - first:
+      213: -6076893913744585892
+    second: logo-strada 1_14
+  - first:
+      213: 6033727007428415595
+    second: logo-strada 1_15
+  - first:
+      213: 485217973997008040
+    second: logo-strada 1_16
+  - first:
+      213: 22984901577624565
+    second: logo-strada 1_17
+  - first:
+      213: 3207071261204740002
+    second: logo-strada 1_18
+  - first:
+      213: -4071956169360306261
+    second: logo-strada 1_19
+  - first:
+      213: 3506434122933115894
+    second: logo-strada 1_20
+  - first:
+      213: -3084652375805758370
+    second: logo-strada 1_21
+  - first:
+      213: -5477766847176648214
+    second: logo-strada 1_22
+  - first:
+      213: -5061483603184467147
+    second: logo-strada 1_23
+  - first:
+      213: -7972365200941824780
+    second: logo-strada 1_24
+  - first:
+      213: -1697961628652596493
+    second: logo-strada 1_25
+  - first:
+      213: -6552483433695238938
+    second: logo-strada 1_26
+  - first:
+      213: 1364258580154096875
+    second: logo-strada 1_27
+  - first:
+      213: -5401586179864153658
+    second: logo-strada 1_28
+  - first:
+      213: 4807766313425145468
+    second: logo-strada 1_29
+  - first:
+      213: 9009730835109378783
+    second: logo-strada 1_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: logo-strada 1_0
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 262
+        width: 89
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a1cfba2d17383860800000000000000
+      internalID: 7509812977051091366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 162
+        width: 19
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bb7fb9f8bbd63980800000000000000
+      internalID: -8559412454260507720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 250
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd68a0f6921665d00800000000000000
+      internalID: 961062401074693852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_3
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 250
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6a999a72aaa169b0800000000000000
+      internalID: -5088598489133639062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 238
+        width: 112
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 345045c187b9ead70800000000000000
+      internalID: 9056346840862295363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_5
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 162
+        width: 19
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0c6e864772b95270800000000000000
+      internalID: 8239813218605624330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_6
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 216
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef9cde911aa417b0800000000000000
+      internalID: -5254387872578101277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_7
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 217
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9199a553dbaed330800000000000000
+      internalID: 3737613664927715742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_8
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 217
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 215b2e1aeb9fdcf70800000000000000
+      internalID: 9209291410197624082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_9
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 217
+        width: 38
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 654bf56818bf50b60800000000000000
+      internalID: 7711846470665614422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_10
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 217
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5db2dd2f08b032540800000000000000
+      internalID: 4981838261260200917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_11
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 217
+        width: 51
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 832ad59f316770170800000000000000
+      internalID: 8144608279282950712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_12
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 217
+        width: 14
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb607c2feb0bd6c10800000000000000
+      internalID: 2048487739686848190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_13
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 217
+        width: 27
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df359876c440e84c0800000000000000
+      internalID: -4283481469381684227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_14
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 217
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b4585ae298aaba0800000000000000
+      internalID: -6076893913744585892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_15
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 217
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b609375ceba1cb350800000000000000
+      internalID: 6033727007428415595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 77
+        width: 158
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a4f9b23d27dbb600800000000000000
+      internalID: 485217973997008040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_17
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 162
+        width: 107
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fb4bbd65a8a15000800000000000000
+      internalID: 22984901577624565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_18
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 162
+        width: 46
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a7f87df15ec18c20800000000000000
+      internalID: 3207071261204740002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_19
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 162
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baf815820718d77c0800000000000000
+      internalID: -4071956169360306261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_20
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 162
+        width: 47
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fb9cb5c14b59a030800000000000000
+      internalID: 3506434122933115894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_21
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 108
+        width: 14
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e547884e10d1135d0800000000000000
+      internalID: -3084652375805758370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_22
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 108
+        width: 35
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae9df9f23101bf3b0800000000000000
+      internalID: -5477766847176648214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_23
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 107
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 533c9b3da7ff1c9b0800000000000000
+      internalID: -5061483603184467147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_24
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 107
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f44d22d6187c5190800000000000000
+      internalID: -7972365200941824780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_25
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 108
+        width: 35
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f21be915e0af68e0800000000000000
+      internalID: -1697961628652596493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_26
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 107
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e4a6f99807e015a0800000000000000
+      internalID: -6552483433695238938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_27
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 107
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bec1dd353f1dee210800000000000000
+      internalID: 1364258580154096875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_28
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 140
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1b98dfcf5b905b0800000000000000
+      internalID: -5401586179864153658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_29
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 108
+        width: 14
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7e8bca4dfd98b240800000000000000
+      internalID: 4807766313425145468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo-strada 1_30
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 107
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdaf39c757ef80d70800000000000000
+      internalID: 9009730835109378783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      logo-strada 1_0: 7509812977051091366
+      logo-strada 1_1: -8559412454260507720
+      logo-strada 1_10: 4981838261260200917
+      logo-strada 1_11: 8144608279282950712
+      logo-strada 1_12: 2048487739686848190
+      logo-strada 1_13: -4283481469381684227
+      logo-strada 1_14: -6076893913744585892
+      logo-strada 1_15: 6033727007428415595
+      logo-strada 1_16: 485217973997008040
+      logo-strada 1_17: 22984901577624565
+      logo-strada 1_18: 3207071261204740002
+      logo-strada 1_19: -4071956169360306261
+      logo-strada 1_2: 961062401074693852
+      logo-strada 1_20: 3506434122933115894
+      logo-strada 1_21: -3084652375805758370
+      logo-strada 1_22: -5477766847176648214
+      logo-strada 1_23: -5061483603184467147
+      logo-strada 1_24: -7972365200941824780
+      logo-strada 1_25: -1697961628652596493
+      logo-strada 1_26: -6552483433695238938
+      logo-strada 1_27: 1364258580154096875
+      logo-strada 1_28: -5401586179864153658
+      logo-strada 1_29: 4807766313425145468
+      logo-strada 1_3: -5088598489133639062
+      logo-strada 1_30: 9009730835109378783
+      logo-strada 1_4: 9056346840862295363
+      logo-strada 1_5: 8239813218605624330
+      logo-strada 1_6: -5254387872578101277
+      logo-strada 1_7: 3737613664927715742
+      logo-strada 1_8: 9209291410197624082
+      logo-strada 1_9: 7711846470665614422
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
