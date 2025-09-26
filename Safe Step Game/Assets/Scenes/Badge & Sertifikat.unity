@@ -259,8 +259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 500}
+  m_AnchoredPosition: {x: 1, y: 0}
+  m_SizeDelta: {x: 1123, y: 794}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &205876928
 MonoBehaviour:
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7f45ac85b9d695f498284722cefbbc38, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -396,7 +396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1083630861
 RectTransform:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.9637, y: -380.5}
+  m_AnchoredPosition: {x: -8.9637, y: -504.4}
   m_SizeDelta: {x: 608.1908, y: 113.119}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083630862
@@ -713,7 +713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 319.51, y: -472}
+  m_AnchoredPosition: {x: 319.51, y: -662.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1634696137
@@ -750,8 +750,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.0745, y: 62.52}
-  m_SizeDelta: {x: 654.7428, y: 118.0847}
+  m_AnchoredPosition: {x: -4.4166, y: -42.378}
+  m_SizeDelta: {x: 925.2228, y: 48.112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1634696139
 MonoBehaviour:
@@ -775,10 +775,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 3
     m_MaxSize: 60
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -827,7 +827,7 @@ MonoBehaviour:
   certificateBackground: {fileID: 205876928}
   playerNameText: {fileID: 1634696139}
   downloadButton: {fileID: 1201117617}
-  notificationText: {fileID: 0}
+  notificationText: {fileID: 1083630862}
   fileName: Certificate.png
 --- !u!4 &1716167323
 Transform:
@@ -878,7 +878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 317.68, y: -585.5}
+  m_AnchoredPosition: {x: 317.68, y: -784.5}
   m_SizeDelta: {x: 349.51, y: 87.7144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1808348823
