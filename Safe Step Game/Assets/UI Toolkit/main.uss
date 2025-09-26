@@ -1,0 +1,29 @@
+:root {
+}
+
+.nav-button {
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 80px;
+    max-height: 80px;
+    background-image: none;
+    background-color: rgba(255, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-size: 60% 60%;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.navisSelected {
+    -unity-background-image-tint-color: rgb(255, 118, 228);
+    background-color: rgb(255, 255, 255);
+}
