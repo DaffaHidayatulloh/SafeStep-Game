@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 // using UnityEngine.UI;
 using UnityEngine.UIElements;
+using System.IO;
 
 public class UI_Events : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class UI_Events : MonoBehaviour
     // public GameObject Home;
     // public GameObject Progres;
     // public GameObject Profile;
+
+
+    
+    private int scoreLevel1;
+    private int scoreLevel2;
+    private int scoreLevel3;
+
 
     [Header("GameCardsTextures")] // as array
     public Texture[] gameCardsTextures;
@@ -41,7 +49,33 @@ public class UI_Events : MonoBehaviour
     private Button _gameSelectRightArrow;
 
 
+    private ProgressBar _level1Progression;
+    private ProgressBar _level2Progression;
+    private ProgressBar _level3Progression;
+
+    private VisualElement _playerAvatar;
     
+
+    private string fileName = "playerData.json";
+    private Label _playerNameLabel;
+
+    public Texture[] playerAvatars;
+
+    private string savePath;
+
+
+    void Start()
+    {
+        // Home.SetActive(true);
+        // Progres.SetActive(false);
+        // Profile.SetActive(false);
+
+        // _homeMenu.AddToClassList("common-show");
+        // _progressMenu.RemoveFromClassList("common-show");
+        // _profileMenu.RemoveFromClassList("common-show");
+        savePath = Application.persistentDataPath + "/character.json";
+
+    }
 
     private void TempResetClass()
     {
@@ -62,7 +96,7 @@ public class UI_Events : MonoBehaviour
 
         _homeMenu.AddToClassList("common-show");
         _progressMenu.RemoveFromClassList("common-show");
-        _progressMenu.RemoveFromClassList("common-show");
+        _profileMenu.RemoveFromClassList("common-show");
 
     }
 
@@ -70,6 +104,17 @@ public class UI_Events : MonoBehaviour
     {
         TempResetClass();
         _navButtons[1].AddToClassList("navisSelected");
+
+
+        LoadScores();
+        
+        _level1Progression.value = (float)scoreLevel1 / 100;
+        _level2Progression.value = (float)scoreLevel2 / 100;
+        _level3Progression.value = (float)scoreLevel3 / 100;
+
+
+
+
         // Progres.SetActive(true);
         // Home.SetActive(false);
         // Profile.SetActive(false);
@@ -152,7 +197,7 @@ public class UI_Events : MonoBehaviour
                 _currentGameCardIndex = gameCardsTextures.Length - 1;
             }
             _gameCardImage.style.backgroundImage = new StyleBackground((Background)gameCardsTextures[_currentGameCardIndex]);
-            
+
         };
 
         _gameSelectRightArrow.clicked += () =>
@@ -169,14 +214,123 @@ public class UI_Events : MonoBehaviour
 
         _gameCardButton.clicked += () =>
         {
-            
+
         };
 
 
-        
+
+        _level1Progression = _document.rootVisualElement.Q<ProgressBar>("progress-lv1") as ProgressBar;
+        _level2Progression = _document.rootVisualElement.Q<ProgressBar>("progress-lv2") as ProgressBar;
+        _level3Progression = _document.rootVisualElement.Q<ProgressBar>("progress-lv3") as ProgressBar;
+
+        _level1Progression.highValue = 100;
+        _level1Progression.lowValue = 0;
+        _level1Progression.value = 0;
+
+        _level2Progression.highValue = 100;
+        _level2Progression.lowValue = 0;
+        _level2Progression.value = 0;
+
+        _level3Progression.highValue = 100;
+        _level3Progression.lowValue = 0;
+        _level3Progression.value = 100;
+
+
+        _playerNameLabel = _document.rootVisualElement.Q<Label>("player-name") as Label;
+
+        LoadPlayerName();
+
+        _playerAvatar = _document.rootVisualElement.Q("player-avatar") as VisualElement;
+
+        LoadCharacter();
         
 
     }
+
+
+
+        private void LoadCharacter()
+    {
+        if (File.Exists(savePath))
+        {
+            string json = File.ReadAllText(savePath);
+            CharacterData data = JsonUtility.FromJson<CharacterData>(json);
+
+            // Sprite selectedSprite = null;
+
+            // _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[0]);
+
+            if (data.characterName == "Male")
+            {
+                _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[0]);
+            }
+            else if (data.characterName == "Female")
+            {
+                _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[1]);
+            }
+
+            // Set ke dua tempat (main menu dan profil)
+            // if (characterImageMainMenu != null)
+            //     characterImageMainMenu.sprite = selectedSprite;
+
+            // if (characterImageProfile != null)
+            //     characterImageProfile.sprite = selectedSprite;
+        }
+        else
+        {
+            Debug.Log("No character selected yet.");
+        }
+    }
+
+
+    private void LoadScores()
+    {
+        scoreLevel1 = PlayerPrefs.GetInt("Score_Level1", 0);
+        scoreLevel2 = PlayerPrefs.GetInt("Score_Level2", 0);
+        scoreLevel3 = PlayerPrefs.GetInt("Score_Level3", 0);
+    }
+
+
+    [System.Serializable]
+    public class PlayerData
+    {
+        public string playerName;
+    }
+
+    [System.Serializable]
+    public class CharacterData
+    {
+        public string characterName;
+    }
+        void LoadPlayerName()
+    {
+        string filePath = Path.Combine(Application.persistentDataPath, fileName);
+
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            PlayerData data = JsonUtility.FromJson<PlayerData>(json);
+
+            if (data != null && !string.IsNullOrEmpty(data.playerName))
+            {
+                if (_playerNameLabel != null)
+                    _playerNameLabel.text = data.playerName;
+                else
+                {
+                    Debug.LogWarning("Player Name Label is null, using fallback as androgynous name");
+                    _playerNameLabel.text = "Player";
+                }
+
+                // if (profileNameText != null)
+                //     profileNameText.text = "Halo, " + data.playerName;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player data file not found: " + filePath);
+        }
+    }
+
 
     private void GameCardStart(ClickEvent evt)
     {
@@ -191,6 +345,36 @@ public class UI_Events : MonoBehaviour
         // _popup.style.display = DisplayStyle.Flex;
 
         // do show map later below
+
+
+        // for a debug reason let's add when game card is clicked, it wil add score to lv 1 or just according to the current game card index
+        if (_currentGameCardIndex == 0)
+        {
+            scoreLevel1 += 100;
+            // if (scoreLevel1 > 100) scoreLevel1 = 100;
+            PlayerPrefs.SetInt("Score_Level1", scoreLevel1);
+            PlayerPrefs.Save();
+            _level1Progression.value = 100;
+        }
+        else if (_currentGameCardIndex == 1)
+        {
+            scoreLevel2 += 10;
+            // if (scoreLevel2 > 100) scoreLevel2 = 100;
+            PlayerPrefs.SetInt("Score_Level2", scoreLevel2);
+            PlayerPrefs.Save();
+            _level2Progression.value = scoreLevel2;
+        }
+        else if (_currentGameCardIndex == 2)
+        {
+            scoreLevel3 += 10;
+            // if (scoreLevel3 > 100) scoreLevel3 = 100;
+            PlayerPrefs.SetInt("Score_Level3", scoreLevel3);
+            PlayerPrefs.Save();
+            _level3Progression.value = scoreLevel3;
+        }
+
+        Debug.Log("Scores: " + scoreLevel1 + ", " + scoreLevel2 + ", " + scoreLevel3);
+
 
     }
     
