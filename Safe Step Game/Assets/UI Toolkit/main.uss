@@ -1,11 +1,12 @@
 :root {
+    -unity-font-definition: url("project://database/Assets/Images/UI/Font/Barlow/Barlow-ExtraBold.ttf?fileID=12800000&guid=aa6617a847251474a8a1657de4a322bf&type=3#Barlow-ExtraBold");
 }
 
 .nav-button {
     min-width: 50px;
     min-height: 50px;
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 300px;
+    max-height: 300px;
     background-image: none;
     background-color: rgba(255, 0, 0, 0);
     border-top-width: 0;
@@ -21,9 +22,72 @@
     padding-right: 0;
     padding-bottom: 0;
     padding-left: 0;
+    width: 80px;
+    height: 80px;
 }
 
 .navisSelected {
     -unity-background-image-tint-color: rgb(255, 118, 228);
     background-color: rgb(255, 255, 255);
+}
+
+.hide-popup {
+    scale: 0 0;
+}
+
+.popup-button {
+    background-image: none;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 4px;
+    border-left-width: 1px;
+    background-color: rgb(150, 150, 150);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-left-color: rgb(86, 86, 86);
+    border-right-color: rgb(86, 86, 86);
+    border-top-color: rgb(86, 86, 86);
+    border-bottom-color: rgb(86, 86, 86);
+    transition-duration: 0.1s;
+}
+
+.popup-button:active {
+    border-bottom-width: 1px;
+    border-top-width: 3px;
+}
+
+.swicth-on {
+    border-left-width: 4px;
+}
+
+.switch-off {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-width: 1px;
+    border-right-width: 4px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.button-beta {
+}
+
+.gamepickbutton {
+    width: 32px;
+    height: 80px;
+    position: absolute;
+    top: 40%;
+    bottom: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
 }

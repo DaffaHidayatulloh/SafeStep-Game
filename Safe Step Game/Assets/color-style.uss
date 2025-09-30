@@ -1,0 +1,18 @@
+:root {
+}
+
+.button-blue:active {
+    background-color: rgb(44, 119, 212);
+    border-left-color: rgb(44, 119, 212);
+    border-right-color: rgb(44, 119, 212);
+    border-top-color: rgb(44, 119, 212);
+    border-bottom-color: rgb(44, 119, 212);
+}
+
+.button-blue {
+    background-color: rgb(87, 147, 221);
+    border-left-color: rgb(44, 119, 212);
+    border-right-color: rgb(44, 119, 212);
+    border-top-color: rgb(44, 119, 212);
+    border-bottom-color: rgb(44, 119, 212);
+}

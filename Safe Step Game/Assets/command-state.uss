@@ -1,0 +1,12 @@
+:root {
+}
+
+.common-show {
+    display: flex;
+}
+
+.common-opacity-0 {
+}
+
+.common-hide {
+}
