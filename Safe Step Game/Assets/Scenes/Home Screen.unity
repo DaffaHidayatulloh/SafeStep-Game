@@ -4803,6 +4803,7 @@ MonoBehaviour:
   gameCardsTextures:
   - {fileID: 2800000, guid: 01f539def101f0f429102a08c2dbb234, type: 3}
   - {fileID: 2800000, guid: 0434fab483775894ca5d03eb0c388572, type: 3}
+  - {fileID: 2800000, guid: a744d9bfc92bffb4e84514d50a500f01, type: 3}
   playerAvatars:
   - {fileID: 2800000, guid: 99ddf93910c25d44e89f6cebf7d60536, type: 3}
   - {fileID: 2800000, guid: 3934d9293cda28c4b9cee9198d7150c4, type: 3}

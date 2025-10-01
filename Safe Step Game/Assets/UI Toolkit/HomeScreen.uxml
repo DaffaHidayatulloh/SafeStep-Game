@@ -16,7 +16,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="menu-space" style="width: 80%; height: 70%; position: relative; top: 20%; left: auto; right: auto; bottom: 20%; align-items: stretch; align-self: center; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; background-color: rgba(227, 99, 222, 0); max-height: 60%; margin-top: 4%; margin-right: 4%; margin-bottom: 4%; margin-left: 4%;">
-            <ui:VisualElement name="home-menu" class="menu-field common-hide" style="background-color: rgba(255, 255, 255, 0); flex-direction: row-reverse; justify-content: center;">
+            <ui:VisualElement name="home-menu" class="menu-field common-hide common-show" style="background-color: rgba(255, 255, 255, 0); flex-direction: row-reverse; justify-content: center;">
                 <ui:VisualElement name="game-card-container" style="flex-grow: 1; background-color: rgb(255, 255, 255); border-top-left-radius: 21px; border-top-right-radius: 21px; border-bottom-right-radius: 21px; border-bottom-left-radius: 21px; max-width: 480px; max-height: 1080px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 8px; border-left-width: 1px; border-left-color: rgb(182, 182, 182); border-right-color: rgb(182, 182, 182); border-top-color: rgb(182, 182, 182); border-bottom-color: rgb(182, 182, 182); display: none; flex-direction: row;">
                     <ui:VisualElement name="safegame-label" style="flex-grow: 1; background-color: rgb(236, 80, 224); height: 30%; min-height: 45px; max-height: 12%; margin-top: 18px; margin-right: 18px; margin-bottom: 18px; margin-left: 18px; align-items: center; flex-direction: row; align-self: auto; justify-content: center;">
                         <ui:Label text="SafeGame!" style="align-items: center; align-self: center; -unity-text-align: upper-center; justify-content: center; color: rgb(255, 255, 255); font-size: 34px;" />
@@ -29,12 +29,25 @@
                 <ui:Button text="&#10;" name="gamepick-right" class="gamepickbutton" style="background-image: url(&quot;project://database/Assets/Images/UI/g49.png?fileID=2800000&amp;guid=f0320385fcebd834f867701b6633685e&amp;type=3#g49&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; right: 0;" />
                 <ui:Button name="gamepick-left" class="gamepickbutton" style="left: 0; background-image: url(&quot;project://database/Assets/Images/UI/g50.png?fileID=2800000&amp;guid=605a76f62934f4a4bbacb243a3ceed15&amp;type=3#g50&quot;);" />
             </ui:VisualElement>
-            <ui:VisualElement name="progress-menu" class="menu-field common-show">
-                <ui:ProgressBar value="1" name="progress-lv1" class="level-progressbar" />
-                <ui:ProgressBar value="22" name="progress-lv2" class="level-progressbar" />
-                <ui:ProgressBar value="22" name="progress-lv3" class="level-progressbar" />
+            <ui:VisualElement name="progress-menu" class="menu-field">
+                <ui:Label text="SafeQuiz" class="label-progress" />
+                <ui:ProgressBar value="0" name="progress-lv1" class="level-progressbar" />
+                <ui:Label text="SafeAction" class="label-progress" />
+                <ui:ProgressBar value="0" name="progress-lv2" class="level-progressbar" />
+                <ui:Label text="SafeMind" class="label-progress" />
+                <ui:ProgressBar value="0" name="progress-lv3" class="level-progressbar" />
+                <ui:Label text="Total Progress Kamu :" name="Label" class="label-progress" style="-unity-text-align: upper-center; font-size: 45px;" />
+                <ui:ProgressBar value="0" name="progress-total" class="level-progressbar" />
+                <ui:VisualElement name="spacer" style="height: 77px;" />
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Label text="Selesaikan semua progress game untuk mendapatkan sertifikat kamu!" style="align-self: center; color: rgb(87, 147, 221); font-size: 16px; white-space: normal; -unity-text-align: upper-center; -unity-font-style: normal;" />
+                        <ui:VisualElement name="SertifStuff" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/Sertif/Sertif-off.png?fileID=2800000&amp;guid=2d1d62bfc49b5c04e928e365eec2ea5a&amp;type=3#Sertif-off&quot;); -unity-background-scale-mode: scale-to-fit; -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                        <ui:Button text="Klaim Sertifikat!" enabled="false" class="menu-button" style="visibility: visible; opacity: 1;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="profile-menu" class="menu-field" style="overflow: visible; visibility: visible;">
+            <ui:VisualElement name="profile-menu" class="menu-field common-show" style="overflow: visible; visibility: visible;">
                 <ui:Button text="Ubah Nama" name="profile-change-name" class="menu-button button-blue" />
                 <ui:Button text="Ubah Avatar" name="profile-change-avatar" class="menu-button button-blue" />
                 <ui:Button text="Ekspor Data" name="profile-export-data" class="menu-button button-blue" style="height: 90px;" />
@@ -42,7 +55,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="navbar" style="flex-grow: 1; bottom: 0; flex-direction: row; align-content: center; align-self: center; justify-content: space-around; align-items: center; min-width: 240px; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgb(255, 118, 228); padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px; border-top-width: 3px; border-top-color: rgb(255, 255, 255); max-width: 80%; border-top-right-radius: 42px; border-top-left-radius: 42px; border-right-width: 3px; border-left-width: 3px; border-right-color: rgb(255, 255, 255); border-left-color: rgb(255, 255, 255); width: 100%; max-height: 20%; position: absolute; height: 157px;">
-            <ui:Button name="nav-home" class="nav-button" style="background-image: url(&quot;project://database/Assets/Images/UI/white-home.png?fileID=2800000&amp;guid=3df9b344891bcb241a7c0bccd6f9e1a9&amp;type=3#white-home&quot;);" />
+            <ui:Button name="nav-home" class="nav-button navisSelected" style="background-image: url(&quot;project://database/Assets/Images/UI/white-home.png?fileID=2800000&amp;guid=3df9b344891bcb241a7c0bccd6f9e1a9&amp;type=3#white-home&quot;);" />
             <ui:Button name="nav-progress" class="nav-button" style="background-image: url(&quot;project://database/Assets/Images/UI/white-progress.png?fileID=2800000&amp;guid=9d9658eff613e6e48a08e75600c9b280&amp;type=3#white-progress&quot;);" />
             <ui:Button name="nav-profile" class="nav-button" style="background-image: url(&quot;project://database/Assets/Images/UI/white-profile.png?fileID=2800000&amp;guid=d39d535a980201e4e953247a9549a557&amp;type=3#white-profile&quot;);" />
         </ui:VisualElement>

@@ -112,3 +112,8 @@
     margin-bottom: 0;
     margin-left: 0;
 }
+
+.label-progress {
+    font-size: 26px;
+    color: rgb(87, 147, 221);
+}

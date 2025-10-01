@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.IO;
 
+using UnityEngine.SceneManagement;
+
 public class UI_Events : MonoBehaviour
 {
 
@@ -53,7 +55,18 @@ public class UI_Events : MonoBehaviour
     private ProgressBar _level2Progression;
     private ProgressBar _level3Progression;
 
+    private ProgressBar _totalProgression;
+
     private VisualElement _playerAvatar;
+
+
+    private Button _profileEditNameButton;
+    private Button _profileEditAvatarButton;
+
+    private Button _profileExportDataButton;
+    private Button _logoutButton;
+
+    private Button _reseteDataButton;
     
 
     private string fileName = "playerData.json";
@@ -63,6 +76,28 @@ public class UI_Events : MonoBehaviour
 
     private string savePath;
 
+
+
+
+    public void GoToLevel1()
+    {
+        SceneManager.LoadScene("Level 1 Reproduksi");
+    }
+
+    public void GoToLevel2()
+    {
+        SceneManager.LoadScene("Level 2 Anti Kekerasan");
+    }
+
+    public void GoToLevel3()
+    {
+        SceneManager.LoadScene("Level 3 Mental Health");
+    }
+
+    public void GoToSertif()
+    {
+        SceneManager.LoadScene("Badge & Sertifikat");
+    }
 
     void Start()
     {
@@ -111,6 +146,8 @@ public class UI_Events : MonoBehaviour
         _level1Progression.value = (float)scoreLevel1 / 100;
         _level2Progression.value = (float)scoreLevel2 / 100;
         _level3Progression.value = (float)scoreLevel3 / 100;
+
+        _totalProgression.value = scoreLevel1 + scoreLevel2 + scoreLevel3;
 
 
 
@@ -222,6 +259,7 @@ public class UI_Events : MonoBehaviour
         _level1Progression = _document.rootVisualElement.Q<ProgressBar>("progress-lv1") as ProgressBar;
         _level2Progression = _document.rootVisualElement.Q<ProgressBar>("progress-lv2") as ProgressBar;
         _level3Progression = _document.rootVisualElement.Q<ProgressBar>("progress-lv3") as ProgressBar;
+        _totalProgression = _document.rootVisualElement.Q<ProgressBar>("progress-total") as ProgressBar;
 
         _level1Progression.highValue = 100;
         _level1Progression.lowValue = 0;
@@ -234,6 +272,11 @@ public class UI_Events : MonoBehaviour
         _level3Progression.highValue = 100;
         _level3Progression.lowValue = 0;
         _level3Progression.value = 100;
+
+
+        _totalProgression.highValue = 300;
+        _totalProgression.lowValue = 0; 
+        _totalProgression.value = 0;
 
 
         _playerNameLabel = _document.rootVisualElement.Q<Label>("player-name") as Label;
@@ -349,29 +392,14 @@ public class UI_Events : MonoBehaviour
 
         // for a debug reason let's add when game card is clicked, it wil add score to lv 1 or just according to the current game card index
         if (_currentGameCardIndex == 0)
-        {
-            scoreLevel1 += 100;
-            // if (scoreLevel1 > 100) scoreLevel1 = 100;
-            PlayerPrefs.SetInt("Score_Level1", scoreLevel1);
-            PlayerPrefs.Save();
-            _level1Progression.value = 100;
-        }
+        { GoToLevel1(); }
         else if (_currentGameCardIndex == 1)
-        {
-            scoreLevel2 += 10;
-            // if (scoreLevel2 > 100) scoreLevel2 = 100;
-            PlayerPrefs.SetInt("Score_Level2", scoreLevel2);
-            PlayerPrefs.Save();
-            _level2Progression.value = scoreLevel2;
-        }
+        { GoToLevel2(); }
         else if (_currentGameCardIndex == 2)
-        {
-            scoreLevel3 += 10;
-            // if (scoreLevel3 > 100) scoreLevel3 = 100;
-            PlayerPrefs.SetInt("Score_Level3", scoreLevel3);
-            PlayerPrefs.Save();
-            _level3Progression.value = scoreLevel3;
-        }
+        { GoToLevel3(); }
+
+
+
 
         Debug.Log("Scores: " + scoreLevel1 + ", " + scoreLevel2 + ", " + scoreLevel3);
 
