@@ -101,13 +101,7 @@ public class UI_Events : MonoBehaviour
 
     void Start()
     {
-        // Home.SetActive(true);
-        // Progres.SetActive(false);
-        // Profile.SetActive(false);
-
-        // _homeMenu.AddToClassList("common-show");
-        // _progressMenu.RemoveFromClassList("common-show");
-        // _profileMenu.RemoveFromClassList("common-show");
+        
         savePath = Application.persistentDataPath + "/character.json";
 
     }
@@ -124,10 +118,6 @@ public class UI_Events : MonoBehaviour
 
         TempResetClass();
         _navButtons[0].AddToClassList("navisSelected");
-
-        // Home.SetActive(true);
-        // Progres.SetActive(false);
-        // Profile.SetActive(false);
 
         _homeMenu.AddToClassList("common-show");
         _progressMenu.RemoveFromClassList("common-show");
@@ -150,12 +140,6 @@ public class UI_Events : MonoBehaviour
         _totalProgression.value = scoreLevel1 + scoreLevel2 + scoreLevel3;
 
 
-
-
-        // Progres.SetActive(true);
-        // Home.SetActive(false);
-        // Profile.SetActive(false);
-
         _progressMenu.AddToClassList("common-show");
         _homeMenu.RemoveFromClassList("common-show");
         _profileMenu.RemoveFromClassList("common-show");
@@ -165,9 +149,6 @@ public class UI_Events : MonoBehaviour
     {
         TempResetClass();
         _navButtons[2].AddToClassList("navisSelected");
-        // Profile.SetActive(true);
-        // Home.SetActive(false);
-        // Progres.SetActive(false);
 
         _profileMenu.AddToClassList("common-show");
         _homeMenu.RemoveFromClassList("common-show");
@@ -275,7 +256,7 @@ public class UI_Events : MonoBehaviour
 
 
         _totalProgression.highValue = 300;
-        _totalProgression.lowValue = 0; 
+        _totalProgression.lowValue = 0;
         _totalProgression.value = 0;
 
 
@@ -286,6 +267,13 @@ public class UI_Events : MonoBehaviour
         _playerAvatar = _document.rootVisualElement.Q("player-avatar") as VisualElement;
 
         LoadCharacter();
+
+
+        _profileEditNameButton = _document.rootVisualElement.Q<Button>("profile-change-name") as Button;
+        _profileEditAvatarButton = _document.rootVisualElement.Q<Button>("profile-change-avatar") as Button;
+        _profileExportDataButton = _document.rootVisualElement.Q<Button>("profile-export-data") as Button;
+        _logoutButton = _document.rootVisualElement.Q<Button>("profile-logout") as Button;
+        _reseteDataButton = _document.rootVisualElement.Q<Button>("profile-reset-data") as Button;
         
 
     }
