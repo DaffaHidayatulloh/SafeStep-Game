@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 234f8cf3cb6b346458dfd290300c8c83
+<<<<<<<< Updated upstream:Safe Step Game/Assets/Images/UI/Legacy.meta
+guid: 560d9496cca30d34d9ad8eeefa94d902
+========
+guid: e941eebaf1f06294ea3b985eb71d561d
+>>>>>>>> Stashed changes:Safe Step Game/Assets/Editor Default Resources.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
