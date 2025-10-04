@@ -13,7 +13,7 @@ public class GoogleLoginFirebase : MonoBehaviour
 {
     [Header("Firebase & Google Config")]
     [Tooltip("Masukkan WebClient ID dari Firebase Console")]
-    public string GoogleAPI = "940344831661-514ucene5kah26fv0tmf7087eg21k2fu.apps.googleusercontent.com"; // Ganti dengan Web Client ID kamu
+    private string GoogleAPI = "940344831661-514ucene5kah26fv0tmf7087eg21k2fu.apps.googleusercontent.com"; // Ganti dengan Web Client ID kamu
 
     private GoogleSignInConfiguration configuration;
     private FirebaseAuth auth;
@@ -69,7 +69,9 @@ public class GoogleLoginFirebase : MonoBehaviour
             {
                 RequestIdToken = true,
                 WebClientId = GoogleAPI,
-                RequestEmail = true
+                RequestEmail = true,
+                UseGameSignIn = false,
+                ForceTokenRefresh = true
             };
 
             GoogleSignIn.Configuration = configuration;
