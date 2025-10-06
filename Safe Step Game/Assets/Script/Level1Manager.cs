@@ -72,6 +72,7 @@ public class Level1Manager : MonoBehaviour
     {
         Reward.SetActive(false);
         AudioManager.instance.StopAllSFX();
+        AudioManager.instance.PlaySFX(4);
         OpeningMinigame2.SetActive(true);
 
         // Menandai bahwa minigame 2 sudah bisa dibuka
@@ -93,6 +94,7 @@ public class Level1Manager : MonoBehaviour
     {
         RewardMinigame2.SetActive(false);
         AudioManager.instance.StopAllSFX();
+        AudioManager.instance.PlaySFX(4);
         OpeningMinigame3.SetActive(true);
     }
 
@@ -112,6 +114,7 @@ public class Level1Manager : MonoBehaviour
     // ------------------ Peta Level ------------------
     public void GoToMinigame1()
     {
+        AudioManager.instance.PlaySFX(4);
         OpeningScreen.SetActive(true);
         PetaLevel.SetActive(false);
     }
@@ -120,6 +123,7 @@ public class Level1Manager : MonoBehaviour
     {
         if (minigame1Unlocked)
         {
+            AudioManager.instance.PlaySFX(4);
             OpeningMinigame2.SetActive(true);
             PetaLevel.SetActive(false);
         }
@@ -129,6 +133,7 @@ public class Level1Manager : MonoBehaviour
     {
         if (minigame2Unlocked)
         {
+            AudioManager.instance.PlaySFX(4);
             OpeningMinigame3.SetActive(true);
             PetaLevel.SetActive(false);
         }

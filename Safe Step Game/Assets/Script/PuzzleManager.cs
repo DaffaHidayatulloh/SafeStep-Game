@@ -81,7 +81,8 @@ public class PuzzleManager : MonoBehaviour
 
         // UI handling
         if (completeUI != null)
-            completeUI.SetActive(true);
+        AudioManager.instance.PlaySFX(4);
+        completeUI.SetActive(true);
 
         if (FullPuzzle != null)
             FullPuzzle.SetActive(false);
