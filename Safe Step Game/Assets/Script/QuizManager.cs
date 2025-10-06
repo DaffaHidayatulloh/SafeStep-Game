@@ -107,6 +107,7 @@ public class QuizManager : MonoBehaviour
     private void EndQuiz()
     {
         if (miniGame3 != null) miniGame3.SetActive(false);
+        AudioManager.instance.PlaySFX(3);
         if (reward != null) reward.SetActive(true);
 
         // panggil event agar listener (mis. QuizButtonManager) tahu quiz selesai

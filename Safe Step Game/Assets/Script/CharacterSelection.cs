@@ -76,7 +76,7 @@ public class CharacterSelection : MonoBehaviour
         Debug.Log("Character saved: " + selectedCharacter);
 
         // Pindah ke Home Screen
-        SceneManager.LoadScene("Badge & Sertifikat");
+        SceneManager.LoadScene("Revamped_HomeScreen");
     }
 }
 

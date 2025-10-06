@@ -106,6 +106,7 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
 
             if (swipeDir == expectedDir)
             {
+                AudioManager.instance.PlaySFX(0);
                 hasSwiped = true;
                 canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
@@ -122,6 +123,7 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
             }
             else
             {
+                AudioManager.instance.PlaySFX(1);
                 StartCoroutine(ShakeAndReset());
             }
         }
@@ -249,7 +251,8 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         yield return new WaitForSeconds(3f);
 
         if (rewardObject != null)
-            rewardObject.SetActive(true);
+        AudioManager.instance.PlaySFX(3);
+        rewardObject.SetActive(true);
 
         if (cardObject != null)
             cardObject.SetActive(false);
@@ -257,6 +260,7 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     IEnumerator ShakeAndReset()
     {
+        AudioManager.instance.PlaySFX(1);
         Vector2 originalPos = rect.anchoredPosition;
         float elapsed = 0f;
         float duration = 0.3f;

@@ -64,12 +64,14 @@ public class Level1Manager : MonoBehaviour
     public void OnSelectButtonWanitaLanjut()
     {
         PuzzleWanitaSelesai.SetActive(false);
+        AudioManager.instance.PlaySFX(3);
         Reward.SetActive(true);
     }
 
     public void OnSelectButtonLanjutOpeningMinigame2()
     {
         Reward.SetActive(false);
+        AudioManager.instance.StopAllSFX();
         OpeningMinigame2.SetActive(true);
 
         // Menandai bahwa minigame 2 sudah bisa dibuka
@@ -90,6 +92,7 @@ public class Level1Manager : MonoBehaviour
     public void OnSelectButtonOpening3()
     {
         RewardMinigame2.SetActive(false);
+        AudioManager.instance.StopAllSFX();
         OpeningMinigame3.SetActive(true);
     }
 
@@ -102,6 +105,7 @@ public class Level1Manager : MonoBehaviour
 
     public void OnSelectReward3()
     {
+        AudioManager.instance.StopAllSFX();
         SceneManager.LoadScene("Level 2 Anti Kekerasan");
     }
 

@@ -47,12 +47,14 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             rectTransform.position = targetSlot.position;
             transform.SetParent(targetSlot);
             placed = true;
+            AudioManager.instance.PlaySFX(2);
         }
         else
         {
             // balikin ke posisi awal
             transform.SetParent(originalParent);
             rectTransform.position = startPosition;
+            AudioManager.instance.PlaySFX(1);
         }
 
     }

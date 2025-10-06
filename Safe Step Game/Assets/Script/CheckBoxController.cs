@@ -50,10 +50,12 @@ public class CheckBoxController : MonoBehaviour
 
         if (index == correctIndex)
         {
+            AudioManager.instance.PlaySFX(0);
             StartCoroutine(ShowFeedback(correctFeedback, true));
         }
         else
         {
+            AudioManager.instance.PlaySFX(1);
             StartCoroutine(ShowFeedback(wrongFeedback, false));
         }
     }
