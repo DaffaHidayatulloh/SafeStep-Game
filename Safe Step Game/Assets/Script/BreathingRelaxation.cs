@@ -35,6 +35,7 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
     public Text scoreDisplayText;     // UI untuk menampilkan score (+100 / +0)
 
     private bool isHoldingTap = false;
+    private bool isInhaling = false;
 
     public event System.Action OnBreathingCompleted;
 
@@ -58,12 +59,21 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
 
     public void OnPointerDown(PointerEventData eventData)
     {
+
         isHoldingTap = true;
+
+        AudioManager.instance.PlaySFX(5);
+        isInhaling = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         isHoldingTap = false;
+
+        AudioManager.instance.StopAllSFX();
+
+        AudioManager.instance.PlaySFX(6);
+        isInhaling = false;
     }
 
     IEnumerator BreathingCycle()
@@ -77,6 +87,11 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
             bool inhaleSuccess = false;
             yield return StartCoroutine(ControlledInhale(result => inhaleSuccess = result));
             circleImage.color = inhaleSuccess ? Color.green : Color.red;
+
+            if (inhaleSuccess)
+                AudioManager.instance.PlaySFX(0);
+            else
+                AudioManager.instance.PlaySFX(1);
 
             if (!inhaleSuccess)
             {
@@ -92,6 +107,11 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
             yield return StartCoroutine(ControlledHold(result => holdSuccess = result));
             circleImage.color = holdSuccess ? Color.green : Color.red;
 
+            if (holdSuccess)
+                AudioManager.instance.PlaySFX(0);
+            else
+                AudioManager.instance.PlaySFX(1);
+
             if (!holdSuccess)
             {
                 circle.localScale = minScale;
@@ -105,6 +125,8 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
             yield return StartCoroutine(WaitForReleaseAndScale(circle, maxScale, minScale, exhaleDuration));
             circleImage.color = Color.white;
 
+            AudioManager.instance.PlaySFX(0);
+
             // Sukses siklus
             currentCycle++;
             progressBar.value = currentCycle;
@@ -116,6 +138,7 @@ public class BreathingRelaxation : MonoBehaviour, IPointerDownHandler, IPointerU
         yield return new WaitForSeconds(1f);
 
         if (miniGameObject != null) miniGameObject.SetActive(false);
+        AudioManager.instance.PlaySFX(3);
         if (rewardObject != null) rewardObject.SetActive(true);
 
         // Tambahkan fungsi score

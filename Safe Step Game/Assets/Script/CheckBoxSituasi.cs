@@ -43,6 +43,10 @@ public class CheckBoxSituasi : MonoBehaviour
             btn.interactable = false;
 
         bool isCorrect = IsCorrect(index);
+        if (isCorrect)
+            AudioManager.instance.PlaySFX(0); // suara benar
+        else
+            AudioManager.instance.PlaySFX(1); // suara salah
 
         // tampilkan feedback sesuai tombol yang dipilih
         if (index < feedbackObjects.Length)

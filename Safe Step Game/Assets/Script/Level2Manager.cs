@@ -54,6 +54,8 @@ public class Level2Manager : MonoBehaviour
     public void OnSelectRewardGame()
     {
         RewardMinigame1.SetActive(false);
+        AudioManager.instance.StopAllSFX();
+        AudioManager.instance.PlaySFX(4);
         OpeningMinigame2.SetActive(true);
     }
 
@@ -74,6 +76,8 @@ public class Level2Manager : MonoBehaviour
     public void OnSelectRewardGame2()
     {
         RewardMinigame2.SetActive(false);
+        AudioManager.instance.StopAllSFX();
+        AudioManager.instance.PlaySFX(4);
         OpeningMinigame3.SetActive(true);
     }
 
@@ -86,12 +90,14 @@ public class Level2Manager : MonoBehaviour
 
     public void OnSelectReward3()
     {
+        AudioManager.instance.StopAllSFX();
         SceneManager.LoadScene("Level 3 Mental Health");
     }
 
     // ------------------ Peta Level ------------------
     public void GoToMinigame1()
     {
+        AudioManager.instance.PlaySFX(4);
         OpeningMinigame1.SetActive(true);
         PetaLevel.SetActive(false);
     }
@@ -100,6 +106,7 @@ public class Level2Manager : MonoBehaviour
     {
         if (minigame1Unlocked)
         {
+            AudioManager.instance.PlaySFX(4);
             OpeningMinigame2.SetActive(true);
             PetaLevel.SetActive(false);
         }
@@ -109,6 +116,7 @@ public class Level2Manager : MonoBehaviour
     {
         if (minigame2Unlocked)
         {
+            AudioManager.instance.PlaySFX(4);
             OpeningMinigame3.SetActive(true);
             PetaLevel.SetActive(false);
         }

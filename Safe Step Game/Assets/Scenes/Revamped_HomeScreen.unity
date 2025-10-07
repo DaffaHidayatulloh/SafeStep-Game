@@ -323,6 +323,7 @@ MonoBehaviour:
   gameCardsTextures:
   - {fileID: 2800000, guid: 01f539def101f0f429102a08c2dbb234, type: 3}
   - {fileID: 2800000, guid: 0434fab483775894ca5d03eb0c388572, type: 3}
+  playerAvatars: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

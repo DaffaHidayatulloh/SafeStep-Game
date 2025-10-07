@@ -72,6 +72,7 @@ public class QuizSituasiManager : MonoBehaviour
     private void EndQuiz()
     {
         if (miniGame3 != null) miniGame3.SetActive(false);
+        AudioManager.instance.PlaySFX(3);
         if (reward != null) reward.SetActive(true);
 
         if (scoreDisplayText != null)
