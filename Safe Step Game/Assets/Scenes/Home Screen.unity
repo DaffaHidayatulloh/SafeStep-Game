@@ -1230,7 +1230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.24000001}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -40}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 690.701, y: 898.881}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542125603
@@ -3307,7 +3307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -168.4}
+  m_AnchoredPosition: {x: 0, y: -168.40039}
   m_SizeDelta: {x: 146, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1331167841 stripped
@@ -4048,7 +4048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 395.3505, y: -343.72025}
+  m_AnchoredPosition: {x: 395.3506, y: -343.7207}
   m_SizeDelta: {x: 790.701, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1779480459
@@ -4801,9 +4801,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCardsTextures:
-  - {fileID: 2800000, guid: 01f539def101f0f429102a08c2dbb234, type: 3}
-  - {fileID: 2800000, guid: 0434fab483775894ca5d03eb0c388572, type: 3}
-  - {fileID: 2800000, guid: a744d9bfc92bffb4e84514d50a500f01, type: 3}
+  - {fileID: 2800000, guid: 40c661b45b762fd46946cea355c8fa27, type: 3}
+  - {fileID: 2800000, guid: 427a45096ea8e9041b25dba77ad30776, type: 3}
+  - {fileID: 2800000, guid: 63250f3396c54d641a5264f38585e6b8, type: 3}
   playerAvatars:
   - {fileID: 2800000, guid: 99ddf93910c25d44e89f6cebf7d60536, type: 3}
   - {fileID: 2800000, guid: 3934d9293cda28c4b9cee9198d7150c4, type: 3}
@@ -5126,7 +5126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -230.7, y: 706.4001}
+  m_AnchoredPosition: {x: -230.7002, y: 706.4004}
   m_SizeDelta: {x: -461.4, y: -407.20023}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2602403280953609189
