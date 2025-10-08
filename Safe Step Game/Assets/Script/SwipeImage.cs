@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System.IO;
 
 public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
 {
@@ -28,16 +29,29 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
     public Text instructionTextUI;
     public Text feedbackTextUI;
     public Text progressTextUI;
-    public Text scoreDisplayText;   // tampilkan score (+100 atau +0) hanya di akhir
+    public Text scoreDisplayText;
 
     [Header("Reward Settings")]
     public GameObject rewardObject;
     public GameObject cardObject;
 
     [Header("Score Settings")]
-    public int levelIndex = 1;       // Level ke berapa
-    public int miniGameIndex = 1;    // Mini game ke berapa (1-3)
-    public int rewardScore = 100;    // Score reward
+    public int levelIndex = 1;
+    public int miniGameIndex = 1;
+    public int rewardScore = 100;
+
+    [Header("Character Settings")]
+    public Image characterImage; // Referensi ke UI karakter
+
+    [Tooltip("maleSprites[0]=normal, [1]=happy, [2]=sad")]
+    public Sprite[] maleSprites = new Sprite[3];
+
+    [Tooltip("femaleSprites[0]=normal, [1]=happy, [2]=sad")]
+    public Sprite[] femaleSprites = new Sprite[3];
+
+    private Sprite currentNormalSprite;
+    private Sprite currentHappySprite;
+    private Sprite currentSadSprite;
 
     private int currentIndex = 0;
     private int totalQuestions;
@@ -56,6 +70,8 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         totalQuestions = correctDirections.Length;
         ResetState();
 
+        LoadCharacter();
+
         if (instructionTextUI != null && instructionTexts.Length > 0)
             instructionTextUI.text = instructionTexts[0];
 
@@ -69,7 +85,55 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
             rewardObject.SetActive(false);
 
         if (scoreDisplayText != null)
-            scoreDisplayText.text = ""; // kosong awal
+            scoreDisplayText.text = "";
+    }
+
+    // Load karakter dari file JSON
+    void LoadCharacter()
+    {
+        string path = Application.persistentDataPath + "/character.json";
+
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            CharacterSelection.CharacterData data = JsonUtility.FromJson<CharacterSelection.CharacterData>(json);
+
+            if (data.characterName == "Male")
+            {
+                if (maleSprites.Length >= 3)
+                {
+                    currentNormalSprite = maleSprites[0];
+                    currentHappySprite = maleSprites[1];
+                    currentSadSprite = maleSprites[2];
+                }
+            }
+            else
+            {
+                if (femaleSprites.Length >= 3)
+                {
+                    currentNormalSprite = femaleSprites[0];
+                    currentHappySprite = femaleSprites[1];
+                    currentSadSprite = femaleSprites[2];
+                }
+            }
+
+            if (characterImage != null)
+                characterImage.sprite = currentNormalSprite;
+        }
+        else
+        {
+            Debug.LogWarning("No character data found. Defaulting to male.");
+
+            if (maleSprites.Length >= 3)
+            {
+                currentNormalSprite = maleSprites[0];
+                currentHappySprite = maleSprites[1];
+                currentSadSprite = maleSprites[2];
+            }
+
+            if (characterImage != null)
+                characterImage.sprite = currentNormalSprite;
+        }
     }
 
     void ResetState()
@@ -86,7 +150,6 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         if (hasSwiped) return;
 
         rect.anchoredPosition += new Vector2(eventData.delta.x, 0f);
-
         float offsetX = rect.anchoredPosition.x - startAnchoredPos.x;
         offsetX = Mathf.Clamp(offsetX, -maxDragDistance, maxDragDistance);
         rect.anchoredPosition = startAnchoredPos + new Vector2(offsetX, 0f);
@@ -107,23 +170,20 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
             if (swipeDir == expectedDir)
             {
                 AudioManager.instance.PlaySFX(0);
+                StartCoroutine(ChangeCharacterExpression(true)); //ekspresi senang
                 hasSwiped = true;
                 canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
 
                 if (currentIndex == totalQuestions - 1)
-                {
-                    // hanya di soal terakhir  kasih reward
                     StartCoroutine(FinalQuestionRoutine(dir));
-                }
                 else
-                {
                     StartCoroutine(SmoothHideAndReturn(dir));
-                }
             }
             else
             {
                 AudioManager.instance.PlaySFX(1);
+                StartCoroutine(ChangeCharacterExpression(false)); //ekspresi sedih
                 StartCoroutine(ShakeAndReset());
             }
         }
@@ -131,6 +191,16 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             StartCoroutine(SmoothMoveTo(startAnchoredPos));
         }
+    }
+
+    // Ganti ekspresi karakter sementara (1 detik)
+    IEnumerator ChangeCharacterExpression(bool correct)
+    {
+        if (characterImage == null) yield break;
+
+        characterImage.sprite = correct ? currentHappySprite : currentSadSprite;
+        yield return new WaitForSeconds(1f);
+        characterImage.sprite = currentNormalSprite;
     }
 
     IEnumerator SmoothMoveTo(Vector2 target)
@@ -145,7 +215,6 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     IEnumerator SmoothHideAndReturn(float direction)
     {
-        // animasi swipe biasa
         Vector2 startPos = rect.anchoredPosition;
         Vector2 targetPos = startAnchoredPos + new Vector2(direction * offscreenDistance, 0f);
 
@@ -198,7 +267,6 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     IEnumerator FinalQuestionRoutine(float direction)
     {
-        // animasi keluar terakhir
         Vector2 startPos = rect.anchoredPosition;
         Vector2 targetPos = startAnchoredPos + new Vector2(direction * offscreenDistance, 0f);
 
@@ -214,21 +282,18 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         rect.anchoredPosition = targetPos;
         canvasGroup.alpha = 0f;
 
-        // tampilkan feedback terakhir
         if (feedbackTextUI != null && feedbackTexts.Length > 0)
         {
             int feedbackIndex = Mathf.Min(currentIndex, feedbackTexts.Length - 1);
             feedbackTextUI.text = feedbackTexts[feedbackIndex];
         }
 
-        // baru cek & tambahkan score kalau soal terakhir selesai
         string miniGameKey = $"MiniGameCompleted_Level{levelIndex}_{miniGameIndex}";
         string levelScoreKey = $"Score_Level{levelIndex}";
 
         int lastEarned = 0;
         if (PlayerPrefs.GetInt(miniGameKey, 0) == 0)
         {
-            // Belum pernah dikerjakan  tambah score
             lastEarned = rewardScore;
             PlayerPrefs.SetInt(miniGameKey, 1);
 
@@ -240,19 +305,19 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         else
         {
-            // Sudah pernah  score 0
             lastEarned = 0;
         }
 
         if (scoreDisplayText != null)
             scoreDisplayText.text = "+" + lastEarned;
 
-        // tunggu 3 detik
         yield return new WaitForSeconds(3f);
 
         if (rewardObject != null)
-        AudioManager.instance.PlaySFX(3);
-        rewardObject.SetActive(true);
+        {
+            AudioManager.instance.PlaySFX(3);
+            rewardObject.SetActive(true);
+        }
 
         if (cardObject != null)
             cardObject.SetActive(false);
@@ -278,4 +343,6 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
         yield return StartCoroutine(SmoothMoveTo(startAnchoredPos));
     }
 }
+
+
 

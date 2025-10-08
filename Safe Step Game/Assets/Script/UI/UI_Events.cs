@@ -282,34 +282,47 @@ public class UI_Events : MonoBehaviour
 
         private void LoadCharacter()
     {
-        if (File.Exists(savePath))
+        string filePath = Path.Combine(Application.persistentDataPath, "character.json");
+
+        if (File.Exists(filePath))
         {
-            string json = File.ReadAllText(savePath);
+            string json = File.ReadAllText(filePath);
             CharacterData data = JsonUtility.FromJson<CharacterData>(json);
 
-            // Sprite selectedSprite = null;
-
-            // _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[0]);
-
-            if (data.characterName == "Male")
+            if (data != null && !string.IsNullOrEmpty(data.characterName))
             {
-                _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[0]);
+                Debug.Log("Character loaded: " + data.characterName);
+
+                if (_playerAvatar != null && playerAvatars != null && playerAvatars.Length >= 2)
+                {
+                    // Pilih avatar berdasarkan nama karakter
+                    if (data.characterName == "Male")
+                    {
+                        _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[0]);
+                    }
+                    else if (data.characterName == "Female")
+                    {
+                        _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[1]);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Unknown character name. Defaulting to Male avatar.");
+                        _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[0]);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Player avatar or avatar list not properly assigned.");
+                }
             }
-            else if (data.characterName == "Female")
+            else
             {
-                _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[1]);
+                Debug.LogWarning("Character data invalid or missing characterName.");
             }
-
-            // Set ke dua tempat (main menu dan profil)
-            // if (characterImageMainMenu != null)
-            //     characterImageMainMenu.sprite = selectedSprite;
-
-            // if (characterImageProfile != null)
-            //     characterImageProfile.sprite = selectedSprite;
         }
         else
         {
-            Debug.Log("No character selected yet.");
+            Debug.LogWarning("Character data file not found: " + filePath);
         }
     }
 
