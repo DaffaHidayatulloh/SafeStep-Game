@@ -47,7 +47,7 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="profile-menu" class="menu-field common-show" style="overflow: visible; visibility: visible;">
+            <ui:VisualElement name="profile-menu" class="menu-field" style="overflow: visible; visibility: visible;">
                 <ui:Button text="Ubah Nama" name="profile-change-name" class="menu-button button-blue" />
                 <ui:Button text="Ubah Avatar" name="profile-change-avatar" class="menu-button button-blue" />
                 <ui:Button text="Ekspor Data" name="profile-export-data" class="menu-button button-blue" style="height: 90px;" />
