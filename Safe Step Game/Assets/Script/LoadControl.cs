@@ -16,7 +16,7 @@ public class LoadControl : MonoBehaviour
         if (File.Exists(playerPath) && File.Exists(characterPath))
         {
             // Kalau ada keduanya, langsung ke Home Screen
-            SceneManager.LoadScene("Revamped_HomeScreen");
+            SceneManager.LoadScene("Home Screen");
         }
         else
         {
