@@ -4407,6 +4407,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694940265}
   m_CullTransparentMesh: 1
+--- !u!1 &716582775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 716582776}
+  - component: {fileID: 716582778}
+  - component: {fileID: 716582777}
+  m_Layer: 5
+  m_Name: Image Ekspresi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &716582776
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716582775}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1041823418}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 515}
+  m_SizeDelta: {x: 400, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &716582777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716582775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &716582778
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716582775}
+  m_CullTransparentMesh: 1
 --- !u!1 &720484879
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,6 +5174,15 @@ MonoBehaviour:
   miniGameIndex: 6
   rewardScore: 50
   scoreDisplayText: {fileID: 1087218340}
+  characterImage: {fileID: 716582777}
+  maleSprites:
+  - {fileID: -1726605371590223354, guid: 7214a02b61351a9499b2682842d27d54, type: 3}
+  - {fileID: 7782901807414879530, guid: bf6491df6cfa6a94bbcc36416753332b, type: 3}
+  - {fileID: 2765913237828246276, guid: 74913c21e88795043900308381fb3a7e, type: 3}
+  femaleSprites:
+  - {fileID: -9183770061591236566, guid: 195441b1ec0997d498fbf5addcf3aaf5, type: 3}
+  - {fileID: 6300380909363207862, guid: 023ecd1eb8bddef44bb3d2a101a16af0, type: 3}
+  - {fileID: -133029067114184953, guid: c6aa7c3443911a2489be3fbf182c3d0b, type: 3}
 --- !u!1 &854571059
 GameObject:
   m_ObjectHideFlags: 0
@@ -5909,7 +5993,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 716582776}
   m_Father: {fileID: 1736481794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7614,6 +7699,15 @@ MonoBehaviour:
   miniGameIndex: 5
   rewardScore: 50
   scoreDisplayText: {fileID: 1087218340}
+  characterImage: {fileID: 716582777}
+  maleSprites:
+  - {fileID: -1726605371590223354, guid: 7214a02b61351a9499b2682842d27d54, type: 3}
+  - {fileID: 7782901807414879530, guid: bf6491df6cfa6a94bbcc36416753332b, type: 3}
+  - {fileID: 2765913237828246276, guid: 74913c21e88795043900308381fb3a7e, type: 3}
+  femaleSprites:
+  - {fileID: -9183770061591236566, guid: 195441b1ec0997d498fbf5addcf3aaf5, type: 3}
+  - {fileID: 6300380909363207862, guid: 023ecd1eb8bddef44bb3d2a101a16af0, type: 3}
+  - {fileID: -133029067114184953, guid: c6aa7c3443911a2489be3fbf182c3d0b, type: 3}
 --- !u!1 &1447682989
 GameObject:
   m_ObjectHideFlags: 0
@@ -11451,6 +11545,15 @@ MonoBehaviour:
   miniGameIndex: 4
   rewardScore: 50
   scoreDisplayText: {fileID: 1087218340}
+  characterImage: {fileID: 716582777}
+  maleSprites:
+  - {fileID: -1726605371590223354, guid: 7214a02b61351a9499b2682842d27d54, type: 3}
+  - {fileID: 7782901807414879530, guid: bf6491df6cfa6a94bbcc36416753332b, type: 3}
+  - {fileID: 2765913237828246276, guid: 74913c21e88795043900308381fb3a7e, type: 3}
+  femaleSprites:
+  - {fileID: -9183770061591236566, guid: 195441b1ec0997d498fbf5addcf3aaf5, type: 3}
+  - {fileID: 6300380909363207862, guid: 023ecd1eb8bddef44bb3d2a101a16af0, type: 3}
+  - {fileID: -133029067114184953, guid: c6aa7c3443911a2489be3fbf182c3d0b, type: 3}
 --- !u!114 &827294237259584205
 MonoBehaviour:
   m_ObjectHideFlags: 0
