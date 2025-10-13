@@ -29,7 +29,7 @@
                 <ui:Button text="&#10;" name="gamepick-right" class="gamepickbutton" style="background-image: url(&quot;project://database/Assets/Images/UI/arrow_right.png?fileID=2800000&amp;guid=f0320385fcebd834f867701b6633685e&amp;type=3#arrow_right&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; right: 0;" />
                 <ui:Button name="gamepick-left" class="gamepickbutton" style="left: 0; background-image: url(&quot;project://database/Assets/Images/UI/g50.png?fileID=2800000&amp;guid=605a76f62934f4a4bbacb243a3ceed15&amp;type=3#g50&quot;);" />
             </ui:VisualElement>
-            <ui:VisualElement name="progress-menu" class="menu-field common-show">
+            <ui:VisualElement name="progress-menu" class="menu-field">
                 <ui:Label text="SafeQuiz" class="label-progress" />
                 <ui:ProgressBar value="0" name="progress-lv1" class="level-progressbar" />
                 <ui:Label text="SafeAction" class="label-progress" />
