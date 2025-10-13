@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.InteropServices;
@@ -22,7 +22,7 @@ public class CertificateDownloader : MonoBehaviour
 
     [Header("Render Settings")]
     public Camera certificateCamera;      // Kamera khusus sertifikat
-    public RenderTexture renderTexture;   // RenderTexture tempat menangkap hasil kamera
+    public RenderTexture renderTexture;   // RenderTexture referensi (hanya untuk ambil ukuran)
 
 #if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")]
@@ -73,19 +73,26 @@ public class CertificateDownloader : MonoBehaviour
             yield break;
         }
 
-        // Render kamera ke texture
-        certificateCamera.targetTexture = renderTexture;
+        // Buat RenderTexture sementara (agar tidak mengubah sRGB)
+        RenderTexture tempRT = new RenderTexture(renderTexture.width, renderTexture.height, 24, RenderTextureFormat.ARGB32);
+        tempRT.useMipMap = false;
+        tempRT.autoGenerateMips = false;
+        tempRT.Create();
+
+        //  Render kamera ke tempRT
+        certificateCamera.targetTexture = tempRT;
         certificateCamera.Render();
 
-        // Ambil hasil render dari RenderTexture
-        RenderTexture.active = renderTexture;
-        Texture2D tex = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, false);
-        tex.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        // Ambil hasil render dari tempRT
+        RenderTexture.active = tempRT;
+        Texture2D tex = new Texture2D(tempRT.width, tempRT.height, TextureFormat.RGB24, false);
+        tex.ReadPixels(new Rect(0, 0, tempRT.width, tempRT.height), 0, 0);
         tex.Apply();
 
-        // Kembalikan target texture kamera dan aktif render
+        // Bersihkan target texture dan aktif render
         certificateCamera.targetTexture = null;
         RenderTexture.active = null;
+        tempRT.Release();
 
         byte[] bytes = tex.EncodeToPNG();
         string savedPath = "";
@@ -94,7 +101,7 @@ public class CertificateDownloader : MonoBehaviour
         savedPath = Path.Combine("/storage/emulated/0/Download", fileName);
         File.WriteAllBytes(savedPath, bytes);
 
-        // Supaya muncul di Gallery kita pakai MediaScanner
+        // 🔹 Supaya muncul di Gallery Android
         using (AndroidJavaClass player = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
         {
             AndroidJavaObject activity = player.GetStatic<AndroidJavaObject>("currentActivity");
@@ -131,4 +138,5 @@ public class CertificateDownloader : MonoBehaviour
         notificationText.gameObject.SetActive(false);
     }
 }
+
 
