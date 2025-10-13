@@ -7,7 +7,7 @@ using System.Collections;
 public class CertificateDownloader : MonoBehaviour
 {
     [Header("UI Certificate Elements")]
-    public Image certificateBackground;   // Sertifikat background
+    public Image certificateBackground;   // Sertifikat background (UI)
     public Text playerNameText;           // Nama pemain (Legacy UI Text)
 
     [Header("Button")]
@@ -19,6 +19,10 @@ public class CertificateDownloader : MonoBehaviour
     [Header("Save Settings")]
     public string fileName = "Certificate.png";  // Nama file hasil download
     private string playerDataFile = "playerData.json"; // File tempat nama disimpan
+
+    [Header("Render Settings")]
+    public Camera certificateCamera;      // Kamera khusus sertifikat
+    public RenderTexture renderTexture;   // RenderTexture tempat menangkap hasil kamera
 
 #if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")]
@@ -63,17 +67,25 @@ public class CertificateDownloader : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        // Ambil posisi sertifikat
-        RectTransform rt = certificateBackground.GetComponent<RectTransform>();
-        Vector2 size = rt.rect.size;
-        Vector2 pos = rt.position;
+        if (certificateCamera == null || renderTexture == null)
+        {
+            Debug.LogError("CertificateCamera atau RenderTexture belum diassign!");
+            yield break;
+        }
 
-        int width = Mathf.RoundToInt(size.x);
-        int height = Mathf.RoundToInt(size.y);
+        // Render kamera ke texture
+        certificateCamera.targetTexture = renderTexture;
+        certificateCamera.Render();
 
-        Texture2D tex = new Texture2D(width, height, TextureFormat.RGB24, false);
-        tex.ReadPixels(new Rect(pos.x - width / 2, pos.y - height / 2, width, height), 0, 0);
+        // Ambil hasil render dari RenderTexture
+        RenderTexture.active = renderTexture;
+        Texture2D tex = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, false);
+        tex.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
         tex.Apply();
+
+        // Kembalikan target texture kamera dan aktif render
+        certificateCamera.targetTexture = null;
+        RenderTexture.active = null;
 
         byte[] bytes = tex.EncodeToPNG();
         string savedPath = "";
@@ -95,7 +107,6 @@ public class CertificateDownloader : MonoBehaviour
 #elif UNITY_WEBGL && !UNITY_EDITOR
         DownloadFile(bytes, bytes.Length, fileName);
         savedPath = "Browser Download";
-
 #else
         savedPath = Path.Combine(Application.persistentDataPath, fileName);
         File.WriteAllBytes(savedPath, bytes);
