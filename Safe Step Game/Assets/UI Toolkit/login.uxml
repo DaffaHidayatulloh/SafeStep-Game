@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/command-state.uss?fileID=7433441132597879392&amp;guid=290de5c356eda4f44b5cfe7b2b8d7af7&amp;type=3#command-state" />
+    <Style src="project://database/Assets/color-style.uss?fileID=7433441132597879392&amp;guid=163ed8835a7608144b5fb26da4167f35&amp;type=3#color-style" />
+    <Style src="project://database/Assets/UI%20Toolkit/main.uss?fileID=7433441132597879392&amp;guid=60d635056be59a645bf843413e36fbfa&amp;type=3#main" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement>
+            <ui:Label text="Label" style="font-size: 34%; -unity-text-align: upper-center; background-color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+        <ui:TextField label="Text Field" placeholder-text="filler text" />
+    </ui:VisualElement>
+</ui:UXML>

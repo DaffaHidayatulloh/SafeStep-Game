@@ -15,7 +15,7 @@ public class UI_Events : MonoBehaviour
     // public GameObject Progres;
     // public GameObject Profile;
 
-
+    // DataWrapper dataWrapper;
     
     private int scoreLevel1;
     private int scoreLevel2;
@@ -67,6 +67,8 @@ public class UI_Events : MonoBehaviour
     private Button _logoutButton;
 
     private Button _reseteDataButton;
+
+    private Button _claimCertificateButton;
     
 
     private string fileName = "playerData.json";
@@ -101,13 +103,15 @@ public class UI_Events : MonoBehaviour
 
     void Start()
     {
-        
+
         savePath = Application.persistentDataPath + "/character.json";
+        // dataWrapper = GetComponent<DataWrapper>();
 
     }
 
     private void TempResetClass()
     {
+        Debug.Log("Resetting nav button classes");
         for (int i = 0; i < _navButtons.Count; i++)
         {
             _navButtons[i].RemoveFromClassList("navisSelected");
@@ -133,11 +137,18 @@ public class UI_Events : MonoBehaviour
 
         LoadScores();
         
-        _level1Progression.value = (float)scoreLevel1 / 100;
-        _level2Progression.value = (float)scoreLevel2 / 100;
-        _level3Progression.value = (float)scoreLevel3 / 100;
+        _level1Progression.value = (float)scoreLevel1;
+        _level2Progression.value = (float)scoreLevel2;
+        _level3Progression.value = (float)scoreLevel3;
 
         _totalProgression.value = scoreLevel1 + scoreLevel2 + scoreLevel3;
+
+        if (_totalProgression.value >= 300)
+        {
+            // _totalProgression.value = 300;
+            _claimCertificateButton.AddToClassList("button-blue");
+            _claimCertificateButton.SetEnabled(true);
+        }
 
 
         _progressMenu.AddToClassList("common-show");
@@ -274,6 +285,38 @@ public class UI_Events : MonoBehaviour
         _profileExportDataButton = _document.rootVisualElement.Q<Button>("profile-export-data") as Button;
         _logoutButton = _document.rootVisualElement.Q<Button>("profile-logout") as Button;
         _reseteDataButton = _document.rootVisualElement.Q<Button>("profile-reset-data") as Button;
+
+        _claimCertificateButton = _document.rootVisualElement.Q<Button>("SertifClaimButton") as Button;
+
+        _logoutButton.clicked += () =>
+        {
+            Debug.Log("LOGOUT BUTTON CLICKED");
+            // clear all player prefs
+            PlayerPrefs.DeleteAll();
+            // delete character.json file
+            if (File.Exists(savePath))
+            {
+                File.Delete(savePath);
+                Debug.Log("Character data file deleted: " + savePath);
+            }
+            else
+            {
+                Debug.LogWarning("Character data file not found for deletion: " + savePath);
+            }
+            // go to main menu scene
+            SceneManager.LoadScene("Main Menu");
+        };
+
+        
+
+        _claimCertificateButton.clicked += () =>
+        {
+            Debug.Log("CLAIM CERTIFICATE BUTTON CLICKED");
+            GoToSertif();
+        };
+
+
+        
         
 
     }
@@ -349,6 +392,7 @@ public class UI_Events : MonoBehaviour
         void LoadPlayerName()
     {
         string filePath = Path.Combine(Application.persistentDataPath, fileName);
+        // string playerName = DataWrapper.ReadLocalStorage("playerName");
 
         if (File.Exists(filePath))
         {
@@ -357,8 +401,10 @@ public class UI_Events : MonoBehaviour
 
             if (data != null && !string.IsNullOrEmpty(data.playerName))
             {
+
                 if (_playerNameLabel != null)
                     _playerNameLabel.text = data.playerName;
+                    // _playerNameLabel.text = playerName;
                 else
                 {
                     Debug.LogWarning("Player Name Label is null, using fallback as androgynous name");

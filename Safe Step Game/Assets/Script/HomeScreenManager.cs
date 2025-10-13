@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 using System.IO;
 
 public class HomeScreenManager : MonoBehaviour
-{ 
+{
+
+    // DataWrapper dataWrapper;
+    
     [Header("Panels")]
     public GameObject Home;
     public GameObject Progres;
@@ -42,6 +45,11 @@ public class HomeScreenManager : MonoBehaviour
 
     void Start()
     {
+        // dataWrapper = GetComponent<DataWrapper>();
+        // if (dataWrapper == null)
+        // {
+        //     Debug.LogError("DataWrapper component not found on the GameObject.");
+        // }
         savePath = Application.persistentDataPath + "/character.json";
         LoadCharacter();
         LoadPlayerName();
