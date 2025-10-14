@@ -125,3 +125,8 @@
     font-size: 26px;
     color: rgb(87, 147, 221);
 }
+
+.sertif-disabled {
+    background-color: rgb(204, 0, 0);
+    -unity-background-image-tint-color: rgb(130, 130, 130);
+}

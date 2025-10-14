@@ -16,6 +16,8 @@ public class UI_Events : MonoBehaviour
     // public GameObject Profile;
 
     // DataWrapper dataWrapper;
+
+    public Camera CertificateCamera;
     
     private int scoreLevel1;
     private int scoreLevel2;
@@ -75,6 +77,7 @@ public class UI_Events : MonoBehaviour
     private Label _playerNameLabel;
 
     public Texture[] playerAvatars;
+    private VisualElement _sertifStuff;
 
     private string savePath;
 
@@ -146,8 +149,19 @@ public class UI_Events : MonoBehaviour
         if (_totalProgression.value >= 300)
         {
             // _totalProgression.value = 300;
+
+            // set certificate camera to black and white
+            
             _claimCertificateButton.AddToClassList("button-blue");
             _claimCertificateButton.SetEnabled(true);
+            _sertifStuff.RemoveFromClassList("sertif-disabled");
+        } else
+        {
+            _claimCertificateButton.RemoveFromClassList("button-blue");
+            _claimCertificateButton.SetEnabled(false);
+            
+
+            // also set the certific
         }
 
 
@@ -288,6 +302,8 @@ public class UI_Events : MonoBehaviour
 
         _claimCertificateButton = _document.rootVisualElement.Q<Button>("SertifClaimButton") as Button;
 
+        _sertifStuff = _document.rootVisualElement.Q("SertifStuff") as VisualElement;
+
         _logoutButton.clicked += () =>
         {
             Debug.Log("LOGOUT BUTTON CLICKED");
@@ -312,7 +328,17 @@ public class UI_Events : MonoBehaviour
         _claimCertificateButton.clicked += () =>
         {
             Debug.Log("CLAIM CERTIFICATE BUTTON CLICKED");
-            GoToSertif();
+            ShowPopup();
+            // GoToSertif();
+            Home_CertificateDownloader certDownloader = FindFirstObjectByType<Home_CertificateDownloader>();
+            if (certDownloader != null)
+            {
+                certDownloader.SaveCertificate();
+            }
+            else
+            {
+                Debug.LogError("CertificateDownloader component not found in the scene.");
+            }
         };
 
 
@@ -452,7 +478,7 @@ public class UI_Events : MonoBehaviour
 
 
     }
-    
+
 
 
 
@@ -464,6 +490,17 @@ public class UI_Events : MonoBehaviour
 
         // assign hide class to popup
         _popup.AddToClassList("hide-popup");
+
+    }
+    
+    private void ShowPopup()
+    {
+        // _popup.style.display = DisplayStyle.Flex;
+
+        // remove hide class from popup
+        _popup.RemoveFromClassList("hide-popup");
+
+        // _popup.transform.scale = Vector3.one; 
 
     }
 

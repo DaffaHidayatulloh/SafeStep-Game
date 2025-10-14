@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/main.uss?fileID=7433441132597879392&amp;guid=60d635056be59a645bf843413e36fbfa&amp;type=3#main" />
-    <Style src="project://database/Assets/UI%20Toolkit/menu-style.uss?fileID=7433441132597879392&amp;guid=21574db30d79cda4dbd76a257f0ccd0a&amp;type=3#menu-style" />
-    <Style src="project://database/Assets/color-style.uss?fileID=7433441132597879392&amp;guid=163ed8835a7608144b5fb26da4167f35&amp;type=3#color-style" />
-    <Style src="project://database/Assets/command-state.uss?fileID=7433441132597879392&amp;guid=290de5c356eda4f44b5cfe7b2b8d7af7&amp;type=3#command-state" />
+    <Style src="project://database/Assets/UI%20Toolkit/main.uss?fileID=7433441132597879392&amp;guid=60d635056be59a645bf843413e36fbfa&amp;type=3" />
+    <Style src="project://database/Assets/UI%20Toolkit/menu-style.uss?fileID=7433441132597879392&amp;guid=21574db30d79cda4dbd76a257f0ccd0a&amp;type=3" />
+    <Style src="project://database/Assets/color-style.uss?fileID=7433441132597879392&amp;guid=163ed8835a7608144b5fb26da4167f35&amp;type=3" />
+    <Style src="project://database/Assets/command-state.uss?fileID=7433441132597879392&amp;guid=290de5c356eda4f44b5cfe7b2b8d7af7&amp;type=3" />
     <ui:VisualElement name="root-container" style="flex-grow: 1; flex-direction: column; flex-wrap: nowrap; align-content: auto; align-self: auto; align-items: stretch;">
         <ui:VisualElement name="header" style="flex-grow: 1; max-height: 167px; position: absolute; top: 0; left: 0; right: 0; bottom: auto;">
             <ui:VisualElement name="header-container">
@@ -42,7 +42,7 @@
                 <ui:VisualElement style="flex-grow: 1;">
                     <ui:VisualElement style="flex-grow: 1;">
                         <ui:Label text="Selesaikan semua progress game untuk mendapatkan sertifikat kamu!" style="align-self: center; color: rgb(87, 147, 221); font-size: 16px; white-space: normal; -unity-text-align: upper-center; -unity-font-style: normal;" />
-                        <ui:VisualElement name="SertifStuff" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/Sertif/Sertif-off.png?fileID=2800000&amp;guid=2d1d62bfc49b5c04e928e365eec2ea5a&amp;type=3#Sertif-off&quot;); -unity-background-scale-mode: scale-to-fit; -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                        <ui:VisualElement name="SertifStuff" class="sertif-disabled" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/CertificateRenderTex.renderTexture?fileID=8400000&amp;guid=9e8091124418ab9459fe271098324579&amp;type=2#CertificateRenderTex&quot;); -unity-background-scale-mode: scale-to-fit; margin-top: 9px; margin-right: 9px; margin-bottom: 9px; margin-left: 9px; background-size: cover; border-top-left-radius: 18px; border-top-right-radius: 18px; border-bottom-right-radius: 18px; border-bottom-left-radius: 18px;" />
                         <ui:Button text="Klaim Sertifikat!" enabled="false" name="SertifClaimButton" class="menu-button" style="visibility: visible; opacity: 1;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -50,7 +50,7 @@
             <ui:VisualElement name="profile-menu" class="menu-field" style="overflow: visible; visibility: visible;">
                 <ui:Button text="Ubah Nama" name="profile-change-name" class="menu-button button-blue" />
                 <ui:Button text="Ubah Avatar" name="profile-change-avatar" class="menu-button button-blue" />
-                <ui:Button text="Ekspor Data" name="profile-export-data" class="menu-button button-blue" style="height: 90px;" />
+                <ui:Button text="Ekspor Data" name="profile-export-data" class="menu-button button-blue" style="height: 90px; display: none;" />
                 <ui:Button text="Reset Progress" name="profile-logout" class="menu-button" />
             </ui:VisualElement>
         </ui:VisualElement>
@@ -59,8 +59,8 @@
             <ui:Button name="nav-progress" class="nav-button" style="background-image: url(&quot;project://database/Assets/Images/UI/white-progress.png?fileID=2800000&amp;guid=9d9658eff613e6e48a08e75600c9b280&amp;type=3#white-progress&quot;);" />
             <ui:Button name="nav-profile" class="nav-button" style="background-image: url(&quot;project://database/Assets/Images/UI/white-profile.png?fileID=2800000&amp;guid=d39d535a980201e4e953247a9549a557&amp;type=3#white-profile&quot;);" />
         </ui:VisualElement>
-        <ui:VisualElement name="pop-up-overlay" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 1px; bottom: 2px; -unity-text-outline-color: rgb(255, 39, 39); background-color: rgba(128, 128, 128, 0.79); align-self: auto; align-content: auto; justify-content: center; transition-duration: 3s; transition-property: scale; display: none;">
-            <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; background-color: rgba(255, 255, 255, 0); align-self: center; background-image: url(&quot;project://database/Assets/UI%20Toolkit/rect8.png?fileID=2800000&amp;guid=c7b0fa7b2c9c25449b7e872c7e1ffebf&amp;type=3#rect8&quot;); -unity-slice-left: 33; -unity-slice-top: 33; -unity-slice-right: 33; -unity-slice-bottom: 33; max-height: 216px; min-height: 256px; min-width: 255px; -unity-background-image-tint-color: rgb(255, 255, 255);">
+        <ui:VisualElement name="pop-up-overlay" class="hide-popup" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 1px; bottom: 2px; -unity-text-outline-color: rgb(255, 39, 39); background-color: rgba(128, 128, 128, 0.79); align-self: auto; align-content: auto; justify-content: center; transition-duration: 0.2s; transition-property: scale; display: flex;">
+            <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; background-color: rgba(255, 255, 255, 0); align-self: center; background-image: url(&quot;project://database/Assets/UI%20Toolkit/rect8.png?fileID=2800000&amp;guid=c7b0fa7b2c9c25449b7e872c7e1ffebf&amp;type=3#rect8&quot;); -unity-slice-left: 33; -unity-slice-top: 33; -unity-slice-right: 33; -unity-slice-bottom: 33; max-height: 216px; min-height: 256px; min-width: 255px; -unity-background-image-tint-color: rgb(255, 255, 255); transition-duration: 0.5s;">
                 <ui:VisualElement name="VisualElement">
                     <ui:Button text="Button" />
                 </ui:VisualElement>
