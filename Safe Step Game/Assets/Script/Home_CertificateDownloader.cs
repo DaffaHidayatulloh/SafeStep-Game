@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.InteropServices;
 using System.Collections;
+using System;
 
 public class Home_CertificateDownloader : MonoBehaviour
 {
@@ -66,48 +67,61 @@ public class Home_CertificateDownloader : MonoBehaviour
 
     private IEnumerator CaptureCertificate()
     {
+        // Tunggu dua frame agar WebGL selesai render
+        yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
 
-        if (certificateCamera == null || renderTexture == null)
+        if (certificateCamera == null)
         {
-            Debug.LogError("CertificateCamera atau RenderTexture belum diassign!");
+            Debug.LogError("CertificateCamera belum diassign!");
             yield break;
         }
 
-        // Render kamera ke texture
-        certificateCamera.targetTexture = renderTexture;
+        // Buat RenderTexture sementara dengan pengaturan aman untuk WebGL
+        RenderTexture tempRT = new RenderTexture(renderTexture.width, renderTexture.height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear);
+        tempRT.useMipMap = false;
+        tempRT.autoGenerateMips = false;
+        tempRT.Create();
+
+        certificateCamera.targetTexture = tempRT;
         certificateCamera.Render();
 
-        // Ambil hasil render dari RenderTexture
-        RenderTexture.active = renderTexture;
-        Texture2D tex = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGBA32, false);
-        tex.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        RenderTexture.active = tempRT;
+        Texture2D tex = new Texture2D(tempRT.width, tempRT.height, TextureFormat.RGBA32, false);
+        tex.ReadPixels(new Rect(0, 0, tempRT.width, tempRT.height), 0, 0);
         tex.Apply();
 
-        // Kembalikan target texture kamera dan aktif render
+        // Bersihkan
         certificateCamera.targetTexture = null;
         RenderTexture.active = null;
+        tempRT.Release();
 
         byte[] bytes = tex.EncodeToPNG();
         string savedPath = "";
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-        savedPath = Path.Combine("/storage/emulated/0/Download", fileName);
-        File.WriteAllBytes(savedPath, bytes);
+    savedPath = Path.Combine("/storage/emulated/0/Download", fileName);
+    File.WriteAllBytes(savedPath, bytes);
 
-        // Supaya muncul di Gallery kita pakai MediaScanner
-        using (AndroidJavaClass player = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-        {
-            AndroidJavaObject activity = player.GetStatic<AndroidJavaObject>("currentActivity");
-            AndroidJavaObject context = activity.Call<AndroidJavaObject>("getApplicationContext");
+    using (AndroidJavaClass player = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+    {
+        AndroidJavaObject activity = player.GetStatic<AndroidJavaObject>("currentActivity");
+        AndroidJavaObject context = activity.Call<AndroidJavaObject>("getApplicationContext");
 
-            AndroidJavaClass mediaScanner = new AndroidJavaClass("android.media.MediaScannerConnection");
-            mediaScanner.CallStatic("scanFile", context, new string[] { savedPath }, null, null);
-        }
+        AndroidJavaClass mediaScanner = new AndroidJavaClass("android.media.MediaScannerConnection");
+        mediaScanner.CallStatic("scanFile", context, new string[] { savedPath }, null, null);
+    }
 
 #elif UNITY_WEBGL && !UNITY_EDITOR
+    try
+    {
         DownloadFile(bytes, bytes.Length, fileName);
         savedPath = "Browser Download";
+    }
+    catch (Exception e)
+    {
+        Debug.LogWarning(" WebGL download failed: " + e.Message);
+    }
 #else
         savedPath = Path.Combine(Application.persistentDataPath, fileName);
         File.WriteAllBytes(savedPath, bytes);
