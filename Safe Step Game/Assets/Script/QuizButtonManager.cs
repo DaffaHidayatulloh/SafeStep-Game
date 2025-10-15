@@ -11,7 +11,7 @@ public class QuizButtonManager : MonoBehaviour
     public Sprite defaultSprite;       // sprite sebelum berhasil
     public Sprite completedSprite;     // sprite setelah berhasil
 
-    private string saveKey = "QuizCompleted";
+    public string saveKey = "QuizCompleted";
 
     private void Start()
     {

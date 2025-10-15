@@ -248,6 +248,7 @@ MonoBehaviour:
   quizButton: {fileID: 8083431078147070096}
   defaultSprite: {fileID: 1998022599028709442, guid: 1245bc5ae3ceb8143805a0052222dec0, type: 3}
   completedSprite: {fileID: -9160379986361766290, guid: de9eb08b43188a64e91d00793c690da7, type: 3}
+  saveKey: QuizLevel2Minigame3Completed
 --- !u!114 &34186435
 MonoBehaviour:
   m_ObjectHideFlags: 0
