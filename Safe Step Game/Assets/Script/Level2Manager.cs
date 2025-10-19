@@ -167,4 +167,8 @@ public class Level2Manager : MonoBehaviour
         }
         btn.colors = cb;
     }
+    public void Home()
+    {
+        SceneManager.LoadScene("Home Screen");
+    }
 }

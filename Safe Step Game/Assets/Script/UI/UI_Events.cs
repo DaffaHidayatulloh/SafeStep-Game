@@ -320,7 +320,7 @@ public class UI_Events : MonoBehaviour
                 Debug.LogWarning("Character data file not found for deletion: " + savePath);
             }
             // go to main menu scene
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("Home Screen");
         };
 
         

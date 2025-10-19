@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6449791704099684613}
   - component: {fileID: 4147634930735892154}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Deskripsi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 4077448839870633678}
   - component: {fileID: 4891082465980819417}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: Teks Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

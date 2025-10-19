@@ -3283,6 +3283,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7725825820077330398, guid: fd7a2f95b52927a488fb750ac1bd71fc, type: 3}
   m_PrefabInstance: {fileID: 866018201}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &866018204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4891082465980819417, guid: fd7a2f95b52927a488fb750ac1bd71fc, type: 3}
+  m_PrefabInstance: {fileID: 866018201}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &886852954
 GameObject:
   m_ObjectHideFlags: 0
@@ -4801,7 +4812,7 @@ MonoBehaviour:
   levelIndex: 1
   miniGameIndex: 6
   rewardScore: 50
-  scoreDisplayText: {fileID: 0}
+  scoreDisplayText: {fileID: 866018204}
   characterImage: {fileID: 1260037402}
   maleSprites:
   - {fileID: -1726605371590223354, guid: 7214a02b61351a9499b2682842d27d54, type: 3}
@@ -7493,7 +7504,7 @@ MonoBehaviour:
   levelIndex: 1
   miniGameIndex: 5
   rewardScore: 50
-  scoreDisplayText: {fileID: 0}
+  scoreDisplayText: {fileID: 866018204}
   characterImage: {fileID: 1260037402}
   maleSprites:
   - {fileID: -1726605371590223354, guid: 7214a02b61351a9499b2682842d27d54, type: 3}
@@ -7758,7 +7769,7 @@ MonoBehaviour:
   instructionTextUI: {fileID: 1468838861}
   feedbackTextUI: {fileID: 498812254}
   progressTextUI: {fileID: 241995819}
-  scoreDisplayText: {fileID: 0}
+  scoreDisplayText: {fileID: 1840778645}
   rewardObject: {fileID: 1840778644}
   cardObject: {fileID: 614749744}
   levelIndex: 1
@@ -8479,6 +8490,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7725825820077330398, guid: fd7a2f95b52927a488fb750ac1bd71fc, type: 3}
   m_PrefabInstance: {fileID: 1840778642}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1840778645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4891082465980819417, guid: fd7a2f95b52927a488fb750ac1bd71fc, type: 3}
+  m_PrefabInstance: {fileID: 1840778642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1878937633
 GameObject:
   m_ObjectHideFlags: 0
@@ -10723,7 +10745,7 @@ MonoBehaviour:
   levelIndex: 1
   miniGameIndex: 4
   rewardScore: 50
-  scoreDisplayText: {fileID: 0}
+  scoreDisplayText: {fileID: 866018204}
   characterImage: {fileID: 1260037402}
   maleSprites:
   - {fileID: -1726605371590223354, guid: 7214a02b61351a9499b2682842d27d54, type: 3}
