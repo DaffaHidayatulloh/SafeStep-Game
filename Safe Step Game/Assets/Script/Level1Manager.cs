@@ -188,4 +188,9 @@ public class Level1Manager : MonoBehaviour
     {
         SceneManager.LoadScene("Home Screen");
     }
+    public void ButtonBack()
+    {
+        SceneManager.LoadScene("Level 1 Reproduksi");
+
+    }
 }

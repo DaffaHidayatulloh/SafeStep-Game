@@ -171,4 +171,8 @@ public class Level2Manager : MonoBehaviour
     {
         SceneManager.LoadScene("Home Screen");
     }
+    public void ButtonBack()
+    {
+        SceneManager.LoadScene("Level 2 Anti Kekerasan");
+    }
 }
