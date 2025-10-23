@@ -139,14 +139,22 @@ public class UI_Events : MonoBehaviour
 
 
         LoadScores();
-        
-        _level1Progression.value = (float)scoreLevel1;
-        _level2Progression.value = (float)scoreLevel2;
-        _level3Progression.value = (float)scoreLevel3;
+
+
+                
+        _level1Progression.value = scoreLevel1;
+        _level2Progression.value = scoreLevel2;
+        _level3Progression.value = scoreLevel3;
 
         _totalProgression.value = scoreLevel1 + scoreLevel2 + scoreLevel3;
 
-        if (_totalProgression.value >= 300)
+        Debug.Log("Level 1 Progression: " + _level1Progression.value);
+        Debug.Log("Level 2 Progression: " + _level2Progression.value);
+        Debug.Log("Level 3 Progression: " + _level3Progression.value);
+        Debug.Log("Total Progression: " + _totalProgression.value);
+
+
+        if (_totalProgression.value >= 1050)
         {
             // _totalProgression.value = 300;
 
@@ -267,20 +275,20 @@ public class UI_Events : MonoBehaviour
         _level3Progression = _document.rootVisualElement.Q<ProgressBar>("progress-lv3") as ProgressBar;
         _totalProgression = _document.rootVisualElement.Q<ProgressBar>("progress-total") as ProgressBar;
 
-        _level1Progression.highValue = 100;
+        _level1Progression.highValue = 350;
         _level1Progression.lowValue = 0;
         _level1Progression.value = 0;
 
-        _level2Progression.highValue = 100;
+        _level2Progression.highValue = 450;
         _level2Progression.lowValue = 0;
         _level2Progression.value = 0;
 
-        _level3Progression.highValue = 100;
+        _level3Progression.highValue = 250;
         _level3Progression.lowValue = 0;
         _level3Progression.value = 100;
 
 
-        _totalProgression.highValue = 300;
+        _totalProgression.highValue = 1050;
         _totalProgression.lowValue = 0;
         _totalProgression.value = 0;
 
