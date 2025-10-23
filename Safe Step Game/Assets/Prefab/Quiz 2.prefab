@@ -1050,6 +1050,9 @@ MonoBehaviour:
   - {fileID: 1470670233251061519}
   - {fileID: 4335168463374581303}
   - {fileID: 463404466151934780}
+  characterImage: {fileID: 0}
+  maleSprites: []
+  femaleSprites: []
 --- !u!1 &7979773604526018377
 GameObject:
   m_ObjectHideFlags: 0
