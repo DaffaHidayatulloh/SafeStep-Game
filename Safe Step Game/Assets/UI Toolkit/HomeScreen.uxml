@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/main.uss?fileID=7433441132597879392&amp;guid=60d635056be59a645bf843413e36fbfa&amp;type=3" />
-    <Style src="project://database/Assets/UI%20Toolkit/menu-style.uss?fileID=7433441132597879392&amp;guid=21574db30d79cda4dbd76a257f0ccd0a&amp;type=3" />
-    <Style src="project://database/Assets/color-style.uss?fileID=7433441132597879392&amp;guid=163ed8835a7608144b5fb26da4167f35&amp;type=3" />
-    <Style src="project://database/Assets/command-state.uss?fileID=7433441132597879392&amp;guid=290de5c356eda4f44b5cfe7b2b8d7af7&amp;type=3" />
+    <Style src="project://database/Assets/UI%20Toolkit/main.uss?fileID=7433441132597879392&amp;guid=60d635056be59a645bf843413e36fbfa&amp;type=3#main" />
+    <Style src="project://database/Assets/UI%20Toolkit/menu-style.uss?fileID=7433441132597879392&amp;guid=21574db30d79cda4dbd76a257f0ccd0a&amp;type=3#menu-style" />
+    <Style src="project://database/Assets/color-style.uss?fileID=7433441132597879392&amp;guid=163ed8835a7608144b5fb26da4167f35&amp;type=3#color-style" />
+    <Style src="project://database/Assets/command-state.uss?fileID=7433441132597879392&amp;guid=290de5c356eda4f44b5cfe7b2b8d7af7&amp;type=3#command-state" />
     <ui:VisualElement name="root-container" style="flex-grow: 1; flex-direction: column; flex-wrap: nowrap; align-content: auto; align-self: auto; align-items: stretch;">
         <ui:VisualElement name="header" style="flex-grow: 1; max-height: 167px; position: absolute; top: 0; left: 0; right: 0; bottom: auto;">
             <ui:VisualElement name="header-container">
@@ -59,16 +59,37 @@
             <ui:Button name="nav-progress" class="nav-button" style="background-image: url(&quot;project://database/Assets/Images/UI/white-progress.png?fileID=2800000&amp;guid=9d9658eff613e6e48a08e75600c9b280&amp;type=3#white-progress&quot;);" />
             <ui:Button name="nav-profile" class="nav-button" style="background-image: url(&quot;project://database/Assets/Images/UI/white-profile.png?fileID=2800000&amp;guid=d39d535a980201e4e953247a9549a557&amp;type=3#white-profile&quot;);" />
         </ui:VisualElement>
-        <ui:VisualElement name="pop-up-overlay" class="hide-popup" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 1px; bottom: 2px; -unity-text-outline-color: rgb(255, 39, 39); background-color: rgba(128, 128, 128, 0.79); align-self: auto; align-content: auto; justify-content: center; transition-duration: 0.2s; transition-property: scale; display: flex;">
-            <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; background-color: rgba(255, 255, 255, 0); align-self: center; background-image: url(&quot;project://database/Assets/UI%20Toolkit/rect8.png?fileID=2800000&amp;guid=c7b0fa7b2c9c25449b7e872c7e1ffebf&amp;type=3#rect8&quot;); -unity-slice-left: 33; -unity-slice-top: 33; -unity-slice-right: 33; -unity-slice-bottom: 33; max-height: 216px; min-height: 256px; min-width: 255px; -unity-background-image-tint-color: rgb(255, 255, 255); transition-duration: 0.5s;">
-                <ui:VisualElement name="VisualElement">
-                    <ui:Button text="Button" />
+        <ui:VisualElement name="pop-up-overlay" class="hide-popup" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 1px; bottom: 3px; -unity-text-outline-color: rgb(255, 39, 39); background-color: rgba(128, 128, 128, 0.79); align-self: auto; align-content: auto; justify-content: center; transition-duration: 0.2s; transition-property: scale; display: flex;">
+            <ui:VisualElement name="pop-up-container" style="flex-grow: 1; align-items: center; justify-content: center; background-color: rgba(255, 255, 255, 0); align-self: center; background-image: url(&quot;project://database/Assets/UI%20Toolkit/rect8.png?fileID=2800000&amp;guid=c7b0fa7b2c9c25449b7e872c7e1ffebf&amp;type=3#rect8&quot;); -unity-slice-left: 33; -unity-slice-top: 33; -unity-slice-right: 33; -unity-slice-bottom: 33; max-height: 216px; min-height: 256px; min-width: 255px; -unity-background-image-tint-color: rgb(255, 255, 255); transition-duration: 0.5s; padding-top: 22px; padding-right: 22px; padding-bottom: 22px; padding-left: 22px; scale: 1.5 1.5;">
+                <ui:VisualElement name="foo" style="flex-grow: 1; display: none;">
+                    <ui:VisualElement name="VisualElement">
+                        <ui:Button text="Button" />
+                    </ui:VisualElement>
+                    <ui:Label text="Label" />
+                    <ui:VisualElement name="VisualElement" style="flex-direction: row;">
+                        <ui:Button text="Yes" name="pop-yes" class="popup-button button-blue" />
+                        <ui:Button text="No" name="pop-no" class="popup-button" />
+                        <ui:Button text="Button" name="switchTest" class="switch-off" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:Label text="Label" />
-                <ui:VisualElement name="VisualElement" style="flex-direction: row;">
-                    <ui:Button text="Yes" name="pop-yes" class="popup-button button-blue" />
-                    <ui:Button text="No" name="pop-no" class="popup-button" />
-                    <ui:Button text="Button" name="switchTest" class="switch-off" />
+                <ui:VisualElement name="change-name" style="flex-grow: 1; align-self: auto; justify-content: center; display: none;">
+                    <ui:Label text="Ganti Nama" style="-unity-text-align: upper-center; -unity-text-outline-color: rgb(255, 0, 0); font-size: 19px;" />
+                    <ui:TextField placeholder-text="Nama Baru" enabled="true" hide-placeholder-on-focus="false" readonly="false" name="name-field" style="min-width: 213px;" />
+                    <ui:Button text="Confirm" name="change-name-confirm" class="button-blue popup-button" style="display: flex;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="avatar-change" style="flex-grow: 1; display: none;">
+                    <ui:Label text="Ganti Avatar" style="-unity-text-align: upper-center;" />
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Button name="avatar-button-male" class="avatar-select" style="background-image: url(&quot;project://database/Assets/Images/Avatar/Protag%20Cowok%201.png?fileID=2800000&amp;guid=9dc439591c383a34a8a2949132dd1f59&amp;type=3#Protag Cowok 1&quot;); border-left-color: rgb(111, 135, 234); border-right-color: rgb(111, 135, 234); border-top-color: rgb(111, 135, 234); border-bottom-color: rgb(111, 135, 234);" />
+                        <ui:Button name="avatar-button-female" class="avatar-select" style="background-image: url(&quot;project://database/Assets/Images/Avatar/Protag%20Cewek.png?fileID=2800000&amp;guid=3934d9293cda28c4b9cee9198d7150c4&amp;type=3#Protag Cewek&quot;); border-left-color: rgb(232, 111, 234); border-right-color: rgb(232, 111, 234); border-top-color: rgb(232, 111, 234); border-bottom-color: rgb(232, 111, 234);" />
+                    </ui:VisualElement>
+                    <ui:Button text="Pilih" name="avatar-change-confirm" class="popup-button button-blue" />
+                </ui:VisualElement>
+                <ui:VisualElement name="reset-progress" style="flex-grow: 1; display: none;">
+                    <ui:Label text="PERHATIAN!" style="-unity-text-align: upper-center;" />
+                    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/path56.png?fileID=2800000&amp;guid=79bc4c00ce69f1b48bf223c0ab7f7a84&amp;type=3#path56&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:Label text="Proses ini akan menghapus semua &#10;progress dari game dan data tidak &#10;dapat dikembalikan setelah direset" style="-unity-text-align: upper-center;" />
+                    <ui:Button text="IYA SAYA MAU RESET!" name="reset-button" class="popup-button button-red" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

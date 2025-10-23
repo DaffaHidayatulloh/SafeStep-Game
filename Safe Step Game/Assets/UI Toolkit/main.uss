@@ -65,7 +65,6 @@
 
 .popup-button:active {
     border-bottom-width: 1px;
-    border-top-width: 3px;
 }
 
 .swicth-on {
@@ -129,4 +128,46 @@
 .sertif-disabled {
     background-color: rgb(204, 0, 0);
     -unity-background-image-tint-color: rgb(130, 130, 130);
+}
+
+.avatar-select {
+    -unity-background-scale-mode: scale-to-fit;
+    min-width: 13%;
+    min-height: 8%;
+    background-color: rgb(172, 169, 169);
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
+    border-bottom-left-radius: 11px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-left-color: rgb(143, 158, 220);
+    border-right-color: rgb(143, 158, 220);
+    border-top-color: rgb(143, 158, 220);
+    border-bottom-color: rgb(143, 158, 220);
+    -unity-background-image-tint-color: rgb(183, 183, 183);
+    width: 116px;
+    transition-duration: 0s;
+}
+
+.avatar-select-selected {
+    -unity-background-scale-mode: scale-to-fit;
+    min-width: 119px;
+    min-height: 128px;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
+    border-bottom-left-radius: 11px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-left-color: rgb(143, 158, 220);
+    border-right-color: rgb(143, 158, 220);
+    border-top-color: rgb(143, 158, 220);
+    border-bottom-color: rgb(143, 158, 220);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
 }

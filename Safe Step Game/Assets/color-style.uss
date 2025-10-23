@@ -1,12 +1,28 @@
 :root {
 }
 
+.button-red:active {
+    background-color: rgb(224, 6, 1);
+    border-left-color: rgb(132, 0, 1);
+    border-right-color: rgb(132, 0, 1);
+    border-top-color: rgb(132, 0, 1);
+    border-bottom-color: rgb(132, 0, 1);
+}
+
 .button-blue:active {
     background-color: rgb(44, 119, 212);
     border-left-color: rgb(44, 119, 212);
     border-right-color: rgb(44, 119, 212);
     border-top-color: rgb(44, 119, 212);
     border-bottom-color: rgb(44, 119, 212);
+}
+
+.button-red {
+    background-color: rgb(225, 6, 1);
+    border-left-color: rgb(132, 0, 0);
+    border-right-color: rgb(132, 0, 0);
+    border-top-color: rgb(132, 0, 0);
+    border-bottom-color: rgb(132, 0, 0);
 }
 
 .button-blue {

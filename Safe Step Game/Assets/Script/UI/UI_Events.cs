@@ -71,7 +71,29 @@ public class UI_Events : MonoBehaviour
     private Button _reseteDataButton;
 
     private Button _claimCertificateButton;
-    
+
+
+    private TextField _profileNameTextField;
+
+    private Button _profileNameSaveButton;
+
+
+    private Button _avatarMaleButton;
+    private Button _avatarFemaleButton;
+
+    private Button _avatarSaveButton;
+
+    private VisualElement _avatarSelectionPopupMenu;
+
+    private VisualElement _nameChangePopupMenu;
+
+
+
+    private VisualElement _resetDataPopupMenu;
+    private Button _resetDataConfirmButton;
+
+
+    private int _selectedAvatarIndex = 0;
 
     private string fileName = "playerData.json";
     private Label _playerNameLabel;
@@ -237,6 +259,14 @@ public class UI_Events : MonoBehaviour
 
         _gameCardImage = _document.rootVisualElement.Q("gamecard") as VisualElement;
 
+        _resetDataPopupMenu = _document.rootVisualElement.Q("reset-progress") as VisualElement;
+        _resetDataConfirmButton = _document.rootVisualElement.Q<Button>("reset-button") as Button;
+
+        _resetDataConfirmButton.clicked += () =>
+        {
+            Debug.Log("RESET DATA CONFIRMED");
+            ResetProgressionData();
+        };
 
         _gameSelectLeftArrow.clicked += () =>
         {
@@ -316,22 +346,15 @@ public class UI_Events : MonoBehaviour
         {
             Debug.Log("LOGOUT BUTTON CLICKED");
             // clear all player prefs
-            PlayerPrefs.DeleteAll();
-            // delete character.json file
-            if (File.Exists(savePath))
-            {
-                File.Delete(savePath);
-                Debug.Log("Character data file deleted: " + savePath);
-            }
-            else
-            {
-                Debug.LogWarning("Character data file not found for deletion: " + savePath);
-            }
-            // go to main menu scene
-            SceneManager.LoadScene("Home Screen");
+            // _resetDataPopupMenu = _document.rootVisualElement.Q("reset-data-confirmation") as VisualElement;
+            _resetDataPopupMenu.style.display = DisplayStyle.Flex;
+            _nameChangePopupMenu.style.display = DisplayStyle.None;
+            _avatarSelectionPopupMenu.style.display = DisplayStyle.None;
+            _popup.RemoveFromClassList("hide-popup");
+
+
         };
 
-        
 
         _claimCertificateButton.clicked += () =>
         {
@@ -350,9 +373,181 @@ public class UI_Events : MonoBehaviour
         };
 
 
-        
-        
+        _profileNameTextField = _document.rootVisualElement.Q<TextField>("name-field") as TextField;
+        _profileNameSaveButton = _document.rootVisualElement.Q<Button>("change-name-confirm") as Button;
 
+        _avatarFemaleButton = _document.rootVisualElement.Q<Button>("avatar-button-female") as Button;
+        _avatarMaleButton = _document.rootVisualElement.Q<Button>("avatar-button-male") as Button;
+        _avatarSaveButton = _document.rootVisualElement.Q<Button>("avatar-change-confirm") as Button;
+
+
+        // _profileEditAvatarButton.clicked += () =>
+        // {
+        //     Debug.Log("EDIT AVATAR BUTTON CLICKED");
+        //     // show avatar selection popup
+        //     _document.rootVisualElement.Q("pop-up-overlay").RemoveFromClassList("hide-popup");
+        //     // var changename = _document.rootVisualElement.Q("change-name");
+        //     // changename.SetEnabled(true);
+
+        //     var changeavatar = _document.rootVisualElement.Q("change-avatar");
+        //     changeavatar.SetEnabled(true);
+        //     _popup.RemoveFromClassList("hide-popup");
+        // };
+
+        _avatarSelectionPopupMenu = _document.rootVisualElement.Q("avatar-change") as VisualElement;
+        _nameChangePopupMenu = _document.rootVisualElement.Q("change-name") as VisualElement;
+
+        _profileEditNameButton.clicked += () =>
+        {
+            Debug.Log("EDIT NAME BUTTON CLICKED");
+            // show name change popup
+            _document.rootVisualElement.Q("pop-up-overlay").RemoveFromClassList("hide-popup");
+            // var changeavatar = _document.rootVisualElement.Q("change-avatar");
+            // changeavatar.SetEnabled(true);
+
+            // var changename = _document.rootVisualElement.Q("change-name");
+            // changename.SetEnabled(true);
+
+            // _avatarSelectionPopupMenu.AddToClassList("hide-popup");
+            // _nameChangePopupMenu.RemoveFromClassList("hide-popup");
+
+            _profileNameTextField.value = _playerNameLabel.text;
+            _avatarSelectionPopupMenu.style.display = DisplayStyle.None;
+            _nameChangePopupMenu.style.display = DisplayStyle.Flex;
+            _popup.RemoveFromClassList("hide-popup");
+        };
+
+        _profileEditAvatarButton.clicked += () =>
+        {
+            Debug.Log("EDIT AVATAR BUTTON CLICKED");
+            // show avatar selection popup
+            _document.rootVisualElement.Q("pop-up-overlay").RemoveFromClassList("hide-popup");
+            // var changename = _document.rootVisualElement.Q("change-name");
+            // changename.SetEnabled(true);
+
+            // var changeavatar = _document.rootVisualElement.Q("avatar-change");
+            // changeavatar.SetEnabled(true);
+            _nameChangePopupMenu.style.display = DisplayStyle.None;
+            _avatarSelectionPopupMenu.style.display = DisplayStyle.Flex;
+
+            _popup.RemoveFromClassList("hide-popup");
+
+
+            if (_playerAvatar.style.backgroundImage.value.texture == playerAvatars[0])
+            {
+                _avatarMaleButton.AddToClassList("avatar-select-selected");
+                _avatarFemaleButton.RemoveFromClassList("avatar-select-selected");
+                _selectedAvatarIndex = 0;
+            }
+            else if (_playerAvatar.style.backgroundImage.value.texture == playerAvatars[1])
+            {
+                _avatarFemaleButton.AddToClassList("avatar-select-selected");
+                _avatarMaleButton.RemoveFromClassList("avatar-select-selected");
+                _selectedAvatarIndex = 1;
+            }
+        };
+
+
+
+        _avatarFemaleButton.clicked += () =>
+        {
+            Debug.Log("FEMALE AVATAR SELECTED");
+            // _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[1]);
+            _avatarFemaleButton.AddToClassList("avatar-select-selected");
+            _avatarMaleButton.RemoveFromClassList("avatar-select-selected");
+            _selectedAvatarIndex = 1;
+        };
+
+        _avatarMaleButton.clicked += () =>
+        {
+            Debug.Log("MALE AVATAR SELECTED");
+            // _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[0]);
+            _avatarMaleButton.AddToClassList("avatar-select-selected");
+            _avatarFemaleButton.RemoveFromClassList("avatar-select-selected");
+
+            _selectedAvatarIndex = 0;
+        };
+
+
+        _avatarSaveButton.clicked += () =>
+        {
+            Debug.Log("SAVE AVATAR BUTTON CLICKED");
+            SaveAvatar();
+            _popup.AddToClassList("hide-popup");
+        };
+
+        _profileNameSaveButton.clicked += () =>
+        {
+            Debug.Log("SAVE NAME BUTTON CLICKED");
+            ChangeName();
+            _popup.AddToClassList("hide-popup");
+        };
+
+
+    }
+    
+
+    private void ResetProgressionData()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("All player progress data has been reset.");
+        PlayerPrefs.DeleteAll();
+        // delete character.json file
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+            Debug.Log("Character data file deleted: " + savePath);
+        }
+        else
+        {
+            Debug.LogWarning("Character data file not found for deletion: " + savePath);
+        }
+        // go to main menu scene
+        SceneManager.LoadScene("LoginRegister");
+    }
+
+
+    private void SaveAvatar()
+    {
+        Debug.Log("Saving selected avatar index: " + _selectedAvatarIndex);
+
+        string characterName = _selectedAvatarIndex == 0 ? "Male" : "Female";
+        // Save to JSON file
+        CharacterData data = new CharacterData();
+        data.characterName = characterName;
+        string json = JsonUtility.ToJson(data);
+        string filePath = Path.Combine(Application.persistentDataPath, "character.json");
+        File.WriteAllText(filePath, json);
+        Debug.Log("Character data saved to: " + filePath);
+
+        _playerAvatar.style.backgroundImage = new StyleBackground((Background)playerAvatars[_selectedAvatarIndex]);
+    }
+    
+
+    private void ChangeName()
+    {
+        string newName = _profileNameTextField.value;
+        Debug.Log("New name to save: " + newName);
+
+        if (!string.IsNullOrEmpty(newName))
+        {
+            // Save to JSON file
+            PlayerData data = new PlayerData();
+            data.playerName = newName;
+
+            string json = JsonUtility.ToJson(data);
+            string filePath = Path.Combine(Application.persistentDataPath, fileName);
+            File.WriteAllText(filePath, json);
+
+            Debug.Log("Player name saved to: " + filePath);
+
+            // Update UI
+            _playerNameLabel.text = newName;
+        }
+        else
+        {
+            Debug.LogWarning("New name is empty. Name not changed.");
+        }
     }
 
 
