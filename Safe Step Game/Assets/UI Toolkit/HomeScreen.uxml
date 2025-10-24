@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/main.uss?fileID=7433441132597879392&amp;guid=60d635056be59a645bf843413e36fbfa&amp;type=3#main" />
-    <Style src="project://database/Assets/UI%20Toolkit/menu-style.uss?fileID=7433441132597879392&amp;guid=21574db30d79cda4dbd76a257f0ccd0a&amp;type=3#menu-style" />
-    <Style src="project://database/Assets/color-style.uss?fileID=7433441132597879392&amp;guid=163ed8835a7608144b5fb26da4167f35&amp;type=3#color-style" />
-    <Style src="project://database/Assets/command-state.uss?fileID=7433441132597879392&amp;guid=290de5c356eda4f44b5cfe7b2b8d7af7&amp;type=3#command-state" />
+    <Style src="project://database/Assets/UI%20Toolkit/main.uss?fileID=7433441132597879392&amp;guid=60d635056be59a645bf843413e36fbfa&amp;type=3" />
+    <Style src="project://database/Assets/UI%20Toolkit/menu-style.uss?fileID=7433441132597879392&amp;guid=21574db30d79cda4dbd76a257f0ccd0a&amp;type=3" />
+    <Style src="project://database/Assets/color-style.uss?fileID=7433441132597879392&amp;guid=163ed8835a7608144b5fb26da4167f35&amp;type=3" />
+    <Style src="project://database/Assets/command-state.uss?fileID=7433441132597879392&amp;guid=290de5c356eda4f44b5cfe7b2b8d7af7&amp;type=3" />
     <ui:VisualElement name="root-container" style="flex-grow: 1; flex-direction: column; flex-wrap: nowrap; align-content: auto; align-self: auto; align-items: stretch;">
         <ui:VisualElement name="header" style="flex-grow: 1; max-height: 167px; position: absolute; top: 0; left: 0; right: 0; bottom: auto;">
             <ui:VisualElement name="header-container">
@@ -51,7 +51,7 @@
                 <ui:Button text="Ubah Nama" name="profile-change-name" class="menu-button button-blue" />
                 <ui:Button text="Ubah Avatar" name="profile-change-avatar" class="menu-button button-blue" />
                 <ui:Button text="Ekspor Data" name="profile-export-data" class="menu-button button-blue" style="height: 90px; display: none;" />
-                <ui:Button text="Reset Progress" name="profile-logout" class="menu-button" />
+                <ui:Button text="Reset Progress" name="profile-logout" class="menu-button button-red" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="navbar" style="flex-grow: 1; bottom: 0; flex-direction: row; align-content: center; align-self: center; justify-content: space-around; align-items: center; min-width: 240px; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgb(255, 118, 228); padding-top: 23px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px; border-top-width: 8px; border-top-color: rgb(255, 255, 255); max-width: 80%; border-top-right-radius: 42px; border-top-left-radius: 42px; border-right-width: 8px; border-left-width: 8px; border-right-color: rgb(255, 255, 255); border-left-color: rgb(255, 255, 255); width: 100%; max-height: 12%; position: absolute; height: 120px; border-bottom-width: 8px;">
