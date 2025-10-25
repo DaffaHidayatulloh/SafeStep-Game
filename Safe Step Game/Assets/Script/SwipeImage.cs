@@ -118,6 +118,7 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
             }
 
             if (characterImage != null)
+                characterImage.preserveAspect = true;
                 characterImage.sprite = currentNormalSprite;
         }
         else
@@ -132,6 +133,7 @@ public class SwipeImage : MonoBehaviour, IDragHandler, IEndDragHandler
             }
 
             if (characterImage != null)
+                characterImage.preserveAspect = true;
                 characterImage.sprite = currentNormalSprite;
         }
     }
