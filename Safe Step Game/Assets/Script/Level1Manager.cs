@@ -186,10 +186,12 @@ public class Level1Manager : MonoBehaviour
     }
     public void Home()
     {
+        AudioManager.instance.StopAllSFX();
         SceneManager.LoadScene("Home Screen");
     }
     public void ButtonBack()
     {
+        AudioManager.instance.StopAllSFX();
         SceneManager.LoadScene("Level 1 Reproduksi");
 
     }

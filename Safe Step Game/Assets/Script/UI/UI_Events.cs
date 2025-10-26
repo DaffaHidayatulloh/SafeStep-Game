@@ -313,7 +313,7 @@ public class UI_Events : MonoBehaviour
         _level2Progression.lowValue = 0;
         _level2Progression.value = 0;
 
-        _level3Progression.highValue = 250;
+        _level3Progression.highValue = 300;
         _level3Progression.lowValue = 0;
         _level3Progression.value = 100;
 
