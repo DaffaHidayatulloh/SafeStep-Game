@@ -129,6 +129,7 @@ public class Home_CertificateDownloader : MonoBehaviour
 
         Debug.Log("Certificate saved to: " + savedPath);
         ShowNotification("Certificate Saved!");
+        certificateCamera.enabled = false;
     }
 
     private void ShowNotification(string message)

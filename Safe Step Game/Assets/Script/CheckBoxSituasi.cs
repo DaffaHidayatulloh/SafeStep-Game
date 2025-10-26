@@ -66,6 +66,7 @@ public class CheckBoxSituasi : MonoBehaviour
             currentNormalSprite = femaleSprites[0];
             characterImage.sprite = femaleSprites[0];
         }
+        characterImage.preserveAspect = true;
     }
 
     public void SetQuizManager(QuizSituasiManager manager)
