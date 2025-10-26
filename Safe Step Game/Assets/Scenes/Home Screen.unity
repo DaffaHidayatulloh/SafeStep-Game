@@ -2743,9 +2743,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CertificateCamera: {fileID: 1932649522}
   gameCardsTextures:
-  - {fileID: 2800000, guid: 40c661b45b762fd46946cea355c8fa27, type: 3}
-  - {fileID: 2800000, guid: 427a45096ea8e9041b25dba77ad30776, type: 3}
-  - {fileID: 2800000, guid: 63250f3396c54d641a5264f38585e6b8, type: 3}
+  - {fileID: 2800000, guid: 42b3bbdc8b9adfe4185a0570262f4996, type: 3}
+  - {fileID: 2800000, guid: 50cee92cba1ab9d499c519b38d7441d7, type: 3}
+  - {fileID: 2800000, guid: 19dfa9756828622499749b3f9f6a59fb, type: 3}
   playerAvatars:
   - {fileID: 2800000, guid: 99ddf93910c25d44e89f6cebf7d60536, type: 3}
   - {fileID: 2800000, guid: 3934d9293cda28c4b9cee9198d7150c4, type: 3}
