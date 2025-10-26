@@ -74,19 +74,16 @@ public class Level1Manager : MonoBehaviour
         AudioManager.instance.StopAllSFX();
         AudioManager.instance.PlaySFX(4);
         OpeningMinigame2.SetActive(true);
-
-        // Menandai bahwa minigame 2 sudah bisa dibuka
-        minigame2Unlocked = true;
-        PlayerPrefs.SetInt("MiniGame2Unlocked", 1);
-        PlayerPrefs.Save();
-
-        UpdateButtonStates();
     }
 
     // ------------------ Flow MiniGame 2 ------------------
     public void OnSelectButtonLanjutMinigame2()
     {
         OpeningMinigame2.SetActive(false);
+        minigame2Unlocked = true;
+        PlayerPrefs.SetInt("MiniGame2Unlocked", 1);
+        PlayerPrefs.Save();
+        UpdateButtonStates();
         MiniGame2.SetActive(true);
     }
 
