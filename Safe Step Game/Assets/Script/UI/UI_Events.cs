@@ -657,7 +657,7 @@ public class UI_Events : MonoBehaviour
         // _popup.style.display = DisplayStyle.Flex;
 
         // remove hide class from popup
-        _popup.RemoveFromClassList("hide-popup");
+        // _popup.RemoveFromClassList("hide-popup");
 
         // _popup.transform.scale = Vector3.one; 
 
