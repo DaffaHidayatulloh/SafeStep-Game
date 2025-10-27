@@ -103,6 +103,8 @@ public class UI_Events : MonoBehaviour
 
     private string savePath;
 
+    private VisualElement _sertifPopupFoo;
+
 
 
 
@@ -216,6 +218,7 @@ public class UI_Events : MonoBehaviour
         // _button = _document.rootVisualElement.Q("nav-home") as Button;
         // _button.RegisterCallback<ClickEvent>(OnSetHome);
 
+        _sertifPopupFoo = _document.rootVisualElement.Q("foo") as VisualElement;
         _navButtons = _document.rootVisualElement.Query(className: "nav-button").ToList();
         _navButtons[0].RegisterCallback<ClickEvent>(OnSelectHome);
         _navButtons[1].RegisterCallback<ClickEvent>(OnSelectProgress);
@@ -239,6 +242,8 @@ public class UI_Events : MonoBehaviour
         {
             Debug.Log("NO");
             // _popup.style.display = DisplayStyle.None;
+
+            _sertifPopupFoo.style.display = DisplayStyle.None;
 
             HidePopup();
         };
@@ -359,7 +364,12 @@ public class UI_Events : MonoBehaviour
         _claimCertificateButton.clicked += () =>
         {
             Debug.Log("CLAIM CERTIFICATE BUTTON CLICKED");
+            _avatarSelectionPopupMenu.style.display = DisplayStyle.None;
+            _nameChangePopupMenu.style.display = DisplayStyle.None;
             ShowPopup();
+
+            _sertifPopupFoo.style.display = DisplayStyle.Flex;
+
             // GoToSertif();
             Home_CertificateDownloader certDownloader = FindFirstObjectByType<Home_CertificateDownloader>();
             if (certDownloader != null)
@@ -412,6 +422,7 @@ public class UI_Events : MonoBehaviour
             // _nameChangePopupMenu.RemoveFromClassList("hide-popup");
 
             _profileNameTextField.value = _playerNameLabel.text;
+            _sertifPopupFoo.style.display = DisplayStyle.None;
             _avatarSelectionPopupMenu.style.display = DisplayStyle.None;
             _nameChangePopupMenu.style.display = DisplayStyle.Flex;
             _popup.RemoveFromClassList("hide-popup");
@@ -429,6 +440,7 @@ public class UI_Events : MonoBehaviour
             // changeavatar.SetEnabled(true);
             _nameChangePopupMenu.style.display = DisplayStyle.None;
             _avatarSelectionPopupMenu.style.display = DisplayStyle.Flex;
+            _sertifPopupFoo.style.display = DisplayStyle.None;
 
             _popup.RemoveFromClassList("hide-popup");
 
@@ -687,11 +699,13 @@ public class UI_Events : MonoBehaviour
 
     private void HidePopup()
     {
-        _popup.style.display = DisplayStyle.None;
+        // _popup.style.display = DisplayStyle.None;
 
         // _popup.transform.scale = Vector3.zero; 
 
-        // assign hide class to popup
+        // // assign hide class to popup
+        // _avatarSelectionPopupMenu.style.display = DisplayStyle.None;
+        // _nameChangePopupMenu.style.display = DisplayStyle.None;
         _popup.AddToClassList("hide-popup");
 
     }
