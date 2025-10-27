@@ -23,7 +23,7 @@
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; background-color: rgb(122, 122, 122); margin-top: 18px; margin-right: 18px; margin-bottom: 18px; margin-left: 18px; max-height: 343px;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="gamecard" class="menu-gamecard" style="background-image: url(&quot;project://database/Assets/Images/g103.png?fileID=2800000&amp;guid=1d604473bb600c24c92bf2df907da992&amp;type=3#g103&quot;); background-size: contain; max-width: 80%; top: 0; bottom: 0; right: 10%; left: 10%; position: absolute; align-self: auto; flex-wrap: nowrap;">
+                <ui:VisualElement name="gamecard" class="menu-gamecard" style="background-image: url(&quot;project://database/Assets/Images/GameCard1.png?fileID=2800000&amp;guid=1d604473bb600c24c92bf2df907da992&amp;type=3#GameCard1&quot;); background-size: contain; max-width: 80%; top: 0; bottom: 0; right: 10%; left: 10%; position: absolute; align-self: auto; flex-wrap: nowrap;">
                     <ui:Button name="gamecard-button" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
                 </ui:VisualElement>
                 <ui:Button text="&#10;" name="gamepick-right" class="gamepickbutton" style="background-image: url(&quot;project://database/Assets/Images/UI/arrow_right.png?fileID=2800000&amp;guid=f0320385fcebd834f867701b6633685e&amp;type=3#arrow_right&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; right: 0;" />
@@ -61,7 +61,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="pop-up-overlay" class="hide-popup" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 1px; bottom: 3px; -unity-text-outline-color: rgb(255, 39, 39); background-color: rgba(128, 128, 128, 0.79); align-self: auto; align-content: auto; justify-content: center; transition-duration: 0.2s; transition-property: scale; display: flex;">
             <ui:VisualElement name="pop-up-container" style="flex-grow: 1; align-items: center; justify-content: center; background-color: rgba(255, 255, 255, 0); align-self: center; background-image: url(&quot;project://database/Assets/UI%20Toolkit/rect8.png?fileID=2800000&amp;guid=c7b0fa7b2c9c25449b7e872c7e1ffebf&amp;type=3#rect8&quot;); -unity-slice-left: 33; -unity-slice-top: 33; -unity-slice-right: 33; -unity-slice-bottom: 33; max-height: 216px; min-height: 256px; min-width: 255px; -unity-background-image-tint-color: rgb(255, 255, 255); transition-duration: 0.5s; padding-top: 22px; padding-right: 22px; padding-bottom: 22px; padding-left: 22px; scale: 1.5 1.5;">
-                <ui:VisualElement name="foo" style="flex-grow: 1; display: flex; align-self: center; align-items: center; justify-content: center;">
+                <ui:VisualElement name="foo" style="flex-grow: 1; display: none; align-self: center; align-items: center; justify-content: center;">
                     <ui:VisualElement name="VisualElement" />
                     <ui:Label text="Certificate C L A I M E D" style="-unity-text-align: upper-center; font-size: 26px;" />
                     <ui:Label text="Cek Folder Download Kamu!" style="-unity-text-align: upper-center;" />
@@ -86,7 +86,7 @@
                 </ui:VisualElement>
                 <ui:VisualElement name="reset-progress" style="flex-grow: 1; display: none;">
                     <ui:Label text="PERHATIAN!" style="-unity-text-align: upper-center;" />
-                    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/path56.png?fileID=2800000&amp;guid=79bc4c00ce69f1b48bf223c0ab7f7a84&amp;type=3#path56&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/WARNING.png?fileID=2800000&amp;guid=79bc4c00ce69f1b48bf223c0ab7f7a84&amp;type=3#WARNING&quot;); -unity-background-scale-mode: scale-to-fit;" />
                     <ui:Label text="Proses ini akan menghapus semua &#10;progress dari game dan data tidak &#10;dapat dikembalikan setelah direset" style="-unity-text-align: upper-center;" />
                     <ui:Button text="IYA SAYA MAU RESET!" name="reset-button" class="popup-button button-red" />
                 </ui:VisualElement>
