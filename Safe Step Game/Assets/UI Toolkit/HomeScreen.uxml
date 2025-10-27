@@ -23,7 +23,7 @@
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; background-color: rgb(122, 122, 122); margin-top: 18px; margin-right: 18px; margin-bottom: 18px; margin-left: 18px; max-height: 343px;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="gamecard" class="menu-gamecard" style="background-image: url(&quot;project://database/Assets/Images/g67.png?fileID=2800000&amp;guid=40c661b45b762fd46946cea355c8fa27&amp;type=3#g67&quot;); background-size: contain; max-width: 80%; top: 0; bottom: 0; right: 10%; left: 10%; position: absolute; align-self: auto; flex-wrap: nowrap;">
+                <ui:VisualElement name="gamecard" class="menu-gamecard" style="background-image: url(&quot;project://database/Assets/Images/g103.png?fileID=2800000&amp;guid=1d604473bb600c24c92bf2df907da992&amp;type=3#g103&quot;); background-size: contain; max-width: 80%; top: 0; bottom: 0; right: 10%; left: 10%; position: absolute; align-self: auto; flex-wrap: nowrap;">
                     <ui:Button name="gamecard-button" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
                 </ui:VisualElement>
                 <ui:Button text="&#10;" name="gamepick-right" class="gamepickbutton" style="background-image: url(&quot;project://database/Assets/Images/UI/arrow_right.png?fileID=2800000&amp;guid=f0320385fcebd834f867701b6633685e&amp;type=3#arrow_right&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; right: 0;" />
